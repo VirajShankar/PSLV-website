@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Courses - Prabha Shankar Learning Ventures</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="js/app.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="courses.html">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                    <li class="nav-item" id="loginStatus"></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Courses Hero -->
+    <section class="courses-hero py-5 bg-light">
+        <div class="container text-center">
+            <h1 class="display-4 mb-3">Our Courses</h1>
+            <p class="lead">Explore our range of specialized courses designed to help you excel in your career</p>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <!-- ACCA Course -->
+                <div class="col-md-4">
+                    <div class="course-card">
+                        <span class="new-badge">Popular</span>
+                        <h3>ACCA</h3>
+                        <p class="course-level">Advanced Professional Level</p>
+                        <p>Comprehensive preparation for the Association of Chartered Certified Accountants qualification.</p>
+                        
+                        <div class="features-list">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>All exam levels covered</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Expert instructors</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Practice tests included</span>
+                            </div>
+                        </div>
+                        
+                        <a href="acca-courses.html" class="btn btn-success">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- IFRS Course -->
+                <div class="col-md-4">
+                    <div class="course-card">
+                        <h3>IFRS</h3>
+                        <p class="course-level">Professional Certification</p>
+                        <p>Master International Financial Reporting Standards and boost your global accounting career.</p>
+                        
+                        <div class="features-list">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Latest IFRS updates</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Case study approach</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Industry applications</span>
+                            </div>
+                        </div>
+                        
+                        <a href="ifrs-courses.html" class="btn btn-success">View Details</a>
+                    </div>
+                </div>
+                
+                <!-- Accountancy Course -->
+                <div class="col-md-4">
+                    <div class="course-card">
+                        <span class="new-badge">New Batch</span>
+                        <h3>Accountancy</h3>
+                        <p class="course-level">11th & 12th Standard</p>
+                        <p>Strong foundation for high school students planning a future in accounting and finance.</p>
+                        
+                        <div class="features-list">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Board exam preparation</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Small batch sizes</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Regular mock tests</span>
+                            </div>
+                        </div>
+                        
+                        <a href="accountancy-courses.html" class="btn btn-success">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-5 bg-light">
+        <div class="container text-center">
+            <h2>Ready to Begin Your Learning Journey?</h2>
+            <p class="lead mb-4">Take the first step towards achieving your career goals today!</p>
+            <a href="registration.html" class="btn btn-danger btn-lg" id="mainActionButton">Register Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Contact us: <a href="mailto:example@example.com">example@example.com</a></p>
+        <p>Follow us on <a href="https://instagram.com/" target="_blank">Instagram</a></p>
+        <a href="https://api.whatsapp.com/send?phone=911234567890" target="_blank">WhatsApp Us</a>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Initialize theme
+        document.addEventListener("DOMContentLoaded", function() {
+            // ADDED: Update course buttons for logged-in users
+            updateCourseBtnsForLoggedInUsers();
+            
+            // ADDED: Update main action button for logged-in users
+            updateMainActionButton();
+        });
+
+        // NEW FUNCTION: Update the main action button based on login status
+        function updateMainActionButton() {
+            if (window.supabase && window.supabase.auth) {
+                window.supabase.auth.getSession().then(({ data: { session } }) => {
+                    const mainButton = document.getElementById('mainActionButton');
+                    if (mainButton && session) {
+                        mainButton.textContent = "Go to Dashboard";
+                        mainButton.href = "dashboard.html";
+                    }
+                });
+            }
+        }
+
+        // MODIFIED: Function to update course buttons for logged-in users
+        function updateCourseBtnsForLoggedInUsers() {
+            // Check if user is logged in via Supabase
+            if (window.supabase && window.supabase.auth) {
+                window.supabase.auth.getSession().then(({ data: { session } }) => {
+                    if (session) {
+                        // User is logged in, change all "View Details" buttons to direct enrollment
+                        const courseButtons = document.querySelectorAll('.course-card .btn-success');
+                        courseButtons.forEach(button => {
+                            const courseId = button.getAttribute('href').replace('-courses.html', '');
+                            const courseName = button.closest('.course-card').querySelector('h3').textContent;
+                            
+                            button.textContent = "Enroll Now";
+                            button.classList.remove('btn-success');
+                            button.classList.add('btn-danger');
+                            
+                            // Change from link to button with click handler
+                            button.removeAttribute('href');
+                            button.setAttribute('data-course-id', courseId);
+                            button.setAttribute('data-course-name', courseName);
+                            
+                            button.addEventListener('click', function(event) {
+                                event.preventDefault(); // Prevent any default navigation
+                                enrollInCourse(courseId, courseName, session.user.id);
+                            });
+                        });
+                        
+                        // Also update the main "Register Now" button at the bottom
+                        const registerBtn = document.querySelector('.btn-danger.btn-lg');
+                        if (registerBtn && registerBtn.textContent.includes("Register")) {
+                            registerBtn.textContent = "Go to Dashboard";
+                            registerBtn.href = "dashboard.html";
+                        }
+                    }
+                });
+            }
+        }
+        
+        // IMPROVED: Function to directly enroll in a course
+        async function enrollInCourse(courseId, courseName, userId) {
+            try {
+                // Show enrollment in progress message
+                const enrollBtn = document.querySelector(`[data-course-id="${courseId}"]`);
+                const originalText = enrollBtn.textContent;
+                enrollBtn.disabled = true;
+                enrollBtn.textContent = "Enrolling...";
+                
+                // First check if already enrolled - FIX: Use uppercase table name
+                const { data: existingEnrollments, error: checkError } = await window.supabase
+                    .from('PSLV_enrollments')
+                    .select('*')
+                    .eq('userid', userId)
+                    .eq('course_id', courseId);
+                    
+                if (checkError) throw checkError;
+                
+                if (existingEnrollments && existingEnrollments.length > 0) {
+                    alert("You are already enrolled in this course. Check your dashboard.");
+                    window.location.href = "dashboard.html";
+                    return;
+                }
+                
+                // Create enrollment directly - FIX: Use uppercase table name
+                const price = '$' + (Math.floor(Math.random() * 300) + 200);
+                const { error } = await window.supabase
+                    .from('PSLV_enrollments')
+                    .insert([{
+                        userid: userId,
+                        course_id: courseId,
+                        course_name: courseName,
+                        price: price,
+                        enrolled_on: new Date().toISOString(),
+                        status: "Active"
+                    }]);
+                    
+                if (error) throw error;
+                
+                alert(`Successfully enrolled in ${courseName}! Redirecting to dashboard.`);
+                window.location.href = "dashboard.html";
+                
+            } catch (error) {
+                alert("Error enrolling in course: " + error.message);
+                console.error("Enrollment error:", error);
+                
+                // Restore button state
+                const enrollBtn = document.querySelector(`[data-course-id="${courseId}"]`);
+                if (enrollBtn) {
+                    enrollBtn.disabled = false;
+                    enrollBtn.textContent = "Enroll Now";
+                }
+            }
+        }
+
+        // Check if Supabase is available
+        if (window.supabase && window.supabase.auth) {
+            // Check user's login status
+            window.supabase.auth.getSession().then(({ data: { session } }) => {
+                if (session) {
+                    // User is logged in - update UI elements
+                    updateUIForLoggedInUser(session.user.id);
+                }
+            }).catch(error => {
+                console.error("Error checking auth status:", error);
+            });
+        } else {
+            // Load the Supabase client if not already loaded
+            const script = document.createElement('script');
+            script.src = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
+            script.onload = () => {
+                const initScript = document.createElement('script');
+                initScript.src = "js/supabase-init.js";
+                initScript.onload = () => {
+                    if (window.supabase && window.supabase.auth) {
+                        window.supabase.auth.getSession().then(({ data: { session } }) => {
+                            if (session) {
+                                updateUIForLoggedInUser(session.user.id);
+                            }
+                        });
+                    }
+                };
+                document.head.appendChild(initScript);
+            };
+            document.head.appendChild(script);
+        }
+
+        // Function to update UI for logged-in users
+        function updateUIForLoggedInUser(userId) {
+            console.log("User is logged in, updating UI...");
+            
+            // 1. Change all "View Details" buttons to "Enroll Now" buttons
+            const courseButtons = document.querySelectorAll('.course-card .btn-success');
+            courseButtons.forEach(button => {
+                const courseId = button.getAttribute('href').replace('-courses.html', '');
+                const courseName = button.closest('.course-card').querySelector('h3').textContent;
+                
+                button.textContent = "Enroll Now";
+                button.classList.remove('btn-success');
+                button.classList.add('btn-danger');
+                
+                // Change from link to button with click handler
+                button.setAttribute('href', `enroll-courses.html?preselect=${courseId}`);
+            });
+            
+            // 2. Change the main "Register Now" CTA to "Go to Dashboard"
+            const mainCTA = document.getElementById('mainActionButton');
+            if (mainCTA && mainCTA.textContent.includes("Register")) {
+                mainCTA.textContent = "Go to Dashboard";
+                mainCTA.href = "dashboard.html";
+            }
+            
+            // 3. Update any other registration links in the page
+            document.querySelectorAll('a[href="registration.html"]').forEach(link => {
+                link.href = "dashboard.html";
+                if (link.textContent.includes("Register")) {
+                    link.textContent = link.textContent.replace("Register", "Dashboard");
+                }
+            });
+        }
+    </script>
+</body>
+</html>

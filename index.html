@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prabha Shankar Learning Ventures - Expert Coaching for ACCA, Accountancy & IFRS</title>
+    <meta name="description" content="Expert coaching for ACCA, 11th & 12th Accountancy, and IFRS with a proven track record of student success.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-init.js"></script>
+    <script>
+        // Initialize Supabase client when the script loads
+        window.supabase = window.initSupabaseClient();
+    </script>
+    <script src="js/app.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                    <li class="nav-item" id="loginStatus"></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="fade-up">Best Coaching for ACCA, 11th & 12th Accountancy, and IFRS</h1>
+            <h2 class="fade-up delay-1">Enroll for the May 2025 Batch Now!</h2>
+            <a href="registration.html" class="btn btn-warning mt-4 fade-up delay-2">Register Now</a>
+        </div>
+    </section>
+
+    <!-- Key Features -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4 mb-4">
+                    <div class="p-4 rounded shadow-sm h-100">
+                        <i class="fas fa-chalkboard-teacher fa-3x mb-3 text-danger"></i>
+                        <h3 class="h4">Expert Instructors</h3>
+                        <p class="text-muted">Learn from industry professionals with years of teaching experience</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="p-4 rounded shadow-sm h-100">
+                        <i class="fas fa-book-open fa-3x mb-3 text-danger"></i>
+                        <h3 class="h4">Comprehensive Curriculum</h3>
+                        <p class="text-muted">Complete coverage of all topics with focused exam preparation</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="p-4 rounded shadow-sm h-100">
+                        <i class="fas fa-chart-line fa-3x mb-3 text-danger"></i>
+                        <h3 class="h4">Proven Results</h3>
+                        <p class="text-muted">Exceptional success rate with numerous students achieving top scores</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section class="founder-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h2>Our Founder</h2>
+                    <p>Meet Prabha Shankar, a distinguished educator with extensive experience in accounting and finance. With a passion for teaching and a deep understanding of ACCA, IFRS, and accounting principles, Prabha Shankar has been transforming students' lives through quality education.</p>
+                    <p>Her innovative teaching methods and dedication to student success have made her a respected figure in the field of accounting education.</p>
+                    <a href="about.html" class="btn btn-outline-danger mt-3">Learn More About Us</a>
+                </div>
+                <div class="col-md-6">
+                    <img src="https://placehold.co/400x500" alt="Prabha Shankar" class="founder-image img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Preview -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Courses</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <h3 class="h4 card-title">ACCA</h3>
+                            <p class="card-text">Comprehensive coaching for all ACCA exam levels</p>
+                            <a href="acca-courses.html" class="btn btn-outline-danger">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <h3 class="h4 card-title">IFRS</h3>
+                            <p class="card-text">Master International Financial Reporting Standards</p>
+                            <a href="ifrs-courses.html" class="btn btn-outline-danger">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <h3 class="h4 card-title">Accountancy</h3>
+                            <p class="card-text">11th & 12th standard accountancy coaching</p>
+                            <a href="accountancy-courses.html" class="btn btn-outline-danger">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="courses.html" class="btn btn-danger">View All Courses</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Testimonials -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <h2 class="text-center mb-5">What Our Students Say</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-center mb-3">
+                                <i class="fas fa-quote-left fa-2x text-danger opacity-50"></i>
+                            </div>
+                            <p class="card-text text-center">"The teaching methodology at PSLV is exceptional. I cleared all my ACCA papers in first attempt thanks to their guidance."</p>
+                            <div class="text-center mt-3">
+                                <h5 class="mb-0">Rahul Sharma</h5>
+                                <small class="text-muted">ACCA Graduate</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-center mb-3">
+                                <i class="fas fa-quote-left fa-2x text-danger opacity-50"></i>
+                            </div>
+                            <p class="card-text text-center">"My 12th board exam preparation became so much easier with PSLV's structured approach to accountancy concepts."</p>
+                            <div class="text-center mt-3">
+                                <h5 class="mb-0">Priya Patel</h5>
+                                <small class="text-muted">12th Standard Student</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-center mb-3">
+                                <i class="fas fa-quote-left fa-2x text-danger opacity-50"></i>
+                            </div>
+                            <p class="card-text text-center">"The IFRS course helped me secure a position at one of the Big Four accounting firms. Truly grateful for their training."</p>
+                            <div class="text-center mt-3">
+                                <h5 class="mb-0">Aniket Kulkarni</h5>
+                                <small class="text-muted">Finance Professional</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Submit Testimonial -->
+    <section class="py-5 bg-light" id="testimonial-form">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <h2>Share Your Experience</h2>
+                    <p class="lead">We love hearing from our students! Let us know about your learning journey with us.</p>
+                    <p>Your testimonial may be featured on our website to inspire future students.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="card shadow-sm">
+                        <div class="card-body p-4">
+                            <form id="testimonialForm">
+                                <div class="mb-3">
+                                    <label for="testimonialName" class="form-label">Your Name</label>
+                                    <input type="text" class="form-control" id="testimonialName" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="testimonialCourse" class="form-label">Course Taken</label>
+                                    <select class="form-select" id="testimonialCourse" required>
+                                        <option value="" selected disabled>Select a course</option>
+                                        <option value="ACCA">ACCA</option>
+                                        <option value="IFRS">IFRS</option>
+                                        <option value="Accountancy">Accountancy</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="testimonialText" class="form-label">Your Experience</label>
+                                    <textarea class="form-control" id="testimonialText" rows="4" required></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="testimonialConsent" required>
+                                        <label class="form-check-label" for="testimonialConsent">
+                                            I agree to have my testimonial published on the website
+                                        </label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-danger">Submit Testimonial</button>
+                            </form>
+                            <div id="testimonialSuccess" class="alert alert-success mt-3 d-none">
+                                <i class="fas fa-check-circle me-2"></i> Your testimonial has been submitted successfully!
+                            </div>
+                            <div id="testimonialError" class="alert alert-danger mt-3 d-none">
+                                <i class="fas fa-exclamation-circle me-2"></i> Failed to submit your testimonial. Please try again later.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-5 bg-light">
+        <div class="container text-center">
+            <h2>Ready to Begin Your Learning Journey?</h2>
+            <p class="lead mb-4">Take the first step towards achieving your career goals today!</p>
+            <a href="registration.html" class="btn btn-danger btn-lg">Register Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4>About Us</h4>
+                    <p>Prabha Shankar Learning Ventures provides top-quality coaching for ACCA, 11th & 12th Accountancy, and IFRS.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4>Quick Links</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4>Connect With Us</h4>
+                    <p>
+                        <a href="mailto:example@example.com"><i class="fas fa-envelope me-2"></i>example@example.com</a>
+                    </p>
+                    <p>
+                        <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram me-2"></i>Instagram</a>
+                    </p>
+                    <p>
+                        <a href="https://api.whatsapp.com/send?phone=911234567890" target="_blank"><i class="fab fa-whatsapp me-2"></i>WhatsApp</a>
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom text-center">
+                <p>© 2023 Prabha Shankar Learning Ventures. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        // Observe the founder section
+        document.addEventListener('DOMContentLoaded', () => {
+            const founderSection = document.querySelector('.founder-section');
+            if (founderSection) {
+                observer.observe(founderSection);
+            }
+        });
+
+        // Update dashboard link if user is logged in
+        document.addEventListener("DOMContentLoaded", function() {
+            const currentUser = Backend.users.getCurrentUser();
+            if (currentUser) {
+                // If user is logged in, change register button to dashboard
+                const registerButtons = document.querySelectorAll('a[href="registration.html"]');
+                registerButtons.forEach(button => {
+                    button.textContent = "My Dashboard";
+                    button.href = "dashboard.html";
+                });
+            }
+        });
+
+        // Handle testimonial submission
+        document.getElementById("testimonialForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("testimonialName").value;
+            const course = document.getElementById("testimonialCourse").value;
+            const text = document.getElementById("testimonialText").value;
+
+            try {
+                // Insert testimonial into Supabase
+                const { error } = await window.supabase
+                    .from('PSLV_testimonials')
+                    .insert([{
+                        name: name,
+                        course: course,
+                        text: text,
+                        submitted_on: new Date().toISOString()
+                    }]);
+
+                if (error) {
+                    console.error("Error submitting testimonial:", error);
+                    document.getElementById("testimonialError").classList.remove("d-none");
+                    return;
+                }
+
+                // Show success message
+                document.getElementById("testimonialSuccess").classList.remove("d-none");
+                document.getElementById("testimonialForm").reset();
+
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    document.getElementById("testimonialSuccess").classList.add("d-none");
+                }, 5000);
+            } catch (err) {
+                console.error("Unexpected error:", err);
+                document.getElementById("testimonialError").classList.remove("d-none");
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Check if the URL contains the #testimonial-form hash
+            if (window.location.hash === "#testimonial-form") {
+                const testimonialForm = document.getElementById("testimonial-form");
+                if (testimonialForm) {
+                    // Scroll to the testimonial form
+                    testimonialForm.scrollIntoView({ behavior: "smooth" });
+                }
+            }
+        });
+    </script>
+</body>
+</html>

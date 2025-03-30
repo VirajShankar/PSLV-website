@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Prabha Shankar Learning Ventures</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Load Supabase library in the right order -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-init.js"></script>
+    <script src="js/app.js"></script>
+    <style>
+        .dashboard-card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .dashboard-card-header {
+            background: linear-gradient(135deg, #dc3545 0%, #a71d2a 100%);
+            color: white;
+            padding: 15px 20px;
+        }
+        
+        .course-item {
+            border-left: 4px solid #dc3545;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+            transition: all 0.3s ease;
+        }
+        
+        .course-item:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            background-color: white;
+        }
+        
+        .empty-courses {
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                    <li class="nav-item" id="loginStatus"></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="dashboard-card bg-white">
+                        <div class="dashboard-card-header">
+                            <h4 class="m-0"><i class="fas fa-user-circle me-2"></i> My Profile</h4>
+                        </div>
+                        <div class="p-4" id="userProfile">
+                            <!-- Profile information will be filled in by JavaScript -->
+                            <div class="text-center">
+                                <div class="spinner-border text-danger" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-8">
+                    <div class="dashboard-card bg-white">
+                        <div class="dashboard-card-header d-flex justify-content-between align-items-center">
+                            <h4 class="m-0"><i class="fas fa-book me-2"></i> My Courses</h4>
+                            <a href="courses.html" class="btn btn-sm btn-light">Explore Courses</a>
+                        </div>
+                        <div class="p-4" id="userCourses">
+                            <!-- Course information will be filled in by JavaScript -->
+                            <div class="text-center">
+                                <div class="spinner-border text-danger" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="dashboard-card bg-white">
+                        <div class="dashboard-card-header">
+                            <h4 class="m-0"><i class="fas fa-shopping-cart me-2"></i> Quick Enrollment</h4>
+                        </div>
+                        <div class="p-4">
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">ACCA</h5>
+                                            <p class="card-text">Professional accounting certification</p>
+                                            <button class="btn btn-outline-danger enroll-btn" data-course-id="acca" data-course-name="ACCA Certification">Enroll Now</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">IFRS</h5>
+                                            <p class="card-text">International Financial Reporting Standards</p>
+                                            <button class="btn btn-outline-danger enroll-btn" data-course-id="ifrs" data-course-name="IFRS Course">Enroll Now</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Accountancy</h5>
+                                            <p class="card-text">11th & 12th standard accountancy</p>
+                                            <button class="btn btn-outline-danger enroll-btn" data-course-id="accountancy" data-course-name="11th & 12th Accountancy">Enroll Now</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- New Quick Actions Row -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="dashboard-card bg-white">
+                        <div class="dashboard-card-header">
+                            <h4 class="m-0"><i class="fas fa-bolt me-2"></i> Quick Actions</h4>
+                        </div>
+                        <div class="p-4">
+                            <div class="row">
+                                <!-- Removed "Track Progress" card -->
+                                <div class="col-md-3 mb-3">
+                                    <div class="card h-100">
+                                        <div class="card-body text-center">
+                                            <i class="fas fa-comment-alt fa-3x mb-3 text-danger"></i>
+                                            <h5 class="card-title">Add Testimonial</h5>
+                                            <p class="card-text">Share your learning experience</p>
+                                            <a href="index.html#testimonial-form" class="btn btn-outline-danger mt-2">Add Review</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Toast Notification -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050">
+        <div id="enrollmentToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-success text-white">
+                <strong class="me-auto">Success</strong>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" id="toastMessage">
+                You've successfully enrolled in the course!
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4>About Us</h4>
+                    <p>Prabha Shankar Learning Ventures provides top-quality coaching for ACCA, 11th & 12th Accountancy, and IFRS.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4>Quick Links</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4>Connect With Us</h4>
+                    <p>
+                        <a href="mailto:example@example.com"><i class="fas fa-envelope me-2"></i>example@example.com</a>
+                    </p>
+                    <p>
+                        <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram me-2"></i>Instagram</a>
+                    </p>
+                    <p>
+                        <a href="https://api.whatsapp.com/send?phone=911234567890" target="_blank"><i class="fab fa-whatsapp me-2"></i>WhatsApp</a>
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom text-center">
+                <p>© 2023 Prabha Shankar Learning Ventures. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Authentication check
+        document.addEventListener("DOMContentLoaded", async function() {
+            console.log("Dashboard page loaded");
+            
+            try {
+                console.log("Debugging tables on dashboard load:");
+                window.debugSupabaseTable('PSLV_users').catch(console.error);
+                window.debugSupabaseTable('PSLV_enrollments').catch(console.error);
+                
+                // Make sure Supabase is available
+                if (!window.supabase || !window.supabase.auth) {
+                    console.error("Supabase not available on dashboard");
+                    throw new Error("Database connection not available. Please refresh the page.");
+                }
+                
+                // Check if user is authenticated
+                console.log("Checking user session...");
+                const { data: { session }, error: sessionError } = await window.supabase.auth.getSession();
+                
+                if (sessionError) {
+                    console.error("Session error:", sessionError);
+                    throw new Error("Authentication error. Please log in again.");
+                }
+                
+                if (!session) {
+                    console.log("No active session found, redirecting to login");
+                    window.location.href = "login.html";
+                    return;
+                }
+                
+                console.log("User is authenticated, user ID:", session.user.id);
+                
+                // Try to get user data from localStorage first (faster)
+                let userData = JSON.parse(localStorage.getItem('currentUser'));
+                
+                // If not in localStorage, or missing data, fetch from Supabase
+                if (!userData || !userData.name) {
+                    console.log("Fetching user data from Supabase...");
+                    const userResponse = await window.supabase
+                        .from('PSLV_users')  // CHANGED: Using PSLV_users table
+                        .select('*')
+                        .eq('id', session.user.id)
+                        .single();
+                    
+                    if (userResponse.error) {
+                        console.warn("Error fetching user data:", userResponse.error);
+                        
+                        // Try to get user profile from auth.user metadata as fallback
+                        userData = {
+                            id: session.user.id,
+                            email: session.user.email,
+                            name: session.user.user_metadata?.full_name || session.user.email.split('@')[0],
+                            phone: session.user.user_metadata?.phone || "Not provided",
+                            registered_on: session.user.created_at
+                        };
+                        console.log("Created minimal profile from auth data:", userData);
+                    } else if (userResponse.data) {
+                        console.log("User data fetched successfully:", userResponse.data);
+                        userData = userResponse.data;
+                        localStorage.setItem('currentUser', JSON.stringify(userData));
+                    }
+                }
+                
+                // Load user profile with available data
+                loadUserProfile(userData);
+                
+                // Load user courses
+                loadUserCourses(session.user.id);
+                
+                // Set up enrollment buttons
+                setupEnrollmentButtons(session.user.id);
+                
+                // Apply dark mode if enabled
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'dark') {
+                    document.body.classList.add('dark-mode');
+                    const themeToggles = document.querySelectorAll('.theme-toggle');
+                    themeToggles.forEach(toggle => {
+                        toggle.checked = true;
+                    });
+                }
+            } catch (error) {
+                console.error("Dashboard initialization error:", error);
+                
+                // Show error message on the page instead of redirecting
+                document.getElementById('userProfile').innerHTML = `
+                    <div class="alert alert-danger">
+                        <strong>Error:</strong> ${error.message || "An error occurred loading your dashboard."}
+                        <div class="mt-3">
+                            <a href="login.html" class="btn btn-outline-danger">Return to Login</a>
+                        </div>
+                    </div>
+                `;
+                
+                document.getElementById('userCourses').innerHTML = '';
+            }
+        });
+        
+        // Load user profile with error handling
+        function loadUserProfile(userData) {
+            const profileElement = document.getElementById('userProfile');
+            
+            if (!userData) {
+                profileElement.innerHTML = `
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        Unable to load profile data. 
+                        <a href="login.html" class="alert-link">Please try logging in again.</a>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Format dates with error handling
+            let registeredDate = 'Unknown';
+            try {
+                if (userData.registered_on) {
+                    registeredDate = new Date(userData.registered_on).toLocaleDateString();
+                }
+            } catch (e) {
+                console.warn("Date formatting error:", e);
+            }
+            
+            // Build profile with available data
+            profileElement.innerHTML = `
+                <h5 class="mb-3">${userData.name || 'User'}</h5>
+                <div class="mb-2"><i class="fas fa-envelope me-2 text-muted"></i> ${userData.email || 'No email provided'}</div>
+                ${userData.phone ? `<div class="mb-2"><i class="fas fa-phone me-2 text-muted"></i> ${userData.phone}</div>` : ''}
+                <div class="mb-2"><i class="fas fa-calendar me-2 text-muted"></i> Registered on: ${registeredDate}</div>
+                ${userData.course_interest ? 
+                    `<div class="mb-2">
+                        <span class="badge bg-danger">Interested in ${window.courseData[userData.course_interest]?.name || userData.course_interest}</span>
+                    </div>` : ''
+                }
+                <div class="mt-4">
+                    <button class="btn btn-sm btn-outline-secondary" onclick="handleLogout()">
+                        <i class="fas fa-sign-out-alt me-1"></i> Logout
+                    </button>
+                </div>
+            `;
+        }
+        
+        // Load user courses with better error handling
+        async function loadUserCourses(userId) {
+            const coursesElement = document.getElementById('userCourses');
+            
+            if (!coursesElement) return;
+            
+            try {
+                if (!window.supabase) {
+                    throw new Error("Database connection not available");
+                }
+                
+                console.log("Fetching enrollments for user:", userId);
+                
+                // FIXED: Use uppercase "PSLV_enrollments" to match the case in the database
+                const enrollmentResponse = await window.supabase
+                    .from('PSLV_enrollments')
+                    .select('course_id, course_name, enrolled_on, status, price')
+                    .eq('userid', userId);
+                    
+                console.log("Enrollment response:", enrollmentResponse);
+                
+                if (enrollmentResponse.error) {
+                    // Log the specific error for debugging
+                    console.error("Enrollment query error:", enrollmentResponse.error);
+                    throw enrollmentResponse.error;
+                }
+                
+                const enrollments = enrollmentResponse.data || [];
+                
+                if (enrollments.length > 0) {
+                    console.log(`Found ${enrollments.length} enrollments:`, enrollments);
+                    
+                    // Deduplicate courses based on course_id
+                    const uniqueCourses = [];
+                    const courseIds = new Set();
+                    
+                    enrollments.forEach(enrollment => {
+                        if (!courseIds.has(enrollment.course_id)) {
+                            courseIds.add(enrollment.course_id);
+                            uniqueCourses.push(enrollment);
+                        }
+                    });
+                    
+                    console.log(`Filtered to ${uniqueCourses.length} unique courses`);
+                    
+                    // Generate professional course cards
+                    let coursesHTML = '<div class="row">';
+                    
+                    uniqueCourses.forEach(course => {
+                        // Format date nicely
+                        let enrolledDate = 'N/A';
+                        try {
+                            if (course.enrolled_on) {
+                                enrolledDate = new Date(course.enrolled_on).toLocaleDateString('en-US', {
+                                    year: 'numeric', 
+                                    month: 'short', 
+                                    day: 'numeric'
+                                });
+                            }
+                        } catch (e) {
+                            console.warn("Date formatting error:", e);
+                        }
+                        
+                        // Generate status badge class
+                        const statusClass = course.status === 'Active' ? 'bg-success' : 'bg-warning';
+                        
+                        coursesHTML += `
+                            <div class="col-md-6 mb-3">
+                                <div class="course-item p-3 h-100">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h5 class="mb-0">${course.course_name}</h5>
+                                        <span class="badge ${statusClass}">${course.status || 'Active'}</span>
+                                    </div>
+                                    <div class="small text-muted mb-3">
+                                        <i class="fas fa-calendar-alt me-1"></i> Enrolled: ${enrolledDate}
+                                        ${course.price ? `<span class="ms-3"><i class="fas fa-tag me-1"></i> ${course.price}</span>` : ''}
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <a href="#" class="btn btn-sm btn-outline-danger">View Course</a>
+                                        <a href="#" class="small text-muted" title="Support">
+                                            <i class="fas fa-question-circle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    coursesHTML += '</div>';
+                    coursesElement.innerHTML = coursesHTML;
+                } else {
+                    console.log("No enrollments found");
+                    coursesElement.innerHTML = `
+                        <div class="empty-courses text-center py-5">
+                            <i class="fas fa-book-open fa-3x mb-3 text-muted"></i>
+                            <h5>No courses enrolled yet</h5>
+                            <p>Explore our courses and enroll to see them here</p>
+                            <a href="courses.html" class="btn btn-danger mt-2">Browse Courses</a>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error("Error loading courses:", error);
+                coursesElement.innerHTML = `
+                    <div class="alert alert-danger">
+                        <p><i class="fas fa-exclamation-circle me-2"></i> Error loading your courses: ${error.message}</p>
+                        <a href="enroll-courses.html" class="btn btn-outline-danger mt-2">Enroll in Courses</a>
+                    </div>
+                `;
+            }
+        }
+        
+        // Set up enrollment buttons to use Supabase
+        function setupEnrollmentButtons(userId) {
+            const enrollButtons = document.querySelectorAll('.enroll-btn');
+            const toast = new bootstrap.Toast(document.getElementById('enrollmentToast'));
+            
+            enrollButtons.forEach(button => {
+                button.addEventListener('click', async function() {
+                    const courseId = this.getAttribute('data-course-id');
+                    const courseName = this.getAttribute('data-course-name');
+                    
+                    try {
+                        // Redirect to the new enrollment page with course info
+                        window.location.href = `enroll-courses.html?preselect=${courseId}`;
+                    } catch (error) {
+                        // Show error message
+                        document.getElementById('toastMessage').textContent = error.message;
+                        document.getElementById('enrollmentToast').querySelector('.toast-header').classList.remove('bg-success');
+                        document.getElementById('enrollmentToast').querySelector('.toast-header').classList.add('bg-danger');
+                        toast.show();
+                        console.error("Enrollment error:", error);
+                    }
+                });
+            });
+        }
+        
+        // Handle logout
+        async function handleLogout() {
+            try {
+                // Sign out from Supabase
+                await supabase.auth.signOut();
+                
+                // Clear local storage
+                localStorage.removeItem('currentUser');
+                
+                // Redirect to home
+                window.location.href = 'index.html';
+            } catch (error) {
+                console.error("Logout error:", error);
+            }
+        }
+        
+        // Show course details
+        function showCourseDetails(courseId) {
+            const course = courseData[courseId];
+            alert(`
+                Course: ${course.name}
+                Description: ${course.description}
+                ${course.levels ? 'Levels: ' + course.levels.join(', ') : ''}
+                ${course.modules ? 'Modules: ' + course.modules.join(', ') : ''}
+                ${course.subjects ? 'Subjects: ' + course.subjects.join(', ') : ''}
+            `);
+        }
+    </script>
+</body>
+</html>

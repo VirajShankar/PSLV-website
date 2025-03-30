@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACCA Courses - Prabha Shankar Learning Ventures</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-danger text-white" href="registration.html">Register</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="course-details">
+        <div class="container">
+            <h1 class="text-center mb-5">ACCA Course Details</h1>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <form action="registration.html" method="get">
+                        <!-- Applied Knowledge Level -->
+                        <div class="paper-selection">
+                            <h3>Applied Knowledge Level</h3>
+                            <div class="paper-checkbox">
+                                <input type="checkbox" id="ab" name="papers[]" value="ab">
+                                <label for="ab">AB - Accountant in Business</label>
+                                <p class="paper-description">Learn the business environment, organizational structure, and governance.</p>
+                            </div>
+                            <div class="paper-checkbox">
+                                <input type="checkbox" id="ma" name="papers[]" value="ma">
+                                <label for="ma">MA - Management Accounting</label>
+                                <p class="paper-description">Master cost accounting, budgeting, and decision-making techniques.</p>
+                            </div>
+                            <div class="paper-checkbox">
+                                <input type="checkbox" id="fa" name="papers[]" value="fa">
+                                <label for="fa">FA - Financial Accounting</label>
+                                <p class="paper-description">Understand financial accounting principles and prepare financial statements.</p>
+                            </div>
+                        </div>
+
+                        <!-- Applied Skills Level -->
+                        <div class="paper-selection">
+                            <h3>Applied Skills Level</h3>
+                            <div class="paper-checkbox">
+                                <input type="checkbox" id="lw" name="papers[]" value="lw">
+                                <label for="lw">LW - Corporate and Business Law</label>
+                                <p class="paper-description">Study legal frameworks affecting businesses and corporate governance.</p>
+                            </div>
+                            <div class="paper-checkbox">
+                                <input type="checkbox" id="pm" name="papers[]" value="pm">
+                                <label for="pm">PM - Performance Management</label>
+                                <p class="paper-description">Advanced management accounting and performance measurement systems.</p>
+                            </div>
+                            <div class="paper-checkbox">
+                                <input type="checkbox" id="tx" name="papers[]" value="tx">
+                                <label for="tx">TX - Taxation</label>
+                                <p class="paper-description">Learn tax principles and calculations for individuals and businesses.</p>
+                            </div>
+                            <div class="paper-checkbox">
+                                <input type="checkbox" id="fr" name="papers[]" value="fr">
+                                <label for="fr">FR - Financial Reporting</label>
+                                <p class="paper-description">Advanced financial accounting and international reporting standards.</p>
+                            </div>
+                            <div class="paper-checkbox">
+                                <input type="checkbox" id="aa" name="papers[]" value="aa">
+                                <label for="aa">AA - Audit and Assurance</label>
+                                <p class="paper-description">Understanding audit principles, procedures, and professional ethics.</p>
+                            </div>
+                            <div class="paper-checkbox">
+                                <input type="checkbox" id="fm" name="papers[]" value="fm">
+                                <label for="fm">FM - Financial Management</label>
+                                <p class="paper-description">Study financial management, investment appraisal, and risk management.</p>
+                            </div>
+                        </div>
+
+                        <!-- Strategic Professional Level -->
+                        <div class="paper-selection">
+                            <h3>Strategic Professional Level</h3>
+                            <div class="paper-checkbox">
+                                <input type="checkbox" id="sbl" name="papers[]" value="sbl">
+                                <label for="sbl">SBL - Strategic Business Leader</label>
+                                <p class="paper-description">Develop leadership capabilities and strategic business skills.</p>
+                            </div>
+                            <div class="paper-checkbox">
+                                <input type="checkbox" id="sbr" name="papers[]" value="sbr">
+                                <label for="sbr">SBR - Strategic Business Reporting</label>
+                                <p class="paper-description">Advanced financial reporting and professional judgment.</p>
+                            </div>
+                            
+                            <!-- Optional Papers -->
+                            <h4 class="mt-4">Choose two from the following:</h4>
+                            <div class="paper-checkbox">
+                                <input type="checkbox" id="apm" name="papers[]" value="apm">
+                                <label for="apm">APM - Advanced Performance Management</label>
+                                <p class="paper-description">Strategic performance management and decision-making.</p>
+                            </div>
+                            <div class="paper-checkbox">
+                                <input type="checkbox" id="atx" name="papers[]" value="atx">
+                                <label for="atx">ATX - Advanced Taxation</label>
+                                <p class="paper-description">Complex taxation issues and tax planning strategies.</p>
+                            </div>
+                            <div class="paper-checkbox">
+                                <input type="checkbox" id="afm" name="papers[]" value="afm">
+                                <label for="afm">AFM - Advanced Financial Management</label>
+                                <p class="paper-description">Strategic financial management and advanced investment decisions.</p>
+                            </div>
+                            <div class="paper-checkbox">
+                                <input type="checkbox" id="aaa" name="papers[]" value="aaa">
+                                <label for="aaa">AAA - Advanced Audit and Assurance</label>
+                                <p class="paper-description">Complex audit issues and professional judgment in assurance services.</p>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-success btn-lg">Proceed to Registration</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Contact us: <a href="mailto:example@example.com">example@example.com</a></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

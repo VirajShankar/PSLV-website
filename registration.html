@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Prabha Shankar Learning Ventures</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .registration-card {
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-top: 5px solid #dc3545;
+            transition: all 0.3s ease;
+        }
+        
+        .registration-card:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .form-control:focus {
+            border-color: #dc3545;
+            box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+        }
+        
+        .form-label {
+            font-weight: 500;
+        }
+        
+        .input-group-text {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+        }
+        
+        .btn-register {
+            background-color: #dc3545;
+            border: none;
+            padding: 10px 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-register:hover {
+            background-color: #c82333;
+            transform: translateY(-2px);
+        }
+        
+        .loading-spinner {
+            display: none;
+            margin-left: 10px;
+        }
+        
+        .alert {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .course-select {
+            margin-bottom: 1.5rem;
+        }
+    </style>
+    
+    <!-- Load Supabase library in the right order -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-init.js"></script>
+    <script src="js/app.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                    <li class="nav-item" id="loginStatus"></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Registration Form -->
+    <section class="registration-section py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="registration-card p-4 p-md-5 bg-white">
+                        <h1 class="text-center mb-4">Start Your Learning Journey</h1>
+                        <p class="text-center text-muted mb-4">Join our community of successful students and take the first step towards your career goals.</p>
+                        
+                        <div class="alert alert-success" id="successAlert" role="alert">
+                            <i class="fas fa-check-circle me-2"></i> Registration successful! Redirecting you to homepage...
+                        </div>
+                        
+                        <div class="alert alert-danger" id="errorAlert" role="alert">
+                            <i class="fas fa-exclamation-circle me-2"></i> <span id="errorMessage">Something went wrong. Please try again.</span>
+                        </div>
+
+                        <form id="registrationForm">
+                            <!-- Personal Information -->
+                            <div class="mb-3">
+                                <label for="fullName" class="form-label">Full Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                    <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                                </div>
+                                <div class="form-text">We'll never share your email with anyone else.</div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your phone number" required pattern="[0-9]{10}">
+                                </div>
+                                <div class="form-text">Enter a 10-digit phone number</div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Create a password" required minlength="8">
+                                    <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                                <div class="form-text">Password must be at least 8 characters long</div>
+                            </div>
+                            
+                            <div class="course-select">
+                                <label class="form-label">Course Interest <span class="text-danger">*</span></label>
+                                <select class="form-select" name="courseInterest" id="courseInterest" required>
+                                    <option value="" selected disabled>Select your course of interest</option>
+                                    <option value="acca">ACCA</option>
+                                    <option value="ifrs">IFRS</option>
+                                    <option value="accountancy">Accountancy</option>
+                                </select>
+                                <div class="form-text">You can enroll in more courses later from your dashboard</div>
+                            </div>
+
+                            <div class="form-check mb-4">
+                                <input class="form-check-input" type="checkbox" value="" id="termsCheck" required>
+                                <label class="form-check-label" for="termsCheck">
+                                    I agree to the <a href="#" class="text-danger">Terms of Service</a> and <a href="#" class="text-danger">Privacy Policy</a>
+                                </label>
+                            </div>
+
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-danger btn-register">
+                                    Register Now
+                                    <span class="loading-spinner spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                            
+                            <p class="text-center mt-4">Already have an account? <a href="login.html" class="text-danger">Login here</a></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Contact us: <a href="mailto:example@example.com">example@example.com</a></p>
+        <p>Follow us on <a href="https://instagram.com/" target="_blank">Instagram</a></p>
+        <a href="https://api.whatsapp.com/send?phone=911234567890" target="_blank">WhatsApp Us</a>
+    </footer>
+
+    <!-- JavaScript for Frontend Only -->
+    <script>
+        // Toggle password visibility
+        document.getElementById("togglePassword").addEventListener("click", function() {
+            const passwordInput = document.getElementById("password");
+            const icon = this.querySelector("i");
+            
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            }
+        });
+        
+        // Registration form submission with Supabase
+        document.getElementById("registrationForm").addEventListener("submit", async function(event) {
+            event.preventDefault(); // Prevent page refresh
+            
+            // Get form values
+            const name = document.getElementById("fullName").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            const password = document.getElementById("password").value;
+            const courseInterest = document.getElementById("courseInterest").value;
+            
+            // Basic validation
+            if (password.length < 8) {
+                document.getElementById("errorMessage").textContent = "Password must be at least 8 characters long.";
+                document.getElementById("errorAlert").style.display = "block";
+                return;
+            }
+            
+            if (phone.length !== 10 || !/^\d{10}$/.test(phone)) {
+                document.getElementById("errorMessage").textContent = "Please enter a valid 10-digit phone number.";
+                document.getElementById("errorAlert").style.display = "block";
+                return;
+            }
+            
+            // Show loading spinner
+            const spinner = document.querySelector(".loading-spinner");
+            const submitButton = document.querySelector(".btn-register");
+            spinner.style.display = "inline-block";
+            submitButton.disabled = true;
+            
+            // Hide any existing alerts
+            document.getElementById("successAlert").style.display = "none";
+            document.getElementById("errorAlert").style.display = "none";
+            
+            try {
+                console.log("Starting registration process");
+                
+                // Check tables exist before trying to register
+                try {
+                    const { error: tableCheckError } = await window.supabase
+                        .from('PSLV_users')  // CHANGED TO: Using 'PSLV_users'
+                        .select('count')
+                        .limit(1);
+                    
+                    if (tableCheckError && (tableCheckError.code === '42P01' || tableCheckError.message?.includes('does not exist'))) {
+                        console.error("USER TABLE DOESN'T EXIST:", tableCheckError);
+                        throw new Error("Database tables not set up. Please run the table_setup.sql script in your Supabase SQL Editor.");
+                    }
+                } catch (tableError) {
+                    console.error("Table check error:", tableError);
+                    throw tableError;
+                }
+                
+                // IMPORTANT: Prevent redirection by adding this line
+                window.onbeforeunload = function() {
+                    return "Registration in progress. Are you sure you want to leave?";
+                };
+                
+                // SIMPLIFIED: Make sure Supabase is available
+                if (!window.supabase || !window.supabase.auth) {
+                    throw new Error("Database connection not available. Please refresh the page and try again.");
+                }
+                
+                // STEP 1: Create auth user with signUp - PREVENT ALL REDIRECTION
+                console.log("Creating auth user for:", email);
+                
+                // CRITICAL CHANGE: Create the user with auto confirmation
+                const authResponse = await window.supabase.auth.signUp({
+                    email: email,
+                    password: password,
+                    options: {
+                        data: {
+                            full_name: name,
+                            phone: phone
+                        },
+                        // CRITICAL CHANGE: Set autoConfirm to true to prevent redirects
+                        emailRedirectTo: null
+                    }
+                });
+                
+                // After signup, explicitly disable any redirect
+                window.onbeforeunload = function(e) {
+                    // This cancels any navigation away from the page
+                    e.preventDefault();
+                    e.returnValue = '';
+                    return '';
+                };
+                
+                if (authResponse.error) {
+                    console.error("Auth error:", authResponse.error);
+                    throw authResponse.error;
+                }
+                
+                if (!authResponse.data.user) {
+                    console.error("Auth completed but no user returned:", authResponse.data);
+                    throw new Error("User account could not be created. Please try again.");
+                }
+                
+                const userId = authResponse.data.user.id;
+                console.log("Auth user created successfully with ID:", userId);
+                
+                // STEP 2: Wait a moment for the auth user to fully propagate in Supabase
+                console.log("Waiting briefly before inserting user data...");
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                
+                // Attempt to sign in with the new credentials to get a valid session
+                console.log("Signing in to get a valid session...");
+                const { data: signInData, error: signInError } = await window.supabase.auth.signInWithPassword({
+                    email: email,
+                    password: password
+                });
+                
+                if (signInError) {
+                    console.warn("Could not sign in after registration:", signInError);
+                    // Continue anyway, will try to insert user data without active session
+                } else {
+                    console.log("Signed in successfully after registration");
+                }
+                
+                // STEP 3: Insert user profile into the users table
+                console.log("Adding user to PSLV_users table with ID:", userId);
+                
+                // Create proper user data object
+                const userData = {
+                    id: userId,
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    course_interest: courseInterest,
+                    registered_on: new Date().toISOString()
+                };
+                
+                console.log("User data to insert:", userData);
+                
+                const { error: userInsertError } = await window.supabase
+                    .from('PSLV_users')  // CHANGED TO: Using 'PSLV_users' 
+                    .insert(userData);
+                    
+                if (userInsertError) {
+                    console.error("Error inserting user data:", userInsertError);
+                    
+                    // Try upsert as a fallback
+                    console.log("Attempting upsert instead...");
+                    const { error: upsertError } = await window.supabase
+                        .from('PSLV_users')  // CHANGED TO: Using 'PSLV_users'
+                        .upsert(userData);
+                        
+                    if (upsertError) {
+                        console.error("Upsert also failed:", upsertError);
+                    } else {
+                        console.log("User data upserted successfully");
+                    }
+                } else {
+                    console.log("User data inserted successfully");
+                }
+                
+                // STEP 4: Create enrollment record
+                console.log("Creating course enrollment...");
+                const courseNameValue = window.courseData[courseInterest]?.name || courseInterest;
+                
+                const enrollmentData = {
+                    userid: userId,  // FIXED: Using correct column name "userid" (no underscore)
+                    course_id: courseInterest,
+                    course_name: courseNameValue,
+                    price: '$' + (Math.floor(Math.random() * 300) + 200),
+                    enrolled_on: new Date().toISOString(),  // FIXED: Added space between enrolled and _on
+                    status: 'Active'
+                };
+                
+                console.log("Enrollment data to insert:", enrollmentData);
+                
+                const { error: enrollError } = await window.supabase
+                    .from('PSLV_enrollments')
+                    .insert(enrollmentData);
+                    
+                if (enrollError) {
+                    console.error("Error creating enrollment:", enrollError);
+                    // Try upsert as a fallback
+                    const { error: enrollUpsertError } = await window.supabase
+                        .from('PSLV_enrollments')  // CHANGED TO: Using 'PSLV_enrollments'
+                        .upsert(enrollmentData);
+                        
+                    if (enrollUpsertError) {
+                        console.error("Enrollment upsert also failed:", enrollUpsertError);
+                    } else {
+                        console.log("Enrollment upserted successfully");
+                    }
+                } else {
+                    console.log("Enrollment created successfully");
+                }
+                
+                // Store user data in localStorage for client-side access
+                localStorage.setItem('currentUser', JSON.stringify({
+                    id: userId,
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    course_interest: courseInterest,
+                    registered_on: new Date().toISOString()
+                }));
+                
+                // Show success message with email confirmation instructions
+                if (authResponse.data?.user?.identities?.length === 0 || 
+                    authResponse.data?.user?.email_confirmed_at === null) {
+                    // User needs to confirm email
+                    document.getElementById("successAlert").innerHTML = `
+                        <i class="fas fa-check-circle me-2"></i> 
+                        <strong>Registration successful!</strong> 
+                        <p class="mb-0">Please check your email (${email}) to confirm your account.</p>
+                        <p class="mt-2">If you don't see the email, check your spam folder.</p>
+                    `;
+                } else {
+                    // User email already confirmed or doesn't need confirmation
+                    document.getElementById("successAlert").innerHTML = `
+                        <i class="fas fa-check-circle me-2"></i> Registration successful! Redirecting you to dashboard...
+                    `;
+                    // Redirect after showing success message
+                    setTimeout(() => {
+                        window.location.href = "dashboard.html";
+                    }, 2000);
+                }
+                
+                // Show success message and reset form
+                spinner.style.display = "none";
+                submitButton.disabled = false;
+                document.getElementById("successAlert").style.display = "block";
+                document.getElementById("registrationForm").reset();
+                
+            } catch (error) {
+                console.error("Registration error:", error);
+                
+                // Remove navigation blocker
+                window.onbeforeunload = null;
+                
+                // Hide spinner
+                spinner.style.display = "none";
+                submitButton.disabled = false;
+                
+                // Show error message with details from Supabase when available
+                let errorMessage = "Registration failed. ";
+                
+                if (error.message) {
+                    if (error.message.includes("not set up")) {
+                        // Special handling for table setup error
+                        errorMessage = `
+                            <strong>Database tables need to be set up</strong><br>
+                            Follow these steps:<br>
+                            1. Go to your Supabase dashboard<br>
+                            2. Open SQL Editor<br>
+                            3. Run the table_setup.sql script<br>
+                            <a href="setup_instructions.md" target="_blank" class="btn btn-sm btn-outline-light mt-2">View Setup Instructions</a>
+                        `;
+                        showDatabaseSetupError(errorMessage);
+                    } else if (error.message.includes("already") && error.message.includes("registered")) {
+                        errorMessage = "This email is already registered. Please log in instead.";
+                        document.getElementById("errorMessage").textContent = errorMessage;
+                        document.getElementById("errorAlert").style.display = "block";
+                    } else {
+                        errorMessage += error.message;
+                        document.getElementById("errorMessage").textContent = errorMessage;
+                        document.getElementById("errorAlert").style.display = "block";
+                    }
+                } else {
+                    errorMessage += "Please try again.";
+                    document.getElementById("errorMessage").textContent = errorMessage;
+                    document.getElementById("errorAlert").style.display = "block";
+                }
+            }
+        });
+        
+        // Create a helper function to show table setup instructions
+        function showTableMissingWarning(tableName) {
+            if (window.debugSupabaseTable) {
+                window.debugSupabaseTable(tableName);
+            } else {
+                // If the global function isn't available, create a simple alert
+                alert(`Database setup required: The '${tableName}' table doesn't exist. Please run the table_setup.sql script in your Supabase SQL Editor.`);
+            }
+        }
+        
+        // Show more detailed database setup error
+        function showDatabaseSetupError(message) {
+            // Hide the normal error alert
+            document.getElementById("errorAlert").style.display = "none";
+            
+            // Create a better error message
+            const alertDiv = document.createElement('div');
+            alertDiv.className = 'alert alert-danger';
+            alertDiv.role = 'alert';
+            alertDiv.innerHTML = `
+                <h4 class="alert-heading"><i class="fas fa-database me-2"></i>Database Setup Required</h4>
+                <p>${message}</p>
+                <hr>
+                <p class="mb-0">Need help? <a href="mailto:support@example.com" class="alert-link">Contact support</a></p>
+            `;
+            
+            // Insert before the form
+            document.getElementById("registrationForm").parentNode.insertBefore(alertDiv, document.getElementById("registrationForm"));
+            
+            // Also open setup instructions in a tab
+            window.open('https://app.supabase.com/project/_/sql', '_blank');
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

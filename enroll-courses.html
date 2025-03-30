@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enroll in Courses - Prabha Shankar Learning Ventures</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Load Supabase library in the right order -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-init.js"></script>
+    <script src="js/app.js"></script>
+    <style>
+        .course-checkbox {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background-color: #f8f9fa;
+            border-left: 4px solid transparent;
+        }
+        
+        .course-checkbox:hover {
+            background-color: #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid #dc3545;
+        }
+        
+        .course-checkbox.selected {
+            border-left: 4px solid #28a745;
+            background-color: rgba(40, 167, 69, 0.1);
+        }
+        
+        .course-checkbox label {
+            cursor: pointer;
+            display: block;
+        }
+        
+        .course-description {
+            font-size: 0.95rem;
+            color: #666;
+            margin-top: 8px;
+        }
+        
+        #enrollmentProgress {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                    <li class="nav-item" id="loginStatus"></li>
+                    <li class="nav-item ms-2 d-flex align-items-center">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input theme-toggle" type="checkbox" id="darkModeToggle">
+                            <label class="form-check-label" for="darkModeToggle">
+                                <i class="fas fa-moon"></i>
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Enrollment Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card shadow">
+                        <div class="card-header bg-danger text-white">
+                            <h3 class="mb-0">Enroll in Courses</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="loginPrompt" style="display: none;">
+                                <div class="alert alert-warning">
+                                    <h5><i class="fas fa-exclamation-triangle me-2"></i> Please log in first</h5>
+                                    <p>You need to be logged in to enroll in courses.</p>
+                                    <a href="login.html?returnTo=enroll-courses.html" class="btn btn-primary">Log In</a>
+                                </div>
+                            </div>
+                            
+                            <div id="enrollmentForm">
+                                <p class="lead mb-4">Select the courses you want to enroll in:</p>
+                                
+                                <div id="coursesContainer">
+                                    <!-- Course checkboxes will be populated here -->
+                                    <div class="text-center py-4">
+                                        <div class="spinner-border text-danger" role="status">
+                                            <span class="visually-hidden">Loading...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="alert alert-info" id="enrollmentStatus" style="display: none;"></div>
+                                
+                                <div id="enrollmentProgress" class="mb-4">
+                                    <h5>Enrolling in courses...</h5>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-4 d-flex justify-content-between">
+                                    <a href="dashboard.html" class="btn btn-outline-secondary">Back to Dashboard</a>
+                                    <button type="button" id="enrollButton" class="btn btn-danger">Enroll in Selected Courses</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Toast Notification -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050">
+        <div id="enrollmentToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-success text-white">
+                <strong class="me-auto">Success</strong>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" id="toastMessage">
+                You've successfully enrolled in the course!
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4>About Us</h4>
+                    <p>Prabha Shankar Learning Ventures provides top-quality coaching for ACCA, 11th & 12th Accountancy, and IFRS.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4>Quick Links</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h4>Connect With Us</h4>
+                    <p>
+                        <a href="mailto:example@example.com"><i class="fas fa-envelope me-2"></i>example@example.com</a>
+                    </p>
+                    <p>
+                        <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram me-2"></i>Instagram</a>
+                    </p>
+                    <p>
+                        <a href="https://api.whatsapp.com/send?phone=911234567890" target="_blank"><i class="fab fa-whatsapp me-2"></i>WhatsApp</a>
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom text-center">
+                <p>© 2023 Prabha Shankar Learning Ventures. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Available courses data
+        const availableCourses = [
+            {id: 'acca', name: 'ACCA Certification', description: 'Professional accounting certification for global careers'},
+            {id: 'ifrs', name: 'IFRS Course', description: 'International Financial Reporting Standards for accounting professionals'},
+            {id: 'accountancy', name: '11th & 12th Accountancy', description: 'Strong foundation in accountancy principles for high school students'},
+            {id: 'taxation', name: 'Taxation', description: 'Comprehensive coverage of direct and indirect taxation'},
+            {id: 'finance', name: 'Corporate Finance', description: 'Understanding financial management for businesses'},
+            {id: 'costing', name: 'Cost Accounting', description: 'Methods and techniques for analyzing costs in business'}
+        ];
+        
+        document.addEventListener("DOMContentLoaded", async function() {
+            try {
+                // Apply saved theme
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'dark') {
+                    document.body.classList.add('dark-mode');
+                    document.getElementById('darkModeToggle').checked = true;
+                }
+                
+                // Setup theme toggle
+                document.getElementById('darkModeToggle').addEventListener('change', function() {
+                    if (document.body.classList.contains('dark-mode')) {
+                        document.body.classList.remove('dark-mode');
+                        localStorage.setItem('theme', 'light');
+                    } else {
+                        document.body.classList.add('dark-mode');
+                        localStorage.setItem('theme', 'dark');
+                    }
+                });
+                
+                // Check if user is logged in
+                const { data: { session } } = await window.supabase.auth.getSession();
+                
+                if (!session) {
+                    // User is not logged in
+                    document.getElementById('loginPrompt').style.display = 'block';
+                    document.getElementById('enrollmentForm').style.display = 'none';
+                    return;
+                }
+                
+                const userId = session.user.id;
+                
+                // Get existing enrollments - FIX: Use uppercase table name
+                const { data: existingEnrollments, error: enrollmentError } = await window.supabase
+                    .from('PSLV_enrollments')
+                    .select('course_id')
+                    .eq('userid', userId);
+                    
+                if (enrollmentError) {
+                    console.error("Error fetching enrollments:", enrollmentError);
+                }
+                
+                // Get list of already enrolled course IDs
+                const enrolledCourseIds = existingEnrollments 
+                    ? existingEnrollments.map(enrollment => enrollment.course_id) 
+                    : [];
+                
+                console.log("Already enrolled in:", enrolledCourseIds);
+                
+                // Generate course checkboxes
+                let courseHTML = '';
+                let availableCoursesCount = 0;
+                
+                availableCourses.forEach(course => {
+                    // Skip if already enrolled
+                    if (enrolledCourseIds.includes(course.id)) {
+                        return;
+                    }
+                    
+                    availableCoursesCount++;
+                    courseHTML += `
+                        <div class="course-checkbox" id="course-${course.id}">
+                            <div class="form-check">
+                                <input class="form-check-input course-select" type="checkbox" value="${course.id}" id="${course.id}" name="courses">
+                                <label class="form-check-label" for="${course.id}">
+                                    <strong>${course.name}</strong>
+                                </label>
+                            </div>
+                            <div class="course-description">${course.description}</div>
+                        </div>
+                    `;
+                });
+                
+                // Update the courses container
+                if (availableCoursesCount > 0) {
+                    document.getElementById('coursesContainer').innerHTML = courseHTML;
+                    
+                    // Check for preselected course from URL parameter
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const preselect = urlParams.get('preselect');
+                    
+                    if (preselect) {
+                        const checkbox = document.getElementById(preselect);
+                        if (checkbox) {
+                            checkbox.checked = true;
+                            document.getElementById(`course-${preselect}`).classList.add('selected');
+                        }
+                    }
+                    
+                    // Add event listeners to course checkboxes
+                    document.querySelectorAll('.course-select').forEach(checkbox => {
+                        checkbox.addEventListener('change', function() {
+                            const courseBox = this.closest('.course-checkbox');
+                            if (this.checked) {
+                                courseBox.classList.add('selected');
+                            } else {
+                                courseBox.classList.remove('selected');
+                            }
+                        });
+                    });
+                } else {
+                    document.getElementById('coursesContainer').innerHTML = `
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            You are already enrolled in all available courses.
+                            <a href="enrolled-courses.html" class="btn btn-sm btn-outline-primary ms-3">View My Courses</a>
+                        </div>
+                    `;
+                    document.getElementById('enrollButton').style.display = 'none';
+                }
+                
+                // Enrollment button handler
+                document.getElementById('enrollButton').addEventListener('click', async function() {
+                    const selectedCourses = Array.from(document.querySelectorAll('.course-select:checked'))
+                        .map(checkbox => {
+                            const courseId = checkbox.value;
+                            const courseName = availableCourses.find(c => c.id === courseId).name;
+                            return { id: courseId, name: courseName };
+                        });
+                    
+                    if (selectedCourses.length === 0) {
+                        document.getElementById('enrollmentStatus').innerHTML = `
+                            <i class="fas fa-exclamation-circle me-2"></i>
+                            Please select at least one course to enroll.
+                        `;
+                        document.getElementById('enrollmentStatus').style.display = 'block';
+                        return;
+                    }
+                    
+                    // Show enrollment in progress
+                    document.getElementById('enrollmentProgress').style.display = 'block';
+                    document.getElementById('enrollButton').disabled = true;
+                    
+                    // Reset progress bar
+                    const progressBar = document.querySelector('.progress-bar');
+                    progressBar.style.width = '0%';
+                    
+                    // Enroll in each selected course
+                    const enrollmentPromises = [];
+                    const enrollmentResults = [];
+                    
+                    for (let i = 0; i < selectedCourses.length; i++) {
+                        const course = selectedCourses[i];
+                        const progressPercent = (i / selectedCourses.length) * 100;
+                        progressBar.style.width = `${progressPercent}%`;
+                        
+                        try {
+                            // Create enrollment - FIX: Use uppercase table name  
+                            const price = '$' + (Math.floor(Math.random() * 300) + 200);
+                            
+                            const enrollment = {
+                                userid: userId,
+                                course_id: course.id,
+                                course_name: course.name,
+                                price: price,
+                                enrolled_on: new Date().toISOString(),
+                                status: "Active"
+                            };
+                            
+                            const promise = window.supabase
+                                .from('PSLV_enrollments')
+                                .insert([enrollment]);
+                            
+                            enrollmentPromises.push(promise);
+                            
+                            // Track the result for feedback
+                            enrollmentResults.push({
+                                courseId: course.id,
+                                courseName: course.name,
+                                promise: promise
+                            });
+                            
+                            // Small delay to show progress
+                            await new Promise(resolve => setTimeout(resolve, 500));
+                        } catch (error) {
+                            console.error(`Error enrolling in ${course.name}:`, error);
+                        }
+                    }
+                    
+                    // Complete progress bar
+                    progressBar.style.width = '100%';
+                    
+                    // Wait for all enrollments to complete
+                    const results = await Promise.allSettled(enrollmentPromises);
+                    
+                    // Show enrollment results
+                    let successCount = 0;
+                    let failureCount = 0;
+                    let resultHTML = '<h5>Enrollment Results:</h5><ul>';
+                    
+                    for (let i = 0; i < results.length; i++) {
+                        const result = results[i];
+                        const course = selectedCourses[i];
+                        
+                        if (result.status === 'fulfilled' && !result.value.error) {
+                            resultHTML += `<li><i class="fas fa-check-circle text-success me-2"></i> Successfully enrolled in ${course.name}</li>`;
+                            successCount++;
+                        } else {
+                            resultHTML += `<li><i class="fas fa-times-circle text-danger me-2"></i> Failed to enroll in ${course.name}: ${result.value?.error?.message || 'Unknown error'}</li>`;
+                            failureCount++;
+                        }
+                    }
+                    
+                    resultHTML += '</ul>';
+                    
+                    if (successCount > 0) {
+                        resultHTML += `
+                            <div class="mt-3">
+                                <a href="enrolled-courses.html" class="btn btn-success">View My Courses</a>
+                            </div>
+                        `;
+                    }
+                    
+                    document.getElementById('enrollmentStatus').innerHTML = resultHTML;
+                    document.getElementById('enrollmentStatus').style.display = 'block';
+                    document.getElementById('enrollmentProgress').style.display = 'none';
+                    
+                    // Enable the button if there are still courses to enroll in
+                    if (failureCount > 0) {
+                        document.getElementById('enrollButton').disabled = false;
+                        document.getElementById('enrollButton').textContent = 'Retry Failed Enrollments';
+                    } else if (availableCourses.length > selectedCourses.length) {
+                        document.getElementById('enrollButton').disabled = false;
+                    }
+                });
+            } catch (error) {
+                console.error("Error initializing enrollment page:", error);
+                document.getElementById('coursesContainer').innerHTML = `
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-circle me-2"></i>
+                        Error loading courses: ${error.message}
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>
