@@ -14,7 +14,7 @@
     <nav class="navbar navbar-expand-lg bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <img src="logo.png" alt="Logo">
+                <img src="LOGO (1).svg" alt="PS Learning Ventures Logo" style="height: 250px; max-height: none; width: auto;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -49,7 +49,7 @@
                         <span class="new-badge">Popular</span>
                         <h3>ACCA</h3>
                         <p class="course-level">Advanced Professional Level</p>
-                        <p>Comprehensive preparation for the Association of Chartered Certified Accountants qualification.</p>
+                        <p>Structured coaching for all ACCA papers with industry-relevant insights to achieve first-time success.</p>
                         
                         <div class="features-list">
                             <div class="feature-item">
@@ -70,12 +70,12 @@
                     </div>
                 </div>
                 
-                <!-- IFRS Course -->
+                <!-- DIPIFR Course -->
                 <div class="col-md-4">
                     <div class="course-card">
-                        <h3>IFRS</h3>
+                        <h3>DIPIFR</h3>
                         <p class="course-level">Professional Certification</p>
-                        <p>Master International Financial Reporting Standards and boost your global accounting career.</p>
+                        <p>Focused training for the Diploma in International Financial Reporting to enhance your global accounting credentials.</p>
                         
                         <div class="features-list">
                             <div class="feature-item">
@@ -96,13 +96,13 @@
                     </div>
                 </div>
                 
-                <!-- Accountancy Course -->
+                <!-- Accountancy and Economics Course -->
                 <div class="col-md-4">
                     <div class="course-card">
                         <span class="new-badge">New Batch</span>
-                        <h3>Accountancy</h3>
+                        <h3>Accountancy and Economics</h3>
                         <p class="course-level">11th & 12th Standard</p>
-                        <p>Strong foundation for high school students planning a future in accounting and finance.</p>
+                        <p>Strategic coaching for school students to excel in board exams and build a solid foundation for higher education.</p>
                         
                         <div class="features-list">
                             <div class="feature-item">
@@ -172,25 +172,15 @@
             if (window.supabase && window.supabase.auth) {
                 window.supabase.auth.getSession().then(({ data: { session } }) => {
                     if (session) {
-                        // User is logged in, change all "View Details" buttons to direct enrollment
+                        // User is logged in, change all "View Details" buttons appearance but keep same target
                         const courseButtons = document.querySelectorAll('.course-card .btn-success');
                         courseButtons.forEach(button => {
-                            const courseId = button.getAttribute('href').replace('-courses.html', '');
-                            const courseName = button.closest('.course-card').querySelector('h3').textContent;
-                            
                             button.textContent = "Enroll Now";
                             button.classList.remove('btn-success');
                             button.classList.add('btn-danger');
                             
-                            // Change from link to button with click handler
-                            button.removeAttribute('href');
-                            button.setAttribute('data-course-id', courseId);
-                            button.setAttribute('data-course-name', courseName);
-                            
-                            button.addEventListener('click', function(event) {
-                                event.preventDefault(); // Prevent any default navigation
-                                enrollInCourse(courseId, courseName, session.user.id);
-                            });
+                            // Keep the same href instead of binding click handler
+                            // This maintains consistency with landing page
                         });
                         
                         // Also update the main "Register Now" button at the bottom
@@ -204,61 +194,6 @@
             }
         }
         
-        // IMPROVED: Function to directly enroll in a course
-        async function enrollInCourse(courseId, courseName, userId) {
-            try {
-                // Show enrollment in progress message
-                const enrollBtn = document.querySelector(`[data-course-id="${courseId}"]`);
-                const originalText = enrollBtn.textContent;
-                enrollBtn.disabled = true;
-                enrollBtn.textContent = "Enrolling...";
-                
-                // First check if already enrolled - FIX: Use uppercase table name
-                const { data: existingEnrollments, error: checkError } = await window.supabase
-                    .from('PSLV_enrollments')
-                    .select('*')
-                    .eq('userid', userId)
-                    .eq('course_id', courseId);
-                    
-                if (checkError) throw checkError;
-                
-                if (existingEnrollments && existingEnrollments.length > 0) {
-                    alert("You are already enrolled in this course. Check your dashboard.");
-                    window.location.href = "dashboard.html";
-                    return;
-                }
-                
-                // Create enrollment directly - FIX: Use uppercase table name
-                const price = '$' + (Math.floor(Math.random() * 300) + 200);
-                const { error } = await window.supabase
-                    .from('PSLV_enrollments')
-                    .insert([{
-                        userid: userId,
-                        course_id: courseId,
-                        course_name: courseName,
-                        price: price,
-                        enrolled_on: new Date().toISOString(),
-                        status: "Active"
-                    }]);
-                    
-                if (error) throw error;
-                
-                alert(`Successfully enrolled in ${courseName}! Redirecting to dashboard.`);
-                window.location.href = "dashboard.html";
-                
-            } catch (error) {
-                alert("Error enrolling in course: " + error.message);
-                console.error("Enrollment error:", error);
-                
-                // Restore button state
-                const enrollBtn = document.querySelector(`[data-course-id="${courseId}"]`);
-                if (enrollBtn) {
-                    enrollBtn.disabled = false;
-                    enrollBtn.textContent = "Enroll Now";
-                }
-            }
-        }
-
         // Check if Supabase is available
         if (window.supabase && window.supabase.auth) {
             // Check user's login status
@@ -305,8 +240,8 @@
                 button.classList.remove('btn-success');
                 button.classList.add('btn-danger');
                 
-                // Change from link to button with click handler
-                button.setAttribute('href', `enroll-courses.html?preselect=${courseId}`);
+                // Keep the same href to maintain consistency with landing page
+                // Don't change the link target, just update the button appearance
             });
             
             // 2. Change the main "Register Now" CTA to "Go to Dashboard"

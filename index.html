@@ -15,13 +15,61 @@
         window.supabase = window.initSupabaseClient();
     </script>
     <script src="js/app.js"></script>
+    <style>
+        /* Logo resizing and prominence - with specific dimensions */
+        .navbar-brand {
+            padding: 10px 0;
+            margin-right: 40px;
+            /* Remove any width constraints */
+            max-width: none;
+            width: auto;
+        }
+        
+        .navbar-brand img {
+            /* Set specific dimensions for the logo */
+            width: 250px; /* Width dimension */
+            height: 250px; /* Height dimension - for a square format */
+            object-fit: contain; /* Ensures the logo fits within dimensions without distortion */
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 5px;
+        }
+        
+        /* Ensure navbar has enough space */
+        .navbar {
+            padding: 10px 0;
+            /* Remove fixed height constraints */
+            min-height: auto;
+            height: auto;
+        }
+        
+        /* Make navbar container flexible */
+        .navbar .container {
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        /* Ensure collapsed navbar works with larger logo */
+        @media (max-width: 991.98px) {
+            .navbar-brand img {
+                width: 200px; /* Slightly smaller on mobile */
+                height: 200px;
+            }
+        }
+        
+        /* Remove added hero section margin */
+        .hero-section {
+            margin-top: 0;
+        }
+    </style>
 </head>
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <img src="logo.png" alt="Logo">
+                <img src="LOGO (1).svg" alt="PS Learning Ventures Logo">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -41,8 +89,8 @@
     <!-- Hero Section -->
     <section class="hero-section text-center">
         <div class="container">
-            <h1 class="fade-up">Best Coaching for ACCA, 11th & 12th Accountancy, and IFRS</h1>
-            <h2 class="fade-up delay-1">Enroll for the May 2025 Batch Now!</h2>
+            <h1 class="fade-up">Welcome to PS Learning Ventures</h1>
+            <h2 class="fade-up delay-1">Your Partner in propelling your future</h2>
             <a href="registration.html" class="btn btn-warning mt-4 fade-up delay-2">Register Now</a>
         </div>
     </section>
@@ -81,13 +129,16 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <h2>Our Founder</h2>
-                    <p>Meet Prabha Shankar, a distinguished educator with extensive experience in accounting and finance. With a passion for teaching and a deep understanding of ACCA, IFRS, and accounting principles, Prabha Shankar has been transforming students' lives through quality education.</p>
-                    <p>Her innovative teaching methods and dedication to student success have made her a respected figure in the field of accounting education.</p>
+                    <h2>Our Mission</h2>
+                    <p>Our mission is to provide you with the tools to achieve your goals and propel your future.</p>
+                    <p>With a deep understanding of students requirements we have been transforming students lives through quality education.</p>
                     <a href="about.html" class="btn btn-outline-danger mt-3">Learn More About Us</a>
                 </div>
                 <div class="col-md-6">
-                    <img src="https://placehold.co/400x500" alt="Prabha Shankar" class="founder-image img-fluid rounded shadow">
+                    <div class="mission-image-wrapper text-center">
+                        <i class="fas fa-graduation-cap fa-5x text-danger mb-4"></i>
+                        <h4 class="text-center">Excellence in Education</h4>
+                    </div>
                 </div>
             </div>
         </div>
@@ -96,13 +147,13 @@
     <!-- Courses Preview -->
     <section class="py-5 bg-light">
         <div class="container">
-            <h2 class="text-center mb-5">Our Courses</h2>
+            <h2 class="text-center mb-5">Courses Offered</h2>
             <div class="row">
                 <div class="col-md-4 mb-4">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body text-center">
                             <h3 class="h4 card-title">ACCA</h3>
-                            <p class="card-text">Comprehensive coaching for all ACCA exam levels</p>
+                            <p class="card-text">Expert coaching to excel in all ACCA qualification papers with proven results</p>
                             <a href="acca-courses.html" class="btn btn-outline-danger">View Details</a>
                         </div>
                     </div>
@@ -110,8 +161,8 @@
                 <div class="col-md-4 mb-4">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body text-center">
-                            <h3 class="h4 card-title">IFRS</h3>
-                            <p class="card-text">Master International Financial Reporting Standards</p>
+                            <h3 class="h4 card-title">DIPIFR</h3>
+                            <p class="card-text">Specialized training for Diploma in International Financial Reporting certification</p>
                             <a href="ifrs-courses.html" class="btn btn-outline-danger">View Details</a>
                         </div>
                     </div>
@@ -119,8 +170,8 @@
                 <div class="col-md-4 mb-4">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body text-center">
-                            <h3 class="h4 card-title">Accountancy</h3>
-                            <p class="card-text">11th & 12th standard accountancy coaching</p>
+                            <h3 class="h4 card-title">Accountancy and Economics</h3>
+                            <p class="card-text">Comprehensive guidance for 11th & 12th standard students to build strong foundations</p>
                             <a href="accountancy-courses.html" class="btn btn-outline-danger">View Details</a>
                         </div>
                     </div>
@@ -205,8 +256,8 @@
                                     <select class="form-select" id="testimonialCourse" required>
                                         <option value="" selected disabled>Select a course</option>
                                         <option value="ACCA">ACCA</option>
-                                        <option value="IFRS">IFRS</option>
-                                        <option value="Accountancy">Accountancy</option>
+                                        <option value="IFRS">IFRS</option>ion>
+                                        <option value="Accountancy and Economics">Accountancy and Economics</option>
                                     </select>
                                 </div>
                                 <div class="mb-3">
@@ -251,7 +302,7 @@
             <div class="row">
                 <div class="col-md-4 mb-4">
                     <h4>About Us</h4>
-                    <p>Prabha Shankar Learning Ventures provides top-quality coaching for ACCA, 11th & 12th Accountancy, and IFRS.</p>
+                    <p>Prabha Shankar Learning Ventures provides top-quality coaching for ACCA, 11th & 12th Accountancy, and IFRS.</p> and DIPIFR.</p>
                 </div>
                 <div class="col-md-4 mb-4">
                     <h4>Quick Links</h4>
