@@ -2,74 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Prabha Shankar Learning Ventures</title>
+    <meta name="description" content="Learn about Prabha Shankar Learning Ventures and our commitment to quality education in ACCA, Accountancy & IFRS.">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* Add red accent styling for the about page */
-        .about-hero {
-            background: linear-gradient(135deg, rgba(220, 53, 69, 0.9) 0%, rgba(167, 29, 42, 0.8) 100%);
-            color: white;
-            padding: 60px 0;
-            border-radius: 0 0 30px 30px;
-            margin-bottom: 40px;
-        }
-        
-        .achievement-content h2 {
-            color: #333;
-            position: relative;
-            padding-bottom: 15px;
-        }
-        
-        .achievement-content h2:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 70px;
-            height: 3px;
-            background-color: #dc3545;
-        }
-        
-        .card {
-            transition: all 0.3s ease;
-            border-top: 3px solid #dc3545;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
-        }
-        
-        .text-danger {
-            color: #dc3545 !important;
-        }
-        
-        .footer-section {
-            background: linear-gradient(135deg, #dc3545 0%, #a71d2a 100%);
-            color: white;
-            padding: 30px 0;
-            margin-top: 50px;
-        }
-        
-        .footer-section a {
-            color: white;
-            text-decoration: none;
-        }
-        
-        .footer-section a:hover {
-            color: #f8f9fa;
-            text-decoration: underline;
-        }
-    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-init.js"></script>
+    <script>
+        // Initialize Supabase client when the script loads
+        window.supabase = window.initSupabaseClient();
+    </script>
+    <script src="js/app.js"></script>
 </head>
 <body>
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <img src="LOGO (1).svg" alt="PS Learning Ventures Logo" style="height: 250px; max-height: none; width: auto;">
+                <img src="LOGO (1).svg" alt="PS Learning Ventures Logo">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -86,119 +38,104 @@
         </div>
     </nav>
 
-    <section class="about-hero text-center">
-        <div class="container">
-            <h1 class="mb-3">About Us</h1>
-            <p class="lead mb-0">Our journey of excellence in accounting education spans over a decade with global reach.</p>
-        </div>
-    </section>
+    <!-- Main Content Area - Currently Empty -->
+    <!-- You can start adding your new content here -->
 
-    <section class="achievements-section py-4">
+    <!-- Add this content to your About Us page in an appropriate section -->
+
+    <section class="py-5 bg-white">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="achievement-content">
-                        <h2 class="mb-4">Our Journey</h2>
-                        
-                        <p class="mb-4">We have been empowering students in Accounting and Reporting since 2012, building a strong foundation of knowledge and expertise in the field.</p>
-                        
-                        <div class="row mb-5">
-                            <div class="col-md-6 mb-4">
-                                <div class="card shadow-sm h-100 border-0">
-                                    <div class="card-body">
-                                        <h3 class="h5 mb-3"><i class="fas fa-history text-danger me-2"></i> Our History</h3>
-                                        <ul class="achievement-list">
-                                            <li>Founded in 2012 in Dubai, bringing premium accounting education to students</li>
-                                            <li>Expanded our presence to Chennai and Bangalore in India</li>
-                                            <li>Since 2017, enriched our curriculum with ACCA(UK) and Dip IFR(UK)</li>
-                                            <li>Currently headquartered in Whitefield, Bangalore for in-person classes</li>
-                                            <li>Offering online tutoring across India and the Middle East</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-4">
-                                <div class="card shadow-sm h-100 border-0">
-                                    <div class="card-body">
-                                        <h3 class="h5 mb-3"><i class="fas fa-user-tie text-danger me-2"></i> Our Expertise</h3>
-                                        <ul class="achievement-list">
-                                            <li>Led by a Founder with extensive teaching background and industry knowledge</li>
-                                            <li>Professional trainers with experience at PricewaterhouseCoopers (PwC)</li>
-                                            <li>Faculty with World Bank Group experience, bringing global insights</li>
-                                            <li>Specialized in early accounting education for students from grade 11</li>
-                                            <li>Corporate training providers for professionals seeking Dip IFR certification</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <h2 class="mb-4">Our Journey</h2>
+                    <p>We started tutoring professionals in DIPIFR in Chennai and Bangalore. Our ACCA journey began in 2017 and since then we have mentored hundreds of students towards their ACCA success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                        <h2 class="mb-4 mt-5">Our Approach</h2>
-                        <div class="card shadow-sm border-0 mb-5">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6 mb-4">
-                                        <h3 class="h5 mb-3"><i class="fas fa-graduation-cap text-danger me-2"></i> Educational Philosophy</h3>
-                                        <p>We believe in igniting a passion for Accounting and Reporting from an early stage. Our mentoring approach begins with students in grade 11, building a strong foundation that carries them through their educational journey and professional career.</p>
-                                    </div>
-                                    <div class="col-md-6 mb-4">
-                                        <h3 class="h5 mb-3"><i class="fas fa-briefcase text-danger me-2"></i> Professional Development</h3>
-                                        <p>Beyond student education, we're committed to professional growth. Our corporate training programs for Diploma in International Financial Reporting (Dip IFR) help working professionals enhance their skills and advance their careers in the financial sector.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Call to Action -->
-                        <div class="text-center mt-5 mb-4">
-                            <h3>Ready to begin your learning journey with us?</h3>
-                            <a href="registration.html" class="btn btn-danger btn-lg mt-3">Register Now</a>
-                        </div>
-                    </div>
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="mb-4">Our Founder</h2>
+                    <p>Our founder Prabha Shankar is a passionate educator and a qualified Chartered Accountant, Company Secretary, DIPIFR (ACCA UK). She has worked with Pricewaterhouse Coopers and the World Bank group and has strong industry experience.</p>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <!-- You can add a founder image here if available -->
+                    <i class="fas fa-user-tie fa-5x text-danger mb-3"></i>
+                    <h4>Prabha Shankar</h4>
+                    <p class="text-muted">Founder & Lead Educator</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="mb-4">Our Team</h2>
+                    <p>Our team of trainers are all qualified professionals with teaching experience of more than 15 years.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer-section">
+    <footer>
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-4">
-                    <h4>Contact Us</h4>
-                    <p><i class="fas fa-envelope me-2"></i><a href="mailto:example@example.com">example@example.com</a></p>
-                    <p><i class="fas fa-phone me-2"></i><a href="tel:+911234567890">+91 12345 67890</a></p>
+                    <h4>About Us</h4>
+                    <p>Prabha Shankar Learning Ventures provides top-quality coaching for ACCA, 11th & 12th Accountancy, and DIPIFR.</p>
                 </div>
                 <div class="col-md-4 mb-4">
                     <h4>Quick Links</h4>
                     <ul class="list-unstyled">
-                        <li><a href="index.html"><i class="fas fa-angle-right me-2"></i>Home</a></li>
-                        <li><a href="about.html"><i class="fas fa-angle-right me-2"></i>About Us</a></li>
-                        <li><a href="courses.html"><i class="fas fa-angle-right me-2"></i>Courses</a></li>
-                        <li><a href="contact.html"><i class="fas fa-angle-right me-2"></i>Contact Us</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4 mb-4">
                     <h4>Connect With Us</h4>
                     <p>
+                        <a href="mailto:pslearningventures@gmail.com"><i class="fas fa-envelope me-2"></i>pslearningventures@gmail.com</a>
+                    </p>
+                    <p>
                         <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram me-2"></i>Instagram</a>
                     </p>
                     <p>
-                        <a href="https://api.whatsapp.com/send?phone=911234567890" target="_blank"><i class="fab fa-whatsapp me-2"></i>WhatsApp</a>
+                        <a href="https://api.whatsapp.com/send?phone=919176000129" target="_blank"><i class="fab fa-whatsapp me-2"></i>+91 9176000129</a>
+                    </p>
+                    <p>
+                        <strong>Our Locations</strong><br>
+                        <i class="fas fa-map-marker-alt me-2"></i>Prestige Shantiniketan, Whitefield, Bengaluru, 560048<br>
+                        <i class="fas fa-map-marker-alt me-2"></i>Chitrakoot Mahal, 13th cross, kaveri layout, GM Palya, 560075
                     </p>
                 </div>
             </div>
-            <div class="text-center pt-3 border-top border-light">
-                <p>© 2023 Prabha Shankar Learning Ventures. All rights reserved.</p>
+            <div class="footer-bottom text-center">
+                <p>© 2025 Prabha Shankar Learning Ventures. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/app.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            updateLoginStatus(); // Ensure login status is updated
+        // Update dashboard link if user is logged in
+        document.addEventListener("DOMContentLoaded", function() {
+            const currentUser = Backend.users.getCurrentUser();
+            if (currentUser) {
+                // If user is logged in, change register button to dashboard
+                const registerButtons = document.querySelectorAll('a[href="registration.html"]');
+                registerButtons.forEach(button => {
+                    button.textContent = "My Dashboard";
+                    button.href = "dashboard.html";
+                });
+            }
         });
     </script>
 </body>
