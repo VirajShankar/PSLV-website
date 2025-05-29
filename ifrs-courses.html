@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFRS Courses - Prabha Shankar Learning Ventures</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-danger text-white" href="registration.html">Register</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="course-details">
+        <div class="container">
+            <h1 class="text-center mb-5">IFRS Course Details</h1>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <form action="registration.html" method="get">
+                        <!-- Foundation Module -->
+                        <div class="paper-selection">
+                            <h3>Foundation Module</h3>
+                            <div class="paper-checkbox">
+                                <input type="checkbox" id="ifrs1" name="modules[]" value="ifrs1">
+                                <label for="ifrs1">IFRS 1 - First-time Adoption of IFRS</label>
+                                <p class="paper-description">Learn the principles and requirements for first-time adoption of IFRS standards.</p>
+                            </div>
+                            <div class="paper-checkbox">
+                                <input type="checkbox" id="conceptual" name="modules[]" value="conceptual">
+                                <label for="conceptual">Conceptual Framework</label>
+                                <p class="paper-description">Understanding the fundamental concepts and principles underlying IFRS.</p>
+                            </div>
+                        </div>
+
+                        <!-- Core Standards Module -->
+                        <div class="paper-selection">
+                            <h3>Core Standards Module</h3>
+                            <div class="paper-checkbox">
+                                <input type="checkbox" id="presentation" name="modules[]" value="presentation">
+                                <label for="presentation">Financial Statement Presentation</label>
+                                <p class="paper-description">IAS 1, IAS 7, and related standards for financial statement presentation.</p>
+                            </div>
+                            <div class="paper-checkbox">
+                                <input type="checkbox" id="revenue" name="modules[]" value="revenue">
+                                <label for="revenue">IFRS 15 - Revenue Recognition</label>
+                                <p class="paper-description">Comprehensive coverage of revenue recognition principles and practices.</p>
+                            </div>
+                            <div class="paper-checkbox">
+                                <input type="checkbox" id="leases" name="modules[]" value="leases">
+                                <label for="leases">IFRS 16 - Leases</label>
+                                <p class="paper-description">Understanding lease accounting and its implications.</p>
+                            </div>
+                            <div class="paper-checkbox">
+                                <input type="checkbox" id="financial" name="modules[]" value="financial">
+                                <label for="financial">IFRS 9 - Financial Instruments</label>
+                                <p class="paper-description">Classification, measurement, and recognition of financial instruments.</p>
+                            </div>
+                        </div>
+
+                        <!-- Advanced Module -->
+                        <div class="paper-selection">
+                            <h3>Advanced Module</h3>
+                            <div class="paper-checkbox">
+                                <input type="checkbox" id="consolidation" name="modules[]" value="consolidation">
+                                <label for="consolidation">IFRS 10 - Consolidated Financial Statements</label>
+                                <p class="paper-description">Group accounting and consolidation procedures.</p>
+                            </div>
+                            <div class="paper-checkbox">
+                                <input type="checkbox" id="disclosure" name="modules[]" value="disclosure">
+                                <label for="disclosure">IFRS 12 - Disclosure of Interests</label>
+                                <p class="paper-description">Disclosure requirements for interests in other entities.</p>
+                            </div>
+                            <div class="paper-checkbox">
+                                <input type="checkbox" id="fairvalue" name="modules[]" value="fairvalue">
+                                <label for="fairvalue">IFRS 13 - Fair Value Measurement</label>
+                                <p class="paper-description">Principles and requirements for fair value measurements.</p>
+                            </div>
+                        </div>
+
+                        <!-- Specialized Topics -->
+                        <div class="paper-selection">
+                            <h3>Specialized Topics</h3>
+                            <div class="paper-checkbox">
+                                <input type="checkbox" id="insurance" name="modules[]" value="insurance">
+                                <label for="insurance">IFRS 17 - Insurance Contracts</label>
+                                <p class="paper-description">Accounting for insurance contracts and related disclosures.</p>
+                            </div>
+                            <div class="paper-checkbox">
+                                <input type="checkbox" id="segments" name="modules[]" value="segments">
+                                <label for="segments">IFRS 8 - Operating Segments</label>
+                                <p class="paper-description">Segment reporting and disclosure requirements.</p>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-success btn-lg">Proceed to Registration</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Contact us: <a href="mailto:example@example.com">example@example.com</a></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

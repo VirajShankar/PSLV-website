@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prabha Shankar Learning Ventures</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="Prabha Shankar Learning Ventures Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-danger text-white" href="registration.html">Register</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1>Best Coaching for ACCA, 11th & 12th Accountancy, and IFRS</h1>
+            <h2>Enroll for the May 2025 Batch Now!</h2>
+            <a href="registration.html" class="btn btn-warning mt-3">Register Now</a>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section class="founder-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h2>Our Founder</h2>
+                    <p>Meet Prabha Shankar, a distinguished educator with extensive experience in accounting and finance. With a passion for teaching and a deep understanding of ACCA, IFRS, and accounting principles, Prabha Shankar has been transforming students' lives through quality education.</p>
+                    <p>Her innovative teaching methods and dedication to student success have made her a respected figure in the field of accounting education.</p>
+                </div>
+                <div class="col-md-6">
+                    <img src="https://placehold.co/400x500" alt="Prabha Shankar" class="founder-image img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Follow us on <a href="https://instagram.com/">Instagram</a></p>
+        <p>Contact us: <a href="mailto:example@example.com">example@example.com</a></p>
+        <a href="https://api.whatsapp.com/send?phone=911234567890" target="_blank">WhatsApp Us</a>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        // Observe the founder section
+        document.addEventListener('DOMContentLoaded', () => {
+            const founderSection = document.querySelector('.founder-section');
+            if (founderSection) {
+                observer.observe(founderSection);
+            }
+        });
+    </script>
+</body>
+</html>
