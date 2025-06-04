@@ -1,19 +1,38 @@
 /* General Styles */
 body {
     font-family: 'Arial', sans-serif;
+<<<<<<< HEAD
     background-color: #fff;
     margin: 0;
     padding: 0;
+=======
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+>>>>>>> 348aafe (Initial Commit for PSLV)
 }
 
 /* Navbar */
 .navbar {
+<<<<<<< HEAD
     border-bottom: 3px solid red;
     padding: 10px 0;
+=======
+    border-bottom: 3px solid #dc3545;
+    padding: 15px 0;
+    background-color: white !important;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+>>>>>>> 348aafe (Initial Commit for PSLV)
 }
 
 .navbar-brand img {
     height: 50px;
+<<<<<<< HEAD
 }
 
 .navbar-nav .nav-link {
@@ -27,10 +46,76 @@ body {
     border: none;
     font-weight: bold;
     padding: 8px 15px;
+=======
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover img {
+    transform: scale(1.05);
+}
+
+.navbar-nav .nav-link {
+    color: #333 !important;
+    font-weight: 600;
+    margin-right: 20px;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545 !important;
+}
+
+.navbar-nav .nav-link.active {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545 !important;
+}
+
+.navbar-nav .btn-danger {
+    background-color: #dc3545;
+    border: none;
+    font-weight: bold;
+    padding: 8px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .btn-danger:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .search-input {
+    width: 200px;
+    transition: width 0.3s ease;
+}
+
+.navbar .search-input:focus {
+    width: 300px;
+}
+
+.navbar .search-results {
+    position: absolute;
+    z-index: 1050;
+    background: white;
+    width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure consistent height for the navbar */
+.navbar-collapse {
+    min-height: 70px;
+>>>>>>> 348aafe (Initial Commit for PSLV)
 }
 
 /* Hero Section */
 .hero-section {
+<<<<<<< HEAD
     background: red;
     color: white;
     text-align: center;
@@ -48,38 +133,151 @@ body {
 .hero-section h2 {
     font-size: 1.5rem;
     font-weight: 300;
+=======
+    background: linear-gradient(135deg, #dc3545 0%, #a71d2a 100%);
+    color: white;
+    text-align: center;
+    padding: 80px 0;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"%3E%3Cpath fill="%23ffffff" fill-opacity="0.1" d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,224C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"%3E%3C/path%3E%3C/svg%3E');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2;
+}
+
+.hero-section h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hero-section h2 {
+    font-size: 1.7rem;
+    font-weight: 300;
+    margin-bottom: 30px;
+>>>>>>> 348aafe (Initial Commit for PSLV)
 }
 
 .hero-section .btn-warning {
     font-size: 1.2rem;
     font-weight: bold;
+<<<<<<< HEAD
+=======
+    padding: 12px 30px;
+    border-radius: 50px;
+    background-color: #ffc107;
+    border: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.hero-section .btn-warning:hover {
+    background-color: #e0a800;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+>>>>>>> 348aafe (Initial Commit for PSLV)
 }
 
 /* Footer */
 footer {
+<<<<<<< HEAD
     background-color: red;
     color: white;
     text-align: center;
     padding: 15px;
+=======
+    background: linear-gradient(135deg, #dc3545 0%, #a71d2a 100%);
+    color: white;
+    text-align: center;
+    padding: 40px 0;
+    position: relative;
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"%3E%3Cpath fill="%23ffffff" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,133.3C672,139,768,181,864,181.3C960,181,1056,139,1152,122.7C1248,107,1344,117,1392,122.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"%3E%3C/path%3E%3C/svg%3E');
+    background-size: cover;
+>>>>>>> 348aafe (Initial Commit for PSLV)
 }
 
 footer a {
     color: white;
     text-decoration: none;
+<<<<<<< HEAD
     font-weight: bold;
 }
 
 footer a:hover {
     text-decoration: underline;
+=======
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+footer a:hover {
+    color: #ffc107;
+    text-decoration: none;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.footer-links a {
+    margin: 0 15px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.footer-links a i {
+    margin-right: 5px;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.9rem;
+>>>>>>> 348aafe (Initial Commit for PSLV)
 }
 
 /* Founder Section */
 .founder-section {
+<<<<<<< HEAD
     padding: 80px 0;
     opacity: 0;
     transform: translateY(20px);
     transition: all 0.6s ease-out;
     background-color: #f8f9fa;
+=======
+    padding: 100px 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+    background-color: white;
+>>>>>>> 348aafe (Initial Commit for PSLV)
 }
 
 .founder-section.visible {
@@ -90,6 +288,7 @@ footer a:hover {
 .founder-section h2 {
     color: #333;
     margin-bottom: 30px;
+<<<<<<< HEAD
     font-weight: bold;
 }
 
@@ -98,16 +297,49 @@ footer a:hover {
     font-size: 1.1rem;
     line-height: 1.6;
     margin-bottom: 20px;
+=======
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+}
+
+.founder-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: #dc3545;
+}
+
+.founder-section p {
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 25px;
+>>>>>>> 348aafe (Initial Commit for PSLV)
 }
 
 .founder-image {
     max-width: 100%;
     height: auto;
+<<<<<<< HEAD
     transition: transform 0.3s ease;
 }
 
 .founder-image:hover {
     transform: scale(1.02);
+=======
+    border-radius: 10px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    transition: all 0.5s ease;
+}
+
+.founder-image:hover {
+    transform: scale(1.03);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+>>>>>>> 348aafe (Initial Commit for PSLV)
 }
 
 /* Add smooth scrolling to the whole page */
@@ -118,11 +350,17 @@ html {
 /* About Page Styles */
 .about-hero {
     background-color: #f8f9fa;
+<<<<<<< HEAD
     padding: 60px 0;
+=======
+    padding: 80px 0;
+    position: relative;
+>>>>>>> 348aafe (Initial Commit for PSLV)
 }
 
 .about-hero h1 {
     color: #333;
+<<<<<<< HEAD
     font-weight: bold;
 }
 
@@ -133,6 +371,32 @@ html {
 
 .achievement-content {
     padding-right: 30px;
+=======
+    font-weight: 700;
+    margin-bottom: 30px;
+    position: relative;
+    display: inline-block;
+}
+
+.about-hero h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 3px;
+    background-color: #dc3545;
+}
+
+.achievements-section {
+    padding: 100px 0;
+    background-color: white;
+}
+
+.achievement-content {
+    padding-right: 40px;
+>>>>>>> 348aafe (Initial Commit for PSLV)
 }
 
 .achievement-list {
@@ -142,26 +406,52 @@ html {
 }
 
 .achievement-list li {
+<<<<<<< HEAD
     margin-bottom: 15px;
     padding-left: 30px;
     position: relative;
     color: #555;
     font-size: 1.1rem;
+=======
+    margin-bottom: 20px;
+    padding-left: 35px;
+    position: relative;
+    color: #444;
+    font-size: 1.15rem;
+>>>>>>> 348aafe (Initial Commit for PSLV)
 }
 
 .achievement-list li:before {
     content: "✓";
+<<<<<<< HEAD
     color: red;
     position: absolute;
     left: 0;
     font-weight: bold;
+=======
+    color: #dc3545;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+    font-size: 1.2rem;
+>>>>>>> 348aafe (Initial Commit for PSLV)
 }
 
 .stats-image {
     position: relative;
     border-radius: 15px;
     overflow: hidden;
+<<<<<<< HEAD
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+=======
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    transition: all 0.5s ease;
+}
+
+.stats-image:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+>>>>>>> 348aafe (Initial Commit for PSLV)
 }
 
 .stats-image img {
@@ -189,14 +479,24 @@ html {
 }
 
 .stat-item h3 {
+<<<<<<< HEAD
     font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 10px;
+=======
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+>>>>>>> 348aafe (Initial Commit for PSLV)
     color: #ffd700;
 }
 
 .stat-item p {
+<<<<<<< HEAD
     font-size: 1.2rem;
+=======
+    font-size: 1.3rem;
+>>>>>>> 348aafe (Initial Commit for PSLV)
     margin: 0;
     color: #fff;
 }
@@ -204,11 +504,32 @@ html {
 /* Courses Page Styles */
 .courses-hero {
     background-color: #f8f9fa;
+<<<<<<< HEAD
+=======
+    padding: 80px 0;
+    position: relative;
+}
+
+.courses-hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"%3E%3Cpath fill="%23ffffff" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,133.3C672,139,768,181,864,181.3C960,181,1056,139,1152,122.7C1248,107,1344,117,1392,122.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"%3E%3C/path%3E%3C/svg%3E');
+    background-size: cover;
+>>>>>>> 348aafe (Initial Commit for PSLV)
 }
 
 .courses-hero h1 {
     color: #333;
+<<<<<<< HEAD
     font-weight: bold;
+=======
+    font-weight: 700;
+    margin-bottom: 20px;
+>>>>>>> 348aafe (Initial Commit for PSLV)
 }
 
 .course-card {
@@ -217,6 +538,7 @@ html {
     padding: 30px;
     height: 100%;
     position: relative;
+<<<<<<< HEAD
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     overflow: hidden;
@@ -224,24 +546,48 @@ html {
 
 .course-card:hover {
     transform: translateY(-5px);
+=======
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    overflow: hidden;
+    border-top: 5px solid #dc3545;
+}
+
+.course-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+>>>>>>> 348aafe (Initial Commit for PSLV)
 }
 
 .new-badge {
     position: absolute;
     top: 0;
     right: 0;
+<<<<<<< HEAD
     background: #ff0000;
+=======
+    background: #dc3545;
+>>>>>>> 348aafe (Initial Commit for PSLV)
     color: white;
     padding: 5px 15px;
     border-bottom-left-radius: 10px;
     font-weight: bold;
     font-size: 0.8rem;
+<<<<<<< HEAD
+=======
+    z-index: 1;
+>>>>>>> 348aafe (Initial Commit for PSLV)
 }
 
 .course-card h3 {
     color: #333;
+<<<<<<< HEAD
     font-size: 1.2rem;
     font-weight: bold;
+=======
+    font-size: 1.5rem;
+    font-weight: 700;
+>>>>>>> 348aafe (Initial Commit for PSLV)
     margin-bottom: 15px;
 }
 
@@ -253,6 +599,7 @@ html {
 }
 
 .course-card p {
+<<<<<<< HEAD
     color: #777;
     margin-bottom: 20px;
     font-size: 0.95rem;
@@ -261,6 +608,16 @@ html {
 
 .features-list {
     margin: 20px 0;
+=======
+    color: #666;
+    margin-bottom: 25px;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.features-list {
+    margin: 25px 0;
+>>>>>>> 348aafe (Initial Commit for PSLV)
 }
 
 .feature-item {
@@ -268,7 +625,11 @@ html {
     align-items: center;
     margin-bottom: 12px;
     color: #555;
+<<<<<<< HEAD
     font-size: 0.9rem;
+=======
+    font-size: 0.95rem;
+>>>>>>> 348aafe (Initial Commit for PSLV)
 }
 
 .feature-item i {
@@ -277,38 +638,104 @@ html {
     font-size: 1.1rem;
 }
 
+<<<<<<< HEAD
 .course-card .btn-success {
     width: 100%;
     padding: 10px;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
+=======
+.course-card .btn {
+    width: 100%;
+    padding: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+}
+
+.course-card .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+>>>>>>> 348aafe (Initial Commit for PSLV)
 }
 
 /* Course Details Page Styles */
 .course-details {
+<<<<<<< HEAD
     padding: 60px 0;
+=======
+    padding: 80px 0;
+    background-color: #f8f9fa;
+>>>>>>> 348aafe (Initial Commit for PSLV)
 }
 
 .paper-selection {
     background: white;
+<<<<<<< HEAD
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 20px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+=======
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border-left: 5px solid #dc3545;
+}
+
+.paper-selection:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+>>>>>>> 348aafe (Initial Commit for PSLV)
 }
 
 .paper-selection h3 {
     color: #333;
+<<<<<<< HEAD
     margin-bottom: 20px;
 }
 
 .paper-checkbox {
     margin-bottom: 15px;
+=======
+    margin-bottom: 25px;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 8px;
+}
+
+.paper-selection h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: #dc3545;
+}
+
+.paper-checkbox {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    background-color: #f8f9fa;
+}
+
+.paper-checkbox:hover {
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+>>>>>>> 348aafe (Initial Commit for PSLV)
 }
 
 .paper-checkbox label {
     margin-left: 10px;
+<<<<<<< HEAD
     color: #555;
 }
 
@@ -317,11 +744,28 @@ html {
     color: #666;
     margin-top: 5px;
     margin-left: 25px;
+=======
+    color: #444;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.paper-description {
+    font-size: 0.95rem;
+    color: #666;
+    margin-top: 8px;
+    margin-left: 25px;
+    line-height: 1.5;
+>>>>>>> 348aafe (Initial Commit for PSLV)
 }
 
 /* Registration Page Styles */
 .registration-section {
+<<<<<<< HEAD
     padding: 60px 0;
+=======
+    padding: 80px 0;
+>>>>>>> 348aafe (Initial Commit for PSLV)
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     min-height: calc(100vh - 180px);
 }
@@ -330,6 +774,7 @@ html {
     background: white;
     border-radius: 20px;
     padding: 40px;
+<<<<<<< HEAD
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
@@ -480,4 +925,107 @@ html {
 .btn-outline-primary:hover {
     background-color: #dc3545;
     border-color: #dc3545;
+=======
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+    .navbar-nav {
+        padding-top: 15px;
+    }
+    
+    .navbar-nav .nav-link {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+    
+    .hero-section h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-section h2 {
+        font-size: 1.4rem;
+    }
+    
+    .founder-section,
+    .achievements-section {
+        padding: 60px 0;
+    }
+    
+    .achievement-content {
+        padding-right: 0;
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .hero-section {
+        padding: 60px 0;
+    }
+    
+    .hero-section h1 {
+        font-size: 1.8rem;
+    }
+    
+    .founder-section {
+        text-align: center;
+    }
+    
+    .founder-section h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .founder-image {
+        margin-top: 40px;
+    }
+    
+    .course-card {
+        margin-bottom: 30px;
+    }
+    
+    .registration-card {
+        padding: 30px 20px;
+    }
+}
+
+/* Animations */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-up {
+    animation: fadeUp 0.8s ease forwards;
+}
+
+.delay-1 {
+    animation-delay: 0.2s;
+}
+
+.delay-2 {
+    animation-delay: 0.4s;
+}
+
+.delay-3 {
+    animation-delay: 0.6s;
+}
+
+/* Browser compatibility fixes */
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Add smooth scrolling to the whole page */
+html {
+    scroll-behavior: smooth;
+>>>>>>> 348aafe (Initial Commit for PSLV)
 }
