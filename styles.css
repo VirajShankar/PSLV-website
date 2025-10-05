@@ -119,6 +119,30 @@ body {
     color: white !important;
 }
 
+/* New yellow registration button */
+.btn-yellow {
+    background-color: #FFC107 !important; /* Bootstrap yellow color */
+    color: #212529 !important; /* Dark text for contrast */
+    font-weight: 700 !important; /* Bold text */
+    padding: 15px 35px !important;
+    font-size: 1.2rem !important;
+    border-radius: 50px !important;
+    border: 3px solid #FFC107 !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease !important;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.btn-yellow:hover {
+    background-color: #ffca2c !important; /* Lighter yellow on hover */
+    border-color: #ffca2c !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25) !important;
+}
+
 .hero-section .btn-warning {
     padding: 12px 30px;
     border-radius: 50px;
