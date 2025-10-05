@@ -326,7 +326,8 @@ function updateLoginStatus() {
         `;
     } else {
         loginStatusElement.innerHTML = `
-            <a href="login.html" class="btn btn-sm btn-outline-danger">Login</a>
+            <a href="login.html" class="btn btn-sm btn-outline-danger me-2">Login</a>
+            <a href="registration.html" class="btn btn-sm btn-danger">Register</a>
         `;
     }
 }
