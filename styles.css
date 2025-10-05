@@ -8,7 +8,7 @@ body {
     line-height: 1.6;
 }
 
-/* Logo resizing and prominence - UPDATED WITH CORRECT DIMENSIONS */
+/* Logo resizing and prominence - FIXED DIMENSIONS */
 .navbar-brand {
     padding: 10px 0;
     margin-right: 40px;
@@ -17,16 +17,22 @@ body {
 }
 
 .navbar-brand img {
-    width: 80px !important;
-    height: 80px !important;
+    width: 60px !important;
+    height: 60px !important;
     object-fit: contain;
     transition: transform 0.3s ease;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     border-radius: 5px;
+    display: block; /* Force display */
 }
 
 .navbar-brand:hover img {
     transform: scale(1.05);
+}
+
+/* Debug - add red border to see if element exists */
+.navbar-brand {
+    border: 2px solid red; /* TEMPORARY - remove after testing */
 }
 
 /* Ensure navbar has proper height for logo */
