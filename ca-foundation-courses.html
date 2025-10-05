@@ -10,6 +10,46 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/supabase-init.js"></script>
     <script src="js/app.js"></script>
+    <style>
+        .prospectus-section {
+            padding: 60px 0;
+            background-color: #f8f9fa;
+        }
+        .prospectus-title {
+            margin-bottom: 40px;
+            font-weight: 700;
+            color: #343a40;
+        }
+        .paper-card {
+            border: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-top: 4px solid #dc3545;
+        }
+        .paper-card .card-header {
+            background-color: white;
+            border-bottom: 1px solid #dee2e6;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #dc3545;
+        }
+        .topic-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .topic-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        .topic-list .icon {
+            font-size: 1.2rem;
+            margin-right: 15px;
+            color: #dc3545;
+            width: 25px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-white shadow-sm">
@@ -33,64 +73,60 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-9">
-                    <h1 class="text-center prospectus-title">CA Foundation Prospectus</h1>
+                    <h1 class="text-center prospectus-title">CA Foundation Course Details</h1>
                     
-                    <div class="accordion" id="caFoundationAccordion">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    Paper 1: Accounting
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#caFoundationAccordion">
-                                <div class="accordion-body">
-                                    <p>Paper 1: Accounting</p>
-                                </div>
-                            </div>
+                    <div class="card paper-card mb-4">
+                        <div class="card-header">
+                           Paper 1: Principles and Practice of Accounting
                         </div>
-
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    Paper 2: Business Laws
-                                </button>
-                            </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#caFoundationAccordion">
-                                <div class="accordion-body">
-                                    <p>Paper 2: Business Laws</p>
-                                </div>
-                            </div>
+                        <div class="card-body">
+                           <ul class="topic-list">
+                                <li><span class="icon"><i class="fas fa-book-open"></i></span><span>Accounting Basics and Concepts</span></li>
+                                <li><span class="icon"><i class="fas fa-file-invoice-dollar"></i></span><span>Financial Statements Preparation</span></li>
+                                <li><span class="icon"><i class="fas fa-university"></i></span><span>Bank Reconciliation Statement</span></li>
+                           </ul>
                         </div>
+                    </div>
 
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingThree">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    Paper 3: Quantitative Aptitude
-                                </button>
-                            </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#caFoundationAccordion">
-                                <div class="accordion-body">
-                                    <p>Paper 3: Quantitative Aptitude (Business Mathematics, Logical Reasoning, and Statistics)</p>
-                                </div>
-                            </div>
+                    <div class="card paper-card mb-4">
+                        <div class="card-header">
+                           Paper 2: Business Laws & Business Correspondence
                         </div>
+                        <div class="card-body">
+                           <ul class="topic-list">
+                                <li><span class="icon"><i class="fas fa-gavel"></i></span><span>Indian Contract Act, 1872 & Sale of Goods Act, 1930</span></li>
+                                <li><span class="icon"><i class="fas fa-pen-nib"></i></span><span>Business Correspondence and Reporting</span></li>
+                           </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card paper-card mb-4">
+                        <div class="card-header">
+                           Paper 3: Business Mathematics and Logical Reasoning
+                        </div>
+                        <div class="card-body">
+                           <ul class="topic-list">
+                                <li><span class="icon"><i class="fas fa-calculator"></i></span><span>Business Mathematics</span></li>
+                                <li><span class="icon"><i class="fas fa-brain"></i></span><span>Logical Reasoning</span></li>
+                                <li><span class="icon"><i class="fas fa-chart-pie"></i></span><span>Statistics</span></li>
+                           </ul>
+                        </div>
+                    </div>
 
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingFour">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                    Paper 4: Business Economics
-                                </button>
-                            </h2>
-                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#caFoundationAccordion">
-                                <div class="accordion-body">
-                                    <p>Paper 4: Business Economics</p>
-                                </div>
-                            </div>
+                    <div class="card paper-card mb-4">
+                        <div class="card-header">
+                           Paper 4: Business Economics & Commercial Knowledge
+                        </div>
+                        <div class="card-body">
+                           <ul class="topic-list">
+                                <li><span class="icon"><i class="fas fa-store"></i></span><span>Microeconomics & Macroeconomics</span></li>
+                                <li><span class="icon"><i class="fas fa-briefcase"></i></span><span>Business and Commercial Knowledge</span></li>
+                           </ul>
                         </div>
                     </div>
 
                     <div class="text-center mt-5">
-                        <a href="registration.html" class="btn prospectus-cta">Proceed to Registration</a>
+                        <a href="registration.html" class="btn btn-danger btn-lg">Proceed to Registration</a>
                     </div>
                 </div>
             </div>
