@@ -334,11 +334,13 @@ function updateLoginStatus() {
 
 // Handle logout
 function handleLogout() {
-    Backend.users.logout();
-    updateLoginStatus();
-    // Redirect to home if on dashboard or other protected page
-    if (window.location.pathname.includes('dashboard') || 
-        window.location.pathname.includes('my-courses')) {
+    // Defer to the global Supabase logout handler
+    if (window.handleLogout) {
+        window.handleLogout();
+    } else {
+        // Fallback for older pages
+        Backend.users.logout();
+        updateLoginStatus();
         window.location.href = 'index.html';
     }
 }

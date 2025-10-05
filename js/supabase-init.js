@@ -251,6 +251,23 @@ window.checkLoginStatus = async function() {
     }
 };
 
+// NEW: Global logout handler
+window.handleLogout = async function() {
+    try {
+        if (window.supabase) {
+            await window.supabase.auth.signOut();
+        }
+        // Clear any user data from local storage
+        localStorage.removeItem('currentUser');
+        // Redirect to the homepage
+        window.location.href = 'index.html';
+    } catch (error) {
+        console.error("Logout error:", error);
+        // Still redirect even if there's an error
+        window.location.href = 'index.html';
+    }
+};
+
 // UPDATED: Function to update all nav elements and register buttons based on login status
 window.updateNavLoginStatus = async function() {
     const isLoggedIn = await window.checkLoginStatus();
@@ -264,7 +281,7 @@ window.updateNavLoginStatus = async function() {
             
             loginStatusElement.innerHTML = `
                 <a href="dashboard.html" class="btn btn-sm btn-outline-danger me-2">Dashboard</a>
-                <button class="btn btn-sm btn-danger" onclick="handleLogout()">Logout</button>
+                <button class="btn btn-sm btn-danger" onclick="window.handleLogout()">Logout</button>
             `;
         } else {
             loginStatusElement.innerHTML = `
