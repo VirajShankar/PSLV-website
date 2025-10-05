@@ -20,47 +20,159 @@
         .navbar-brand {
             padding: 10px 0;
             margin-right: 40px;
-            /* Remove any width constraints */
             max-width: none;
             width: auto;
         }
         
         .navbar-brand img {
-            /* Set specific dimensions for the logo */
-            width: 250px; /* Width dimension */
-            height: 250px; /* Height dimension - for a square format */
-            object-fit: contain; /* Ensures the logo fits within dimensions without distortion */
+            width: 250px;
+            height: 250px;
+            object-fit: contain;
             transition: transform 0.3s ease;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             border-radius: 5px;
         }
         
-        /* Ensure navbar has enough space */
         .navbar {
             padding: 10px 0;
-            /* Remove fixed height constraints */
             min-height: auto;
             height: auto;
         }
         
-        /* Make navbar container flexible */
         .navbar .container {
             flex-wrap: wrap;
             align-items: center;
             justify-content: space-between;
         }
         
-        /* Ensure collapsed navbar works with larger logo */
         @media (max-width: 991.98px) {
             .navbar-brand img {
-                width: 200px; /* Slightly smaller on mobile */
+                width: 200px;
                 height: 200px;
             }
         }
         
-        /* Remove added hero section margin */
+        /* HERO SECTION STYLING - RED BACKGROUND */
         .hero-section {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            color: white;
+            padding: 120px 0;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
             margin-top: 0;
+        }
+        
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero-section h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .hero-section .btn {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .hero-section .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            .hero-section h2 {
+                font-size: 1.2rem;
+            }
+        }
+        
+        /* Animation classes */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.3s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.6s;
+        }
+        
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Founder Section Styling */
+        .founder-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 80px 0;
+            margin: 0;
+        }
+        
+        .founder-section h2 {
+            color: #dc3545;
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .founder-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #6c757d;
+            margin-bottom: 1rem;
+        }
+        
+        /* Footer styling */
+        footer {
+            background: linear-gradient(135deg, #343a40 0%, #495057 100%);
+            color: white;
+            padding: 60px 0 20px 0;
+            margin-top: 0;
+        }
+        
+        footer h4 {
+            color: #dc3545;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        footer a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        footer a:hover {
+            color: #dc3545;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #495057;
+            padding-top: 20px;
+            margin-top: 40px;
+            color: #adb5bd;
         }
     </style>
 </head>
@@ -417,7 +529,7 @@
                 const testimonialForm = document.getElementById("testimonial-form");
                 if (testimonialForm) {
                     // Scroll to the testimonial form
-                    testimonialForm.scrollIntoView({ behavior: "smooth" );
+                    testimonialForm.scrollIntoView({ behavior: "smooth" });
                 }
             }
         });
