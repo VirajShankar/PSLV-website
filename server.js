@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 console.log("Using Port:", process.env.PORT);
 
 require('dotenv').config();
@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
-=======
+
 const express = require('express');
 const path = require('path');
 
@@ -80,4 +80,4 @@ const startServer = () => {
 
 // Initialize server
 startServer();
->>>>>>> 348aafe (Initial Commit for PSLV)
+ (Initial Commit for PSLV)
