@@ -174,7 +174,6 @@
     </style>
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-white shadow-sm">
         <div class="container">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -192,7 +191,6 @@
         </div>
     </nav>
 
-    <!-- UNIFIED HERO SECTION -->
     <section class="hero-section">
         <div class="hero-content">
             <h1>Welcome to PS Learning Ventures</h1>
@@ -201,7 +199,6 @@
         </div>
     </section>
 
-    <!-- Key Features -->
     <section class="py-5 bg-white">
         <div class="container">
             <div class="row text-center">
@@ -230,7 +227,6 @@
         </div>
     </section>
 
-    <!-- Founder Section -->
     <section class="founder-section">
         <div class="container">
             <div class="row align-items-center">
@@ -250,7 +246,6 @@
         </div>
     </section>
 
-    <!-- Courses Preview -->
     <section class="py-5 bg-light">
         <div class="container">
             <h2 class="text-center mb-5">Courses Offered</h2>
@@ -298,7 +293,6 @@
         </div>
     </section>
 
-    <!-- Student Testimonials -->
     <section class="py-5 bg-white">
         <div class="container">
             <h2 class="text-center mb-5">What Our Students Say</h2>
@@ -349,7 +343,6 @@
         </div>
     </section>
 
-    <!-- Submit Testimonial -->
     <section class="py-5 bg-light" id="testimonial-form">
         <div class="container">
             <div class="row align-items-center">
@@ -403,7 +396,6 @@
         </div>
     </section>
 
-    <!-- Call to Action -->
     <section class="py-5 bg-light">
         <div class="container text-center">
             <h2>Ready to Begin Your Learning Journey?</h2>
@@ -412,7 +404,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="row">
@@ -505,44 +496,6 @@
                         course: course,
                         text: text,
                         submitted_on: new Date().toISOString()
-                    }]);
-
-                if (error) {
-                    console.error("Error submitting testimonial:", error);
-                    document.getElementById("testimonialError").classList.remove("d-none");
-                    return;
-                }
-
-                // Show success message
-                document.getElementById("testimonialSuccess").classList.remove("d-none");
-                document.getElementById("testimonialForm").reset();
-
-                // Hide success message after 5 seconds
-                setTimeout(() => {
-                    document.getElementById("testimonialSuccess").classList.add("d-none");
-                }, 5000);
-            } catch (err) {
-                console.error("Unexpected error:", err);
-                document.getElementById("testimonialError").classList.remove("d-none");
-            }
-        });
-
-        document.addEventListener("DOMContentLoaded", function () {
-            // Check if the URL contains the #testimonial-form hash
-            if (window.location.hash === "#testimonial-form") {
-                const testimonialForm = document.getElementById("testimonial-form");
-                if (testimonialForm) {
-                    // Scroll to the testimonial form
-                    testimonialForm.scrollIntoView({ behavior: "smooth" });
-                }
-            }
-        });
-    </script>
-</body>
-</html>
-    </script>
-</body>
-</html>
                     }]);
 
                 if (error) {
