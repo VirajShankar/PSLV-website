@@ -73,7 +73,6 @@
     <script src="js/app.js"></script>
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="index.html">
@@ -94,7 +93,6 @@
         </div>
     </nav>
 
-    <!-- Registration Form -->
     <section class="registration-section py-5">
         <div class="container">
             <div class="row justify-content-center">
@@ -184,7 +182,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="row">
@@ -414,182 +411,5 @@
             }
         });
     </script>
-</body>
-</html>
-</html>
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
-                    .insert(userData);
-                    
-                if (userInsertError) {
-                    console.error("Error inserting user data:", userInsertError);
-                    
-                    // Try upsert as a fallback
-                    console.log("Attempting upsert instead...");
-                    const { error: upsertError } = await window.supabase
-                        .from('PSLV_users')  // CHANGED TO: Using 'PSLV_users'
-                        .upsert(userData);
-                        
-                    if (upsertError) {
-                        console.error("Upsert also failed:", upsertError);
-                    } else {
-                        console.log("User data upserted successfully");
-                    }
-                } else {
-                    console.log("User data inserted successfully");
-                }
-                
-                // STEP 4: Create enrollment record
-                console.log("Creating course enrollment...");
-                const courseNameValue = window.courseData[courseInterest]?.name || courseInterest;
-                
-                const enrollmentData = {
-                    userid: userId,  // FIXED: Using correct column name "userid" (no underscore)
-                    course_id: courseInterest,
-                    course_name: courseNameValue,
-                    price: '$' + (Math.floor(Math.random() * 300) + 200),
-                    enrolled_on: new Date().toISOString(),  // FIXED: Added space between enrolled and _on
-                    status: 'Active'
-                };
-                
-                console.log("Enrollment data to insert:", enrollmentData);
-                
-                const { error: enrollError } = await window.supabase
-                    .from('PSLV_enrollments')
-                    .insert(enrollmentData);
-                    
-                if (enrollError) {
-                    console.error("Error creating enrollment:", enrollError);
-                    // Try upsert as a fallback
-                    const { error: enrollUpsertError } = await window.supabase
-                        .from('PSLV_enrollments')  // CHANGED TO: Using 'PSLV_enrollments'
-                        .upsert(enrollmentData);
-                        
-                    if (enrollUpsertError) {
-                        console.error("Enrollment upsert also failed:", enrollUpsertError);
-                    } else {
-                        console.log("Enrollment upserted successfully");
-                    }
-                } else {
-                    console.log("Enrollment created successfully");
-                }
-                
-                // Store user data in localStorage for client-side access
-                localStorage.setItem('currentUser', JSON.stringify({
-                    id: userId,
-                    name: name,
-                    email: email,
-                    phone: phone,
-                    course_interest: courseInterest,
-                    registered_on: new Date().toISOString()
-                }));
-                
-                // Show success message with email confirmation instructions
-                if (authResponse.data?.user?.identities?.length === 0 || 
-                    authResponse.data?.user?.email_confirmed_at === null) {
-                    // User needs to confirm email
-                    document.getElementById("successAlert").innerHTML = `
-                        <i class="fas fa-check-circle me-2"></i> 
-                        <strong>Registration successful!</strong> 
-                        <p class="mb-0">Please check your email (${email}) to confirm your account.</p>
-                        <p class="mt-2">If you don't see the email, check your spam folder.</p>
-                    `;
-                } else {
-                    // User email already confirmed or doesn't need confirmation
-                    document.getElementById("successAlert").innerHTML = `
-                        <i class="fas fa-check-circle me-2"></i> Registration successful! Redirecting you to dashboard...
-                    `;
-                    // Redirect after showing success message
-                    setTimeout(() => {
-                        window.location.href = "dashboard.html";
-                    }, 2000);
-                }
-                
-                // Show success message and reset form
-                spinner.style.display = "none";
-                submitButton.disabled = false;
-                document.getElementById("successAlert").style.display = "block";
-                document.getElementById("registrationForm").reset();
-                
-            } catch (error) {
-                console.error("Registration error:", error);
-                
-                // Remove navigation blocker
-                window.onbeforeunload = null;
-                
-                // Hide spinner
-                spinner.style.display = "none";
-                submitButton.disabled = false;
-                
-                // Show error message with details from Supabase when available
-                let errorMessage = "Registration failed. ";
-                
-                if (error.message) {
-                    if (error.message.includes("not set up")) {
-                        // Special handling for table setup error
-                        errorMessage = `
-                            <strong>Database tables need to be set up</strong><br>
-                            Follow these steps:<br>
-                            1. Go to your Supabase dashboard<br>
-                            2. Open SQL Editor<br>
-                            3. Run the table_setup.sql script<br>
-                            <a href="setup_instructions.md" target="_blank" class="btn btn-sm btn-outline-light mt-2">View Setup Instructions</a>
-                        `;
-                        showDatabaseSetupError(errorMessage);
-                    } else if (error.message.includes("already") && error.message.includes("registered")) {
-                        errorMessage = "This email is already registered. Please log in instead.";
-                        document.getElementById("errorMessage").textContent = errorMessage;
-                        document.getElementById("errorAlert").style.display = "block";
-                    } else {
-                        errorMessage += error.message;
-                        document.getElementById("errorMessage").textContent = errorMessage;
-                        document.getElementById("errorAlert").style.display = "block";
-                    }
-                } else {
-                    errorMessage += "Please try again.";
-                    document.getElementById("errorMessage").textContent = errorMessage;
-                    document.getElementById("errorAlert").style.display = "block";
-                }
-            }
-        });
-        
-        // Create a helper function to show table setup instructions
-        function showTableMissingWarning(tableName) {
-            if (window.debugSupabaseTable) {
-                window.debugSupabaseTable(tableName);
-            } else {
-                // If the global function isn't available, create a simple alert
-                alert(`Database setup required: The '${tableName}' table doesn't exist. Please run the table_setup.sql script in your Supabase SQL Editor.`);
-            }
-        }
-        
-        // Show more detailed database setup error
-        function showDatabaseSetupError(message) {
-            // Hide the normal error alert
-            document.getElementById("errorAlert").style.display = "none";
-            
-            // Create a better error message
-            const alertDiv = document.createElement('div');
-            alertDiv.className = 'alert alert-danger';
-            alertDiv.role = 'alert';
-            alertDiv.innerHTML = `
-                <h4 class="alert-heading"><i class="fas fa-database me-2"></i>Database Setup Required</h4>
-                <p>${message}</p>
-                <hr>
-                <p class="mb-0">Need help? <a href="mailto:support@example.com" class="alert-link">Contact support</a></p>
-            `;
-            
-            // Insert before the form
-            document.getElementById("registrationForm").parentNode.insertBefore(alertDiv, document.getElementById("registrationForm"));
-            
-            // Also open setup instructions in a tab
-            window.open('https://app.supabase.com/project/_/sql', '_blank');
-        }
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
