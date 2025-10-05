@@ -97,7 +97,7 @@
                 const userId = session.user.id;
                 const { data: enrollments, error } = await window.supabase
                     .from('PSLV_enrollments')
-                    .select('course_name')
+                    .select('course_id, course_name, enrolled_on, status')
                     .eq('userid', userId);
 
                 if (error) {
@@ -129,6 +129,8 @@
                             <div class="card h-100">
                                 <div class="card-body">
                                     <h5 class="card-title">${enrollment.course_name}</h5>
+                                    <p class="card-text small text-muted">Status: ${enrollment.status || 'Active'}</p>
+                                    <a href="${enrollment.course_id}-courses.html" class="btn btn-sm btn-outline-danger">View Course Details</a>
                                 </div>
                             </div>
                         </div>
