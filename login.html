@@ -11,7 +11,6 @@
     <script src="js/supabase-init.js"></script>
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-white shadow-sm">
         <div class="container">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -28,7 +27,6 @@
         </div>
     </nav>
 
-    <!-- Login Form -->
     <section class="py-5">
         <div class="container">
             <div class="row justify-content-center">
@@ -95,7 +93,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="row">
@@ -225,128 +222,6 @@
                 
                 document.getElementById("errorMessage").textContent = errorMessage;
                 document.getElementById("errorAlert").style.display = "block";
-            }
-        });
-    </script>
-</body>
-</html>
-    </script>
-</body>
-</html>
-                        <small>Ask your administrator to confirm your email in the Supabase dashboard.</small>
-                    `;
-                    document.getElementById("loginError").classList.remove("d-none");
-                    spinner.style.display = "none";
-                    submitButton.disabled = false;
-                    return;
-                }
-                
-                if (error) {
-                    console.error("Auth login error:", error);
-                    
-                    // If the error is about email confirmation, provide clearer message
-                    if (error.message.includes("Email not confirmed")) {
-                        throw new Error("Your email has not been confirmed. Please check your inbox for a confirmation email.");
-                    }
-                    
-                    throw error;
-                }
-                
-                console.log("Login successful:", data);
-                
-                // FIXED: Try both tables - first try PSLV_users, then fallback to users
-                let userData = null;
-                let userError = null;
-                
-                // Try PSLV_users first
-                const pslvResponse = await supabase
-                    .from('PSLV_users')
-                    .select('*')
-                    .eq('id', data.user.id)
-                    .single();
-                    
-                if (pslvResponse.error) {
-                    console.warn("Could not fetch user data from PSLV_users:", pslvResponse.error);
-                    
-                    // Try 'users' table as fallback
-                    const regularResponse = await supabase
-                        .from('users')
-                        .select('*')
-                        .eq('id', data.user.id)
-                        .single();
-                        
-                    if (regularResponse.error) {
-                        console.warn("Could not fetch user data from users table either:", regularResponse.error);
-                        userError = regularResponse.error;
-                    } else {
-                        userData = regularResponse.data;
-                        console.log("Found user data in 'users' table");
-                    }
-                } else {
-                    userData = pslvResponse.data;
-                    console.log("Found user data in 'PSLV_users' table");
-                }
-                
-                // If we couldn't get user data from either table, create minimal user data
-                if (!userData) {
-                    console.log("Creating minimal user data from auth");
-                    userData = {
-                        id: data.user.id,
-                        name: data.user.user_metadata?.full_name || email.split('@')[0],
-                        email: email,
-                        registered_on: data.user.created_at
-                    };
-                }
-                
-                // Store user details in localStorage for app state management
-                localStorage.setItem('currentUser', JSON.stringify(userData));
-                
-                // Hide spinner
-                spinner.style.display = "none";
-                submitButton.disabled = false;
-                
-                // Handle remember me
-                if (rememberMe) {
-                    localStorage.setItem('remembered_email', email);
-                    localStorage.setItem('rememberMe', 'true');
-                } else {
-                    localStorage.removeItem('remembered_email');
-                    localStorage.removeItem('rememberMe');
-                }
-                
-                // Redirect to dashboard
-                window.location.href = "dashboard.html";
-            } catch (error) {
-                console.error("Login error:", error);
-                
-                // Hide spinner
-                spinner.style.display = "none";
-                submitButton.disabled = false;
-                
-                // Show error message
-                document.getElementById("errorMessage").textContent = error.message || "Invalid email or password.";
-                document.getElementById("loginError").classList.remove("d-none");
-            }
-        });
-        
-        // Check if user is already logged in or has saved credentials
-        document.addEventListener("DOMContentLoaded", function() {
-            // Check for remembered email
-            const rememberedEmail = localStorage.getItem('remembered_email');
-            
-            if (rememberedEmail) {
-                document.getElementById("email").value = rememberedEmail;
-                document.getElementById("rememberMe").checked = true;
-            }
-            
-            // Check if user is already logged in using the global supabase instance
-            if (window.supabase && window.supabase.auth) {
-                window.supabase.auth.getSession().then(({ data: { session } }) => {
-                    if (session) {
-                        // User is already logged in
-                        window.location.href = "dashboard.html";
-                    }
-                });
             }
         });
     </script>
