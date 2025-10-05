@@ -54,79 +54,89 @@
             }
         }
         
-        /* CLEAN MODERN HERO SECTION - NO NESTED BOXES */
+        /* COMPLETELY REDESIGNED MODERN HERO SECTION */
         .hero-section {
-            background: #dc3545; /* Solid color instead of gradient for cleaner look */
-            color: white;
-            padding: 120px 0;
+            background: #dc3545;
+            padding: 0;
+            margin: 0;
+            position: relative;
+            height: 70vh;
+            min-height: 500px;
             display: flex;
             align-items: center;
-            position: relative;
-            overflow: hidden;
-            margin: 0;
-            border: none;
+            justify-content: center;
         }
-        
-        /* Remove the ::before pseudo-element that might be causing the nested box */
-        .hero-section::before {
-            display: none;
+
+        /* Overlay pattern for modern look */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.8;
+            z-index: 1;
         }
-        
-        .hero-section .container {
-            position: static;
-            max-width: 900px;
-            margin: 0 auto;
+
+        .hero-content {
+            z-index: 2;
             text-align: center;
             padding: 0 20px;
+            max-width: 800px;
         }
-        
+
         .hero-section h1 {
-            font-size: 3.8rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
             color: white;
-            letter-spacing: -0.5px;
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
             line-height: 1.1;
+            letter-spacing: -1px;
         }
-        
+
         .hero-section h2 {
-            font-size: 1.6rem;
-            font-weight: 400;
-            margin-bottom: 3rem;
             color: rgba(255, 255, 255, 0.9);
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 3rem;
             line-height: 1.4;
         }
-        
-        .hero-section .btn {
-            padding: 16px 36px;
+
+        .hero-section .btn-register {
+            display: inline-block;
+            background: white;
+            color: #dc3545;
             font-size: 1.2rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            border-radius: 4px;
-            border: none;
-            background: white;
-            color: #dc3545;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 16px 36px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
+            text-decoration: none;
         }
-        
-        .hero-section .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+
+        .hero-section .btn-register:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
             background: #f8f9fa;
         }
         
         @media (max-width: 768px) {
             .hero-section {
-                padding: 80px 0;
+                height: 60vh;
             }
             .hero-section h1 {
                 font-size: 2.5rem;
             }
             .hero-section h2 {
                 font-size: 1.3rem;
-                margin-bottom: 2rem;
+            }
+            .hero-section .btn-register {
+                padding: 12px 30px;
+                font-size: 1rem;
             }
         }
         
@@ -205,12 +215,13 @@
         </div>
     </nav>
 
-    <!-- Hero Section - Simplified Structure -->
+    <!-- COMPLETELY REDESIGNED HERO SECTION -->
     <section class="hero-section">
-        <div class="container">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
             <h1>Welcome to PS Learning Ventures</h1>
             <h2>Your Partner in propelling your future</h2>
-            <a href="registration.html" class="btn">REGISTER NOW</a>
+            <a href="registration.html" class="btn-register">Register Now</a>
         </div>
     </section>
 
@@ -543,16 +554,5 @@
     </script>
 </body>
 </html>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Check if the URL contains the #testimonial-form hash
-            if (window.location.hash === "#testimonial-form") {
-                const testimonialForm = document.getElementById("testimonial-form");
-                if (testimonialForm) {
-                    // Scroll to the testimonial form
-                    testimonialForm.scrollIntoView({ behavior: "smooth" });
-                }
-            }
-        });
-    </script>
 </body>
 </html>
