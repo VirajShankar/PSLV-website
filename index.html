@@ -38,6 +38,7 @@
             min-height: auto;
             height: auto;
             background: white !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
         .navbar .container {
@@ -53,14 +54,17 @@
             }
         }
         
-        /* HERO SECTION STYLING - CLEAN RED BACKGROUND */
+        /* MODERN HERO SECTION - CLEAN DESIGN */
         .hero-section {
             background: linear-gradient(135deg, #dc3545 0%, #c82333 100%) !important;
             color: white !important;
-            padding: 100px 0 !important;
-            min-height: 60vh !important;
-            position: relative;
-            overflow: hidden;
+            padding: 120px 0 100px 0 !important;
+            min-height: 70vh !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            position: relative !important;
+            overflow: hidden !important;
         }
         
         .hero-section::before {
@@ -70,76 +74,73 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: none !important;
+            background: rgba(0,0,0,0.1) !important;
+            z-index: 1;
         }
         
         .hero-section .container {
-            position: relative;
-            z-index: 2;
+            position: relative !important;
+            z-index: 2 !important;
+            text-align: center !important;
+            max-width: 800px !important;
         }
         
         .hero-section h1 {
-            font-size: 3.5rem !important;
-            font-weight: 700 !important;
+            font-size: 4rem !important;
+            font-weight: 800 !important;
             margin-bottom: 1.5rem !important;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3) !important;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4) !important;
             color: white !important;
+            letter-spacing: -1px !important;
+            line-height: 1.1 !important;
         }
         
         .hero-section h2 {
             font-size: 1.8rem !important;
-            font-weight: 400 !important;
-            margin-bottom: 2rem !important;
+            font-weight: 300 !important;
+            margin-bottom: 3rem !important;
             opacity: 0.95 !important;
             color: white !important;
             line-height: 1.4 !important;
+            font-style: italic !important;
         }
         
         .hero-section .btn {
-            padding: 15px 30px !important;
-            font-size: 1.2rem !important;
+            padding: 18px 40px !important;
+            font-size: 1.3rem !important;
             font-weight: 600 !important;
             text-transform: uppercase !important;
             letter-spacing: 1px !important;
             border-radius: 50px !important;
             transition: all 0.3s ease !important;
-            border: none !important;
-            background: #ffc107 !important;
-            color: #000 !important;
+            border: 3px solid white !important;
+            background: transparent !important;
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
         }
         
         .hero-section .btn:hover {
-            transform: translateY(-2px) !important;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3) !important;
-            background: #e0a800 !important;
+            transform: translateY(-3px) !important;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3) !important;
+            background: white !important;
+            color: #dc3545 !important;
         }
         
         @media (max-width: 768px) {
+            .hero-section {
+                padding: 100px 0 80px 0 !important;
+                min-height: 60vh !important;
+            }
             .hero-section h1 {
-                font-size: 2.5rem !important;
+                font-size: 2.8rem !important;
             }
             .hero-section h2 {
-                font-size: 1.3rem !important;
+                font-size: 1.4rem !important;
             }
-        }
-        
-        /* Remove any conflicting styles */
-        .hero-section * {
-            box-sizing: border-box;
-        }
-        
-        /* Animation classes */
-        .fade-up {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-        }
-        
-        .delay-1 {
-            animation-delay: 0s !important;
-        }
-        
-        .delay-2 {
-            animation-delay: 0s !important;
+            .hero-section .btn {
+                padding: 15px 30px !important;
+                font-size: 1.1rem !important;
+            }
         }
         
         /* Founder Section Styling */
@@ -218,11 +219,11 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-section text-center">
+    <section class="hero-section">
         <div class="container">
             <h1>Welcome to PS Learning Ventures</h1>
             <h2>Your Partner in propelling your future</h2>
-            <a href="registration.html" class="btn btn-warning mt-4">REGISTER NOW</a>
+            <a href="registration.html" class="btn">REGISTER NOW</a>
         </div>
     </section>
 
