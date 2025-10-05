@@ -11,47 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/supabase-init.js"></script>
     <style>
-        /* Logo resizing and prominence - with specific dimensions */
-        .navbar-brand {
-            padding: 10px 0;
-            margin-right: 40px;
-            /* Remove any width constraints */
-            max-width: none;
-            width: auto;
-        }
-        
-        .navbar-brand img {
-            /* Set specific dimensions for the logo */
-            width: 250px; /* Width dimension */
-            height: 250px; /* Height dimension - for a square format */
-            object-fit: contain; /* Ensures the logo fits within dimensions without distortion */
-            transition: transform 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-radius: 5px;
-        }
-        
-        /* Ensure navbar has enough space */
-        .navbar {
-            padding: 10px 0;
-            /* Remove fixed height constraints */
-            min-height: auto;
-            height: auto;
-        }
-        
-        /* Make navbar container flexible */
-        .navbar .container {
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-        }
-        
-        /* Ensure collapsed navbar works with larger logo */
-        @media (max-width: 991.98px) {
-            .navbar-brand img {
-                width: 200px; /* Slightly smaller on mobile */
-                height: 200px;
-            }
-        }
+        /* REMOVED NAVBAR STYLES */
     </style>
     <script>
         // Initialize Supabase client when the script loads
@@ -67,7 +27,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link active" href="about.html">About Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>

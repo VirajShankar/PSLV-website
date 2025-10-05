@@ -8,115 +8,39 @@ body {
     line-height: 1.6;
 }
 
-/* Logo resizing and prominence - FIXED DIMENSIONS */
-.navbar-brand {
-    padding: 10px 0;
-    margin-right: 40px;
-    max-width: none;
-    width: auto;
-}
+/* =================================
+   STANDARDIZED NAVBAR STYLES
+   ================================= */
 
-.navbar-brand img {
-    width: 60px !important;
-    height: 60px !important;
-    object-fit: contain;
-    transition: transform 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    border-radius: 5px;
-    display: block; /* Force display */
-}
-
-.navbar-brand:hover img {
-    transform: scale(1.05);
-}
-
-/* Ensure navbar has proper height for logo */
 .navbar {
-    padding: 15px 0;
-    min-height: 100px;
+    padding: 10px 0;
+    min-height: 70px; /* Adjusted for no logo */
     background-color: white !important;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
-    z-index: 1000;
-}
-
-/* Make navbar container flexible for logo */
-.navbar .container {
-    flex-wrap: wrap;
+    z-index: 1020;
+    display: flex;
     align-items: center;
-    justify-content: space-between;
-}
-
-/* Responsive logo sizing */
-@media (max-width: 991.98px) {
-    .navbar-brand img {
-        width: 70px !important;
-        height: 70px !important;
-    }
-    .navbar {
-        min-height: 90px;
-    }
-}
-
-@media (max-width: 767.98px) {
-    .navbar-brand img {
-        width: 60px !important;
-        height: 60px !important;
-    }
-    .navbar {
-        min-height: 80px;
-    }
-}
-
-/* Navbar */
-.navbar {
-    border-bottom: 3px solid #dc3545;
-    padding: 10px 0;
-    background-color: white !important;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.navbar-brand {
-    padding: 10px 0;
-    margin-right: 40px;
-    max-width: none;
-    width: auto;
-}
-
-.navbar-brand img {
-    width: 250px;
-    height: 250px;
-    object-fit: contain;
-    transition: transform 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border-radius: 5px;
-}
-
-.navbar-brand:hover img {
-    transform: scale(1.05);
 }
 
 .navbar-nav .nav-link {
     color: #333 !important;
     font-weight: 600;
-    margin-right: 20px;
+    margin: 0 10px;
     padding: 8px 15px;
     border-radius: 5px;
     transition: all 0.3s ease;
 }
 
-.navbar-nav .nav-link:hover {
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
     background-color: rgba(220, 53, 69, 0.1);
     color: #dc3545 !important;
 }
 
-.navbar-nav .nav-link.active {
-    background-color: rgba(220, 53, 69, 0.1);
-    color: #dc3545 !important;
+.navbar-collapse {
+    justify-content: center; /* Center the nav items */
 }
 
 .navbar-nav .btn-danger {
@@ -132,6 +56,13 @@ body {
     background-color: #c82333;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 991.98px) {
+    .navbar-nav {
+        padding-top: 15px;
+        align-items: center; /* Center items in mobile view */
+    }
 }
 
 /* FIXED HERO SECTION - SINGLE UNIFIED BACKGROUND */
@@ -899,6 +830,147 @@ html {
 .btn-outline-primary {
     color: #dc3545;
     border-color: #dc3545;
+}
+
+.btn-outline-primary:hover {
+    background-color: #dc3545;
+    border-color: #dc3545;
+
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+}
+
+/* Debug - add red border to see if element exists */
+.navbar-brand {
+    /* Remove this line: border: 2px solid red; */
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+    .navbar-nav {
+        padding-top: 15px;
+    }
+    
+    .navbar-nav .nav-link {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+    
+    .hero-section h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-section h2 {
+        font-size: 1.4rem;
+    }
+    
+    .founder-section,
+    .achievements-section {
+        padding: 60px 0;
+    }
+    
+    .achievement-content {
+        padding-right: 0;
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .hero-section {
+        padding: 60px 0;
+    }
+    
+    .hero-section h1 {
+        font-size: 1.8rem;
+    }
+    
+    .founder-section {
+        text-align: center;
+    }
+    
+    .founder-section h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .founder-image {
+        margin-top: 40px;
+    }
+    
+    .course-card {
+        margin-bottom: 30px;
+    }
+    
+    .registration-card {
+        padding: 30px 20px;
+    }
+}
+
+/* Animations */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-up {
+    animation: fadeUp 0.8s ease forwards;
+}
+
+.delay-1 {
+    animation-delay: 0.2s;
+}
+
+.delay-2 {
+    animation-delay: 0.4s;
+}
+
+.delay-3 {
+    animation-delay: 0.6s;
+}
+
+/* Browser compatibility fixes */
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Add smooth scrolling to the whole page */
+html {
+    scroll-behavior: smooth;
+}
+.delay-1 {
+    animation-delay: 0.2s;
+}
+
+.delay-2 {
+    animation-delay: 0.4s;
+}
+
+.delay-3 {
+    animation-delay: 0.6s;
+}
+
+/* Browser compatibility fixes */
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Add smooth scrolling to the whole page */
+html {
+    scroll-behavior: smooth;
+ (Initial Commit for PSLV)
+}
+/* Add smooth scrolling to the whole page */
+html {
+    scroll-behavior: smooth;
+ (Initial Commit for PSLV)
+}
 }
 
 .btn-outline-primary:hover {
