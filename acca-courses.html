@@ -10,6 +10,29 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/supabase-init.js"></script>
     <script src="js/app.js"></script>
+    <style>
+        .prospectus-section {
+            padding: 60px 0;
+            background-color: #f8f9fa;
+        }
+        .prospectus-title {
+            margin-bottom: 40px;
+            font-weight: 700;
+            color: #343a40;
+        }
+        .paper-card {
+            border: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        .paper-card .card-header {
+            background-color: white;
+            border-left: 4px solid #dc3545;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #343a40;
+            padding: 1.25rem;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-white shadow-sm">
@@ -33,76 +56,28 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-9">
-                    <h1 class="text-center prospectus-title">ACCA Qualification Prospectus</h1>
+                    <h1 class="text-center prospectus-title">ACCA Qualification Levels</h1>
                     
-                    <div class="accordion" id="accaAccordion">
-                        <!-- Applied Knowledge -->
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    Applied Knowledge Level
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accaAccordion">
-                                <div class="accordion-body">
-                                    <ul class="topic-list">
-                                        <li class="topic-item"><i class="fas fa-briefcase topic-icon"></i><div class="topic-content"><h5>Business and Technology (BT)</h5><p>Understand the business environment and its influence on organizations.</p></div></li>
-                                        <li class="topic-item"><i class="fas fa-tasks topic-icon"></i><div class="topic-content"><h5>Management Accounting (MA)</h5><p>Develop skills in management accounting techniques.</p></div></li>
-                                        <li class="topic-item"><i class="fas fa-file-invoice-dollar topic-icon"></i><div class="topic-content"><h5>Financial Accounting (FA)</h5><p>Learn the principles of financial accounting and statement preparation.</p></div></li>
-                                    </ul>
-                                </div>
-                            </div>
+                    <div class="card paper-card mb-3">
+                        <div class="card-header">
+                            Applied Knowledge Level
                         </div>
+                    </div>
 
-                        <!-- Applied Skills -->
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    Applied Skills Level
-                                </button>
-                            </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accaAccordion">
-                                <div class="accordion-body">
-                                    <ul class="topic-list">
-                                        <li class="topic-item"><i class="fas fa-gavel topic-icon"></i><div class="topic-content"><h5>Corporate and Business Law (LW)</h5></div></li>
-                                        <li class="topic-item"><i class="fas fa-chart-bar topic-icon"></i><div class="topic-content"><h5>Performance Management (PM)</h5></div></li>
-                                        <li class="topic-item"><i class="fas fa-percentage topic-icon"></i><div class="topic-content"><h5>Taxation (TX)</h5></div></li>
-                                        <li class="topic-item"><i class="fas fa-file-alt topic-icon"></i><div class="topic-content"><h5>Financial Reporting (FR)</h5></div></li>
-                                        <li class="topic-item"><i class="fas fa-user-shield topic-icon"></i><div class="topic-content"><h5>Audit and Assurance (AA)</h5></div></li>
-                                        <li class="topic-item"><i class="fas fa-chart-line topic-icon"></i><div class="topic-content"><h5>Financial Management (FM)</h5></div></li>
-                                    </ul>
-                                </div>
-                            </div>
+                    <div class="card paper-card mb-3">
+                        <div class="card-header">
+                            Applied Skills Level
                         </div>
+                    </div>
 
-                        <!-- Strategic Professional -->
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingThree">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    Strategic Professional Level
-                                </button>
-                            </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accaAccordion">
-                                <div class="accordion-body">
-                                    <p class="mb-3"><strong>Essentials:</strong></p>
-                                    <ul class="topic-list">
-                                        <li class="topic-item"><i class="fas fa-chess-king topic-icon"></i><div class="topic-content"><h5>Strategic Business Leader (SBL)</h5></div></li>
-                                        <li class="topic-item"><i class="fas fa-lightbulb topic-icon"></i><div class="topic-content"><h5>Strategic Business Reporting (SBR)</h5></div></li>
-                                    </ul>
-                                    <p class="mt-4 mb-3"><strong>Options (Choose 2):</strong></p>
-                                    <ul class="topic-list">
-                                        <li class="topic-item"><i class="fas fa-landmark topic-icon"></i><div class="topic-content"><h5>Advanced Financial Management (AFM)</h5></div></li>
-                                        <li class="topic-item"><i class="fas fa-analytics topic-icon"></i><div class="topic-content"><h5>Advanced Performance Management (APM)</h5></div></li>
-                                        <li class="topic-item"><i class="fas fa-file-contract topic-icon"></i><div class="topic-content"><h5>Advanced Taxation (ATX)</h5></div></li>
-                                        <li class="topic-item"><i class="fas fa-user-check topic-icon"></i><div class="topic-content"><h5>Advanced Audit and Assurance (AAA)</h5></div></li>
-                                    </ul>
-                                </div>
-                            </div>
+                    <div class="card paper-card mb-3">
+                        <div class="card-header">
+                            Strategic Professional Level
                         </div>
                     </div>
 
                     <div class="text-center mt-5">
-                        <a href="registration.html" class="btn prospectus-cta">Proceed to Registration</a>
+                        <a href="registration.html" class="btn btn-danger btn-lg">Proceed to Registration</a>
                     </div>
                 </div>
             </div>
