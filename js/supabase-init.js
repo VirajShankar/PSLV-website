@@ -4,7 +4,7 @@
 const SUPABASE_URL = 'https://berfykdzrhhayqzjpyua.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJlcmZ5a2R6cmhoYXlxempweXVhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI5NzAzOTgsImV4cCI6MjA1ODU0NjM5OH0.DIjkvmjKsZ3G45M4vR_V_pqsOwHBz7s70IAlmE7aDZ4';
 
-// Course data for enrollment
+// Course data for enrollment - FIXED: Ensure ca-foundation is properly mapped
 window.courseData = {
     acca: { 
         name: "ACCA Certification",
@@ -20,6 +20,11 @@ window.courseData = {
     },
     "ca-foundation": { 
         name: "CA Foundation",
+        description: "Chartered Accountant Foundation Course"
+    },
+    // ADDED: Alternative mapping for registration form
+    "ca_foundation": {
+        name: "CA Foundation", 
         description: "Chartered Accountant Foundation Course"
     }
 };

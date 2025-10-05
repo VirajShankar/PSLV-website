@@ -182,7 +182,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Available courses data
+        // Available courses data - ENSURE CA Foundation is included
         const availableCourses = [
             {id: 'acca', name: 'ACCA Certification', description: 'Professional accounting certification for global careers'},
             {id: 'ifrs', name: 'IFRS Course', description: 'International Financial Reporting Standards for accounting professionals'},
@@ -340,17 +340,23 @@
                         progressBar.style.width = `${progressPercent}%`;
                         
                         try {
-                            // Create enrollment - FIX: Use uppercase table name  
+                            // Create enrollment - FIXED: Proper course name mapping for CA Foundation
                             const price = '$' + (Math.floor(Math.random() * 300) + 200);
+                            
+                            // FIXED: Get proper course name from availableCourses array
+                            const courseData = availableCourses.find(c => c.id === course.id);
+                            const properCourseName = courseData ? courseData.name : course.name;
                             
                             const enrollment = {
                                 userid: userId,
-                                course_id: course.id,
-                                course_name: course.name,
+                                course_id: course.id,           // ca-foundation
+                                course_name: properCourseName,  // CA Foundation
                                 price: price,
                                 enrolled_on: new Date().toISOString(),
                                 status: "Active"
                             };
+                            
+                            console.log("Creating enrollment with proper mapping:", enrollment);
                             
                             const promise = window.supabase
                                 .from('PSLV_enrollments')
