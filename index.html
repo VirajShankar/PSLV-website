@@ -54,92 +54,79 @@
             }
         }
         
-        /* MODERN HERO SECTION - CLEAN DESIGN */
+        /* CLEAN MODERN HERO SECTION - NO NESTED BOXES */
         .hero-section {
-            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%) !important;
-            color: white !important;
-            padding: 120px 0 100px 0 !important;
-            min-height: 70vh !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            position: relative !important;
-            overflow: hidden !important;
+            background: #dc3545; /* Solid color instead of gradient for cleaner look */
+            color: white;
+            padding: 120px 0;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            margin: 0;
+            border: none;
         }
         
+        /* Remove the ::before pseudo-element that might be causing the nested box */
         .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.1) !important;
-            z-index: 1;
+            display: none;
         }
         
         .hero-section .container {
-            position: relative !important;
-            z-index: 2 !important;
-            text-align: center !important;
-            max-width: 800px !important;
+            position: static;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 20px;
         }
         
         .hero-section h1 {
-            font-size: 4rem !important;
-            font-weight: 800 !important;
-            margin-bottom: 1.5rem !important;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.4) !important;
-            color: white !important;
-            letter-spacing: -1px !important;
-            line-height: 1.1 !important;
+            font-size: 3.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
         }
         
         .hero-section h2 {
-            font-size: 1.8rem !important;
-            font-weight: 300 !important;
-            margin-bottom: 3rem !important;
-            opacity: 0.95 !important;
-            color: white !important;
-            line-height: 1.4 !important;
-            font-style: italic !important;
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 3rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.4;
         }
         
         .hero-section .btn {
-            padding: 18px 40px !important;
-            font-size: 1.3rem !important;
-            font-weight: 600 !important;
-            text-transform: uppercase !important;
-            letter-spacing: 1px !important;
-            border-radius: 50px !important;
-            transition: all 0.3s ease !important;
-            border: 3px solid white !important;
-            background: transparent !important;
-            color: white !important;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+            padding: 16px 36px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 4px;
+            border: none;
+            background: white;
+            color: #dc3545;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
         
         .hero-section .btn:hover {
-            transform: translateY(-3px) !important;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3) !important;
-            background: white !important;
-            color: #dc3545 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            background: #f8f9fa;
         }
         
         @media (max-width: 768px) {
             .hero-section {
-                padding: 100px 0 80px 0 !important;
-                min-height: 60vh !important;
+                padding: 80px 0;
             }
             .hero-section h1 {
-                font-size: 2.8rem !important;
+                font-size: 2.5rem;
             }
             .hero-section h2 {
-                font-size: 1.4rem !important;
-            }
-            .hero-section .btn {
-                padding: 15px 30px !important;
-                font-size: 1.1rem !important;
+                font-size: 1.3rem;
+                margin-bottom: 2rem;
             }
         }
         
@@ -218,7 +205,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section - Simplified Structure -->
     <section class="hero-section">
         <div class="container">
             <h1>Welcome to PS Learning Ventures</h1>
@@ -543,6 +530,19 @@
             }
         });
 
+        document.addEventListener("DOMContentLoaded", function () {
+            // Check if the URL contains the #testimonial-form hash
+            if (window.location.hash === "#testimonial-form") {
+                const testimonialForm = document.getElementById("testimonial-form");
+                if (testimonialForm) {
+                    // Scroll to the testimonial form
+                    testimonialForm.scrollIntoView({ behavior: "smooth" });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
         document.addEventListener("DOMContentLoaded", function () {
             // Check if the URL contains the #testimonial-form hash
             if (window.location.hash === "#testimonial-form") {
