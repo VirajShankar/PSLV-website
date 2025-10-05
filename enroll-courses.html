@@ -58,20 +58,12 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
                     <li class="nav-item" id="loginStatus"></li>
-                    <li class="nav-item ms-2 d-flex align-items-center">
-                        <div class="form-check form-switch">
-                            <input class="form-check-input theme-toggle" type="checkbox" id="darkModeToggle">
-                            <label class="form-check-label" for="darkModeToggle">
-                                <i class="fas fa-moon"></i>
-                            </label>
-                        </div>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -426,6 +418,14 @@
                 document.getElementById('coursesContainer').innerHTML = `
                     <div class="alert alert-danger">
                         <i class="fas fa-exclamation-circle me-2"></i>
+                        Error loading courses: ${error.message}
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>
                         Error loading courses: ${error.message}
                     </div>
                 `;
