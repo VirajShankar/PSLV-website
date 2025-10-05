@@ -1,24 +1,11 @@
 {
-  "name": "prabha-shankar-learning",
+  "name": "prabha-shankar-learning-ventures",
   "version": "1.0.0",
-  "description": "Prabha Shankar Learning Ventures Website",
-  "main": "server.js",
+  "description": "Static HTML website for PS Learning Ventures",
+  "main": "index.html",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "echo 'Static site - no build needed'"
   },
-  "dependencies": {
-<<<<<<< HEAD
-    "body-parser": "^1.20.2",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
-    "express": "^4.18.2",
-    "mongoose": "^7.5.0"
-=======
-    "express": "^4.18.2"
->>>>>>> 348aafe (Initial Commit for PSLV)
-  },
-  "devDependencies": {
-    "nodemon": "^3.0.1"
-  }
+  "author": "Viraj Shankar",
+  "license": "MIT"
 }
