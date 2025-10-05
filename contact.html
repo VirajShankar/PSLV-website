@@ -13,7 +13,7 @@
     <nav class="navbar navbar-expand-lg bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <img src="logo.png" alt="Logo">
+                <img src="LOGO (1).svg" alt="PS Learning Ventures Logo">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -195,36 +195,4 @@
                 // Use direct fetch API to submit
                 const response = await fetch(`${SUPABASE_URL}/rest/v1/${TABLE_NAME}`, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'apikey': SUPABASE_KEY,
-                        'Authorization': `Bearer ${SUPABASE_KEY}`,
-                        'Prefer': 'return=minimal'
-                    },
-                    body: JSON.stringify(contactData)
-                });
-                
-                if (!response.ok) {
-                    throw new Error(`Error: ${response.status} ${response.statusText}`);
-                }
-                
-                // Show success message
-                document.getElementById('contactSuccess').style.display = 'block';
-                
-                // Reset form
-                document.getElementById('simpleContactForm').reset();
-            } catch (error) {
-                console.error("Form submission failed:", error);
-                
-                // Show error message
-                document.getElementById('errorMessage').textContent = error.message || 'Failed to send message';
-                document.getElementById('contactError').style.display = 'block';
-            } finally {
-                // Reset button state
-                document.getElementById('submitText').textContent = 'Send Message';
-                document.getElementById('submitSpinner').style.display = 'none';
-            }
-        });
-    </script>
-</body>
-</html>
+                    headers:
