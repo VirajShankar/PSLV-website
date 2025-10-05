@@ -65,7 +65,9 @@
                     <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
-                    <li class="nav-item" id="loginStatus"></li>
+                    <li class="nav-item" id="loginStatus">
+                        <!-- Auth-handler.js will populate this -->
+                    </li>
                 </ul>
             </div>
         </div>
@@ -395,7 +397,7 @@
                 <div class="mb-2"><i class="fas fa-envelope me-2 text-muted"></i> ${userData.email || 'No email provided'}</div>
                 ${userData.phone ? `<div class="mb-2"><i class="fas fa-phone me-2 text-muted"></i> ${userData.phone}</div>` : ''}
                 <div class="mb-2"><i class="fas fa-calendar me-2 text-muted"></i> Registered on: ${registeredDate}</div>
-                ${courseInterestDisplay}
+                ${courseInterestDisplay}out()">
                 <div class="mt-4">
                     <button class="btn btn-sm btn-outline-secondary" onclick="handleLogout()">
                         <i class="fas fa-sign-out-alt me-1"></i> Logout
@@ -552,11 +554,9 @@
             `);
         }
     </script>
+    <script src="js/auth-handler.js"></script>
 </body>
 </html>
-</html>
-        
-        // Show course details
         function showCourseDetails(courseId) {
             const course = courseData[courseId];
             alert(`

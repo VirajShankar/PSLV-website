@@ -251,7 +251,7 @@ window.checkLoginStatus = async function() {
     }
 };
 
-// NEW: Global logout handler
+// UPDATED: Global logout handler with UI refresh
 window.handleLogout = async function() {
     try {
         if (window.supabase) {
@@ -259,8 +259,20 @@ window.handleLogout = async function() {
         }
         // Clear any user data from local storage
         localStorage.removeItem('currentUser');
-        // Redirect to the homepage
-        window.location.href = 'index.html';
+        
+        // Update the UI to show login/register buttons
+        const loginStatusElement = document.getElementById('loginStatus');
+        if (loginStatusElement) {
+            loginStatusElement.innerHTML = `
+                <a href="login.html" class="btn btn-sm btn-outline-danger me-2">Login</a>
+                <a href="registration.html" class="btn btn-sm btn-danger">Register</a>
+            `;
+        }
+        
+        // Optional: Redirect to the homepage after a short delay
+        setTimeout(() => {
+            window.location.href = 'index.html';
+        }, 500);
     } catch (error) {
         console.error("Logout error:", error);
         // Still redirect even if there's an error
