@@ -12,9 +12,6 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-white shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="LOGO (1).svg" alt="PS Learning Ventures Logo">
-            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -195,4 +192,35 @@
                 // Use direct fetch API to submit
                 const response = await fetch(`${SUPABASE_URL}/rest/v1/${TABLE_NAME}`, {
                     method: 'POST',
-                    headers:
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${SUPABASE_KEY}`,
+                        'apikey': SUPABASE_KEY
+                    },
+                    body: JSON.stringify(contactData)
+                });
+                
+                // Check response status
+                if (response.ok) {
+                    // Show success message
+                    document.getElementById('contactSuccess').style.display = 'block';
+                    document.getElementById('simpleContactForm').reset();
+                } else {
+                    // Handle errors
+                    const errorData = await response.json();
+                    document.getElementById('errorMessage').textContent = errorData.message || 'Error sending message.';
+                    document.getElementById('contactError').style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('errorMessage').textContent = 'Error sending message.';
+                document.getElementById('contactError').style.display = 'block';
+            } finally {
+                // Reset form button state
+                document.getElementById('submitText').textContent = 'Send Message';
+                document.getElementById('submitSpinner').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

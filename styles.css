@@ -30,11 +30,6 @@ body {
     transform: scale(1.05);
 }
 
-/* Debug - add red border to see if element exists */
-.navbar-brand {
-    border: 2px solid red; /* TEMPORARY - remove after testing */
-}
-
 /* Ensure navbar has proper height for logo */
 .navbar {
     padding: 15px 0;
@@ -913,6 +908,11 @@ html {
     box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
 }
 
+/* Debug - add red border to see if element exists */
+.navbar-brand {
+    /* Remove this line: border: 2px solid red; */
+}
+
 /* Responsive adjustments */
 @media (max-width: 991.98px) {
     .navbar-nav {
@@ -1030,6 +1030,11 @@ html {
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* Add smooth scrolling to the whole page */
+html {
+    scroll-behavior: smooth;
+ (Initial Commit for PSLV)
+}
 /* Add smooth scrolling to the whole page */
 html {
     scroll-behavior: smooth;
