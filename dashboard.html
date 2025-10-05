@@ -244,6 +244,8 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/auth-handler.js"></script>
+    <script src="js/logout-helper.js"></script>
     <script>
         // Authentication check
         document.addEventListener("DOMContentLoaded", async function() {
@@ -397,7 +399,7 @@
                 <div class="mb-2"><i class="fas fa-envelope me-2 text-muted"></i> ${userData.email || 'No email provided'}</div>
                 ${userData.phone ? `<div class="mb-2"><i class="fas fa-phone me-2 text-muted"></i> ${userData.phone}</div>` : ''}
                 <div class="mb-2"><i class="fas fa-calendar me-2 text-muted"></i> Registered on: ${registeredDate}</div>
-                ${courseInterestDisplay}out()">
+                ${courseInterestDisplay}out()">out()">
                 <div class="mt-4">
                     <button class="btn btn-sm btn-outline-secondary" onclick="handleLogout()">
                         <i class="fas fa-sign-out-alt me-1"></i> Logout
@@ -554,10 +556,8 @@
             `);
         }
     </script>
-    <script src="js/auth-handler.js"></script>
 </body>
 </html>
-        function showCourseDetails(courseId) {
             const course = courseData[courseId];
             alert(`
                 Course: ${course.name}

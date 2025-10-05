@@ -251,32 +251,35 @@ window.checkLoginStatus = async function() {
     }
 };
 
-// UPDATED: Global logout handler with UI refresh
+// FIXED: Global logout handler with more reliable behavior
 window.handleLogout = async function() {
+    console.log("Logout function called");
     try {
-        if (window.supabase) {
-            await window.supabase.auth.signOut();
-        }
-        // Clear any user data from local storage
-        localStorage.removeItem('currentUser');
-        
-        // Update the UI to show login/register buttons
+        // First update UI to indicate logout is happening
         const loginStatusElement = document.getElementById('loginStatus');
         if (loginStatusElement) {
             loginStatusElement.innerHTML = `
-                <a href="login.html" class="btn btn-sm btn-outline-danger me-2">Login</a>
-                <a href="registration.html" class="btn btn-sm btn-danger">Register</a>
+                <span class="spinner-border spinner-border-sm text-danger" role="status"></span>
+                <span class="ms-2">Logging out...</span>
             `;
         }
         
-        // Optional: Redirect to the homepage after a short delay
-        setTimeout(() => {
-            window.location.href = 'index.html';
-        }, 500);
+        // Clear local storage first (do this before the async call)
+        localStorage.removeItem('currentUser');
+        
+        // Sign out from Supabase
+        if (window.supabase && window.supabase.auth) {
+            await window.supabase.auth.signOut();
+        }
+        
+        console.log("Logout successful");
+        
+        // Redirect to home page
+        window.location.href = 'index.html';
     } catch (error) {
         console.error("Logout error:", error);
-        // Still redirect even if there's an error
-        window.location.href = 'index.html';
+        alert("There was a problem logging out. Refreshing the page.");
+        window.location.reload();
     }
 };
 
