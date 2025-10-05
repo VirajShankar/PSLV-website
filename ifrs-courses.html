@@ -10,6 +10,29 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/supabase-init.js"></script>
     <script src="js/app.js"></script>
+    <style>
+        .prospectus-section {
+            padding: 60px 0;
+            background-color: #f8f9fa;
+        }
+        .prospectus-title {
+            margin-bottom: 40px;
+            font-weight: 700;
+            color: #343a40;
+        }
+        .paper-card {
+            border: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        .paper-card .card-header {
+            background-color: white;
+            border-left: 4px solid #dc3545;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #343a40;
+            padding: 1.25rem;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-white shadow-sm">
@@ -33,68 +56,34 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-9">
-                    <h1 class="text-center prospectus-title">IFRS Course Prospectus</h1>
+                    <h1 class="text-center prospectus-title">IFRS Course Modules</h1>
                     
-                    <div class="accordion" id="ifrsAccordion">
-                        <!-- Foundation Module -->
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    Foundation Module
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#ifrsAccordion">
-                                <div class="accordion-body">
-                                    <p>Foundation Module</p>
-                                </div>
-                            </div>
+                    <div class="card paper-card mb-3">
+                        <div class="card-header">
+                           Foundation Module
                         </div>
+                    </div>
 
-                        <!-- Core Standards Module -->
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    Core Standards Module
-                                </button>
-                            </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#ifrsAccordion">
-                                <div class="accordion-body">
-                                    <p>Core Standards Module</p>
-                                </div>
-                            </div>
+                    <div class="card paper-card mb-3">
+                        <div class="card-header">
+                           Core Standards Module
                         </div>
-
-                        <!-- Advanced Module -->
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingThree">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    Advanced Module
-                                </button>
-                            </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#ifrsAccordion">
-                                <div class="accordion-body">
-                                    <p>Advanced Module</p>
-                                </div>
-                            </div>
+                    </div>
+                    
+                    <div class="card paper-card mb-3">
+                        <div class="card-header">
+                           Advanced Module
                         </div>
+                    </div>
 
-                        <!-- Specialized Topics -->
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingFour">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                    Specialized Topics
-                                </button>
-                            </h2>
-                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#ifrsAccordion">
-                                <div class="accordion-body">
-                                    <p>Specialized Topics</p>
-                                </div>
-                            </div>
+                    <div class="card paper-card mb-3">
+                        <div class="card-header">
+                           Specialized Topics
                         </div>
                     </div>
 
                     <div class="text-center mt-5">
-                        <a href="registration.html" class="btn prospectus-cta">Proceed to Registration</a>
+                        <a href="registration.html" class="btn btn-danger btn-lg">Proceed to Registration</a>
                     </div>
                 </div>
             </div>
