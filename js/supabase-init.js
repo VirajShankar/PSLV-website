@@ -17,6 +17,10 @@ window.courseData = {
     accountancy: { 
         name: "Accountancy",
         description: "11th & 12th Standard Course"
+    },
+    "ca-foundation": { 
+        name: "CA Foundation",
+        description: "Chartered Accountant Foundation Course"
     }
 };
 

@@ -361,6 +361,12 @@ const courseData = {
         name: "11th & 12th Accountancy",
         description: "High school accountancy preparation",
         subjects: ["Accounting Principles", "Financial Statements", "Corporate Accounting"]
+    },
+    "ca-foundation": {
+        id: "ca-foundation",
+        name: "CA Foundation",
+        description: "Chartered Accountant Foundation Course",
+        subjects: ["Principles of Accounting", "Business Laws", "Business Mathematics", "Business Economics"]
     }
 };
 
@@ -377,6 +383,8 @@ const Search = {
               keywords: 'international financial reporting standards accounting' },
             { title: 'Accountancy', url: 'accountancy-courses.html', type: 'course',
               keywords: '11th 12th standard high school accounting' },
+            { title: 'CA Foundation', url: 'ca-foundation-courses.html', type: 'course',
+              keywords: 'chartered accountant foundation ca commerce accounting basics' },
             { title: 'About Us', url: 'about.html', type: 'page',
               keywords: 'company history mission vision achievements' },
             { title: 'Contact Us', url: 'contact.html', type: 'page',
