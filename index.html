@@ -59,37 +59,50 @@
             background: #dc3545 !important;
             padding: 100px 0 !important;
             margin: 0 !important;
-            position: relative;
-            min-height: 60vh;
+            position: relative !important;
+            min-height: 60vh !important;
             width: 100% !important;
             box-sizing: border-box !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            border: none !important;
+            box-shadow: none !important;
         }
 
-        /* Remove all overlay effects that create nested boxes */
-        .hero-overlay {
+        /* FORCE REMOVE ANY NESTED BACKGROUNDS OR OVERLAYS */
+        .hero-section,
+        .hero-section *,
+        .hero-section .container,
+        .hero-section .hero-content {
+            background-color: transparent !important;
+            background-image: none !important;
+            background: none !important;
+            border: none !important;
+            box-shadow: none !important;
+            border-radius: 0 !important;
+        }
+
+        /* FORCE HERO SECTION TO HAVE SOLID RED BACKGROUND ONLY */
+        .hero-section {
+            background-color: #dc3545 !important;
+            background-image: none !important;
+        }
+
+        /* Remove any pseudo-elements */
+        .hero-section::before,
+        .hero-section::after {
             display: none !important;
+            content: none !important;
         }
 
-        /* Ensure content container doesn't create a box effect */
         .hero-content {
             position: relative;
             text-align: center;
             padding: 0 15px;
             max-width: 1200px;
             margin: 0 auto;
-            background: none !important;
-            border: none !important;
-            box-shadow: none !important;
             z-index: 1;
-        }
-
-        /* Remove any Bootstrap container styling that might create boxes */
-        .hero-section .container,
-        .hero-section .hero-content {
-            background: transparent !important;
-            border: none !important;
-            box-shadow: none !important;
-            border-radius: 0 !important;
         }
 
         .hero-section h1 {
