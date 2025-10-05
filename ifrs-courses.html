@@ -29,92 +29,100 @@
         </div>
     </nav>
 
-    <section class="course-details">
+    <section class="prospectus-section">
         <div class="container">
-            <h1 class="text-center mb-5">IFRS Course Details</h1>
-            
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <form action="registration.html" method="get">
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <h1 class="text-center prospectus-title">IFRS Course Prospectus</h1>
+                    
+                    <div class="accordion" id="ifrsAccordion">
                         <!-- Foundation Module -->
-                        <div class="paper-selection">
-                            <h3>Foundation Module</h3>
-                            <div class="paper-checkbox">
-                                <input type="checkbox" id="ifrs1" name="modules[]" value="ifrs1">
-                                <label for="ifrs1">IFRS 1 - First-time Adoption of IFRS</label>
-                                <p class="paper-description">Learn the principles and requirements for first-time adoption of IFRS standards.</p>
-                            </div>
-                            <div class="paper-checkbox">
-                                <input type="checkbox" id="conceptual" name="modules[]" value="conceptual">
-                                <label for="conceptual">Conceptual Framework</label>
-                                <p class="paper-description">Understanding the fundamental concepts and principles underlying IFRS.</p>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Foundation Module
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#ifrsAccordion">
+                                <div class="accordion-body">
+                                    <ul class="topic-list">
+                                        <li class="topic-item">
+                                            <i class="fas fa-flag topic-icon"></i>
+                                            <div class="topic-content">
+                                                <h5>IFRS 1 - First-time Adoption of IFRS</h5>
+                                                <p>Learn the principles and requirements for first-time adoption of IFRS standards.</p>
+                                            </div>
+                                        </li>
+                                        <li class="topic-item">
+                                            <i class="fas fa-book-open topic-icon"></i>
+                                            <div class="topic-content">
+                                                <h5>Conceptual Framework</h5>
+                                                <p>Understanding the fundamental concepts and principles underlying IFRS.</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Core Standards Module -->
-                        <div class="paper-selection">
-                            <h3>Core Standards Module</h3>
-                            <div class="paper-checkbox">
-                                <input type="checkbox" id="presentation" name="modules[]" value="presentation">
-                                <label for="presentation">Financial Statement Presentation</label>
-                                <p class="paper-description">IAS 1, IAS 7, and related standards for financial statement presentation.</p>
-                            </div>
-                            <div class="paper-checkbox">
-                                <input type="checkbox" id="revenue" name="modules[]" value="revenue">
-                                <label for="revenue">IFRS 15 - Revenue Recognition</label>
-                                <p class="paper-description">Comprehensive coverage of revenue recognition principles and practices.</p>
-                            </div>
-                            <div class="paper-checkbox">
-                                <input type="checkbox" id="leases" name="modules[]" value="leases">
-                                <label for="leases">IFRS 16 - Leases</label>
-                                <p class="paper-description">Understanding lease accounting and its implications.</p>
-                            </div>
-                            <div class="paper-checkbox">
-                                <input type="checkbox" id="financial" name="modules[]" value="financial">
-                                <label for="financial">IFRS 9 - Financial Instruments</label>
-                                <p class="paper-description">Classification, measurement, and recognition of financial instruments.</p>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Core Standards Module
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#ifrsAccordion">
+                                <div class="accordion-body">
+                                    <ul class="topic-list">
+                                        <li class="topic-item"><i class="fas fa-file-alt topic-icon"></i><div class="topic-content"><h5>Financial Statement Presentation</h5><p>IAS 1, IAS 7, and related standards for financial statement presentation.</p></div></li>
+                                        <li class="topic-item"><i class="fas fa-handshake topic-icon"></i><div class="topic-content"><h5>IFRS 15 - Revenue Recognition</h5><p>Comprehensive coverage of revenue recognition principles and practices.</p></div></li>
+                                        <li class="topic-item"><i class="fas fa-file-signature topic-icon"></i><div class="topic-content"><h5>IFRS 16 - Leases</h5><p>Understanding lease accounting and its implications.</p></div></li>
+                                        <li class="topic-item"><i class="fas fa-chart-line topic-icon"></i><div class="topic-content"><h5>IFRS 9 - Financial Instruments</h5><p>Classification, measurement, and recognition of financial instruments.</p></div></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Advanced Module -->
-                        <div class="paper-selection">
-                            <h3>Advanced Module</h3>
-                            <div class="paper-checkbox">
-                                <input type="checkbox" id="consolidation" name="modules[]" value="consolidation">
-                                <label for="consolidation">IFRS 10 - Consolidated Financial Statements</label>
-                                <p class="paper-description">Group accounting and consolidation procedures.</p>
-                            </div>
-                            <div class="paper-checkbox">
-                                <input type="checkbox" id="disclosure" name="modules[]" value="disclosure">
-                                <label for="disclosure">IFRS 12 - Disclosure of Interests</label>
-                                <p class="paper-description">Disclosure requirements for interests in other entities.</p>
-                            </div>
-                            <div class="paper-checkbox">
-                                <input type="checkbox" id="fairvalue" name="modules[]" value="fairvalue">
-                                <label for="fairvalue">IFRS 13 - Fair Value Measurement</label>
-                                <p class="paper-description">Principles and requirements for fair value measurements.</p>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Advanced Module
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#ifrsAccordion">
+                                <div class="accordion-body">
+                                    <ul class="topic-list">
+                                        <li class="topic-item"><i class="fas fa-sitemap topic-icon"></i><div class="topic-content"><h5>IFRS 10 - Consolidated Financial Statements</h5><p>Group accounting and consolidation procedures.</p></div></li>
+                                        <li class="topic-item"><i class="fas fa-eye topic-icon"></i><div class="topic-content"><h5>IFRS 12 - Disclosure of Interests</h5><p>Disclosure requirements for interests in other entities.</p></div></li>
+                                        <li class="topic-item"><i class="fas fa-balance-scale-right topic-icon"></i><div class="topic-content"><h5>IFRS 13 - Fair Value Measurement</h5><p>Principles and requirements for fair value measurements.</p></div></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Specialized Topics -->
-                        <div class="paper-selection">
-                            <h3>Specialized Topics</h3>
-                            <div class="paper-checkbox">
-                                <input type="checkbox" id="insurance" name="modules[]" value="insurance">
-                                <label for="insurance">IFRS 17 - Insurance Contracts</label>
-                                <p class="paper-description">Accounting for insurance contracts and related disclosures.</p>
-                            </div>
-                            <div class="paper-checkbox">
-                                <input type="checkbox" id="segments" name="modules[]" value="segments">
-                                <label for="segments">IFRS 8 - Operating Segments</label>
-                                <p class="paper-description">Segment reporting and disclosure requirements.</p>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    Specialized Topics
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#ifrsAccordion">
+                                <div class="accordion-body">
+                                    <ul class="topic-list">
+                                        <li class="topic-item"><i class="fas fa-shield-alt topic-icon"></i><div class="topic-content"><h5>IFRS 17 - Insurance Contracts</h5><p>Accounting for insurance contracts and related disclosures.</p></div></li>
+                                        <li class="topic-item"><i class="fas fa-puzzle-piece topic-icon"></i><div class="topic-content"><h5>IFRS 8 - Operating Segments</h5><p>Segment reporting and disclosure requirements.</p></div></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="text-center mt-4">
-                            <button type="submit" class="btn btn-success btn-lg">Proceed to Registration</button>
-                        </div>
-                    </form>
+                    <div class="text-center mt-5">
+                        <a href="registration.html" class="btn prospectus-cta">Proceed to Registration</a>
+                    </div>
                 </div>
             </div>
         </div>

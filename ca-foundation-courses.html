@@ -29,97 +29,161 @@
         </div>
     </nav>
 
-    <section class="course-details">
+    <section class="prospectus-section">
         <div class="container">
-            <h1 class="text-center mb-5">CA Foundation Course Details</h1>
-            
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <form action="registration.html" method="get">
-                        <!-- Paper 1 - Principles and Practice of Accounting -->
-                        <div class="paper-selection">
-                            <h3>Paper 1: Principles and Practice of Accounting</h3>
-                            <div class="paper-checkbox">
-                                <input type="checkbox" id="accounting-basics" name="subjects[]" value="accounting-basics">
-                                <label for="accounting-basics">Accounting Basics and Concepts</label>
-                                <p class="paper-description">Fundamental principles of accounting, double entry system, and basic accounting concepts.</p>
-                            </div>
-                            <div class="paper-checkbox">
-                                <input type="checkbox" id="financial-statements" name="subjects[]" value="financial-statements">
-                                <label for="financial-statements">Financial Statements Preparation</label>
-                                <p class="paper-description">Preparation of Trading Account, Profit & Loss Account, and Balance Sheet.</p>
-                            </div>
-                            <div class="paper-checkbox">
-                                <input type="checkbox" id="bank-reconciliation" name="subjects[]" value="bank-reconciliation">
-                                <label for="bank-reconciliation">Bank Reconciliation Statement</label>
-                                <p class="paper-description">Preparation and understanding of bank reconciliation statements.</p>
-                            </div>
-                        </div>
-
-                        <!-- Paper 2 - Business Laws & Business Correspondence -->
-                        <div class="paper-selection">
-                            <h3>Paper 2: Business Laws & Business Correspondence and Reporting</h3>
-                            <div class="paper-checkbox">
-                                <input type="checkbox" id="indian-contract-act" name="subjects[]" value="indian-contract-act">
-                                <label for="indian-contract-act">Indian Contract Act, 1872</label>
-                                <p class="paper-description">Comprehensive study of contract law including formation, performance, and breach of contracts.</p>
-                            </div>
-                            <div class="paper-checkbox">
-                                <input type="checkbox" id="sale-of-goods-act" name="subjects[]" value="sale-of-goods-act">
-                                <label for="sale-of-goods-act">Sale of Goods Act, 1930</label>
-                                <p class="paper-description">Laws governing sale of goods, conditions and warranties, transfer of ownership.</p>
-                            </div>
-                            <div class="paper-checkbox">
-                                <input type="checkbox" id="business-correspondence" name="subjects[]" value="business-correspondence">
-                                <label for="business-correspondence">Business Correspondence</label>
-                                <p class="paper-description">Business communication, letter writing, and report preparation skills.</p>
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <h1 class="text-center prospectus-title">CA Foundation Prospectus</h1>
+                    
+                    <div class="accordion" id="caFoundationAccordion">
+                        <!-- Paper 1 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Paper 1: Principles and Practice of Accounting
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#caFoundationAccordion">
+                                <div class="accordion-body">
+                                    <ul class="topic-list">
+                                        <li class="topic-item">
+                                            <i class="fas fa-calculator topic-icon"></i>
+                                            <div class="topic-content">
+                                                <h5>Accounting Basics and Concepts</h5>
+                                                <p>Fundamental principles of accounting, double entry system, and basic accounting concepts.</p>
+                                            </div>
+                                        </li>
+                                        <li class="topic-item">
+                                            <i class="fas fa-file-invoice-dollar topic-icon"></i>
+                                            <div class="topic-content">
+                                                <h5>Financial Statements Preparation</h5>
+                                                <p>Preparation of Trading Account, Profit & Loss Account, and Balance Sheet.</p>
+                                            </div>
+                                        </li>
+                                        <li class="topic-item">
+                                            <i class="fas fa-university topic-icon"></i>
+                                            <div class="topic-content">
+                                                <h5>Bank Reconciliation Statement</h5>
+                                                <p>Preparation and understanding of bank reconciliation statements.</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Paper 3 - Business Mathematics and Logical Reasoning -->
-                        <div class="paper-selection">
-                            <h3>Paper 3: Business Mathematics and Logical Reasoning & Statistics</h3>
-                            <div class="paper-checkbox">
-                                <input type="checkbox" id="business-mathematics" name="subjects[]" value="business-mathematics">
-                                <label for="business-mathematics">Business Mathematics</label>
-                                <p class="paper-description">Ratio, proportion, partnership, simple and compound interest, time value of money.</p>
-                            </div>
-                            <div class="paper-checkbox">
-                                <input type="checkbox" id="logical-reasoning" name="subjects[]" value="logical-reasoning">
-                                <label for="logical-reasoning">Logical Reasoning</label>
-                                <p class="paper-description">Number series, coding-decoding, blood relations, direction sense, and analytical reasoning.</p>
-                            </div>
-                            <div class="paper-checkbox">
-                                <input type="checkbox" id="statistics" name="subjects[]" value="statistics">
-                                <label for="statistics">Statistics</label>
-                                <p class="paper-description">Statistical analysis, measures of central tendency, probability, and correlation.</p>
-                            </div>
-                        </div>
-
-                        <!-- Paper 4 - Business Economics -->
-                        <div class="paper-selection">
-                            <h3>Paper 4: Business Economics & Business and Commercial Knowledge</h3>
-                            <div class="paper-checkbox">
-                                <input type="checkbox" id="microeconomics" name="subjects[]" value="microeconomics">
-                                <label for="microeconomics">Microeconomics</label>
-                                <p class="paper-description">Theory of demand and supply, production, cost analysis, and market structures.</p>
-                            </div>
-                            <div class="paper-checkbox">
-                                <input type="checkbox" id="macroeconomics" name="subjects[]" value="macroeconomics">
-                                <label for="macroeconomics">Macroeconomics</label>
-                                <p class="paper-description">National income, money and banking, fiscal policy, and international trade.</p>
-                            </div>
-                            <div class="paper-checkbox">
-                                <input type="checkbox" id="business-knowledge" name="subjects[]" value="business-knowledge">
-                                <label for="business-knowledge">Business and Commercial Knowledge</label>
-                                <p class="paper-description">Business environment, forms of business organization, and current business trends.</p>
+                        <!-- Paper 2 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Paper 2: Business Laws & Business Correspondence
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#caFoundationAccordion">
+                                <div class="accordion-body">
+                                    <ul class="topic-list">
+                                        <li class="topic-item">
+                                            <i class="fas fa-gavel topic-icon"></i>
+                                            <div class="topic-content">
+                                                <h5>Indian Contract Act, 1872</h5>
+                                                <p>Comprehensive study of contract law including formation, performance, and breach of contracts.</p>
+                                            </div>
+                                        </li>
+                                        <li class="topic-item">
+                                            <i class="fas fa-balance-scale topic-icon"></i>
+                                            <div class="topic-content">
+                                                <h5>Sale of Goods Act, 1930</h5>
+                                                <p>Laws governing sale of goods, conditions and warranties, transfer of ownership.</p>
+                                            </div>
+                                        </li>
+                                        <li class="topic-item">
+                                            <i class="fas fa-pen-nib topic-icon"></i>
+                                            <div class="topic-content">
+                                                <h5>Business Correspondence</h5>
+                                                <p>Business communication, letter writing, and report preparation skills.</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="text-center mt-4">
-                            <button type="submit" class="btn btn-success btn-lg">Proceed to Registration</button>
+                        <!-- Paper 3 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Paper 3: Business Mathematics and Logical Reasoning
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#caFoundationAccordion">
+                                <div class="accordion-body">
+                                    <ul class="topic-list">
+                                        <li class="topic-item">
+                                            <i class="fas fa-infinity topic-icon"></i>
+                                            <div class="topic-content">
+                                                <h5>Business Mathematics</h5>
+                                                <p>Ratio, proportion, partnership, simple and compound interest, time value of money.</p>
+                                            </div>
+                                        </li>
+                                        <li class="topic-item">
+                                            <i class="fas fa-lightbulb topic-icon"></i>
+                                            <div class="topic-content">
+                                                <h5>Logical Reasoning</h5>
+                                                <p>Number series, coding-decoding, blood relations, direction sense, and analytical reasoning.</p>
+                                            </div>
+                                        </li>
+                                        <li class="topic-item">
+                                            <i class="fas fa-chart-pie topic-icon"></i>
+                                            <div class="topic-content">
+                                                <h5>Statistics</h5>
+                                                <p>Statistical analysis, measures of central tendency, probability, and correlation.</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                    </form>
+
+                        <!-- Paper 4 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    Paper 4: Business Economics & Commercial Knowledge
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#caFoundationAccordion">
+                                <div class="accordion-body">
+                                    <ul class="topic-list">
+                                        <li class="topic-item">
+                                            <i class="fas fa-store topic-icon"></i>
+                                            <div class="topic-content">
+                                                <h5>Microeconomics</h5>
+                                                <p>Theory of demand and supply, production, cost analysis, and market structures.</p>
+                                            </div>
+                                        </li>
+                                        <li class="topic-item">
+                                            <i class="fas fa-globe-americas topic-icon"></i>
+                                            <div class="topic-content">
+                                                <h5>Macroeconomics</h5>
+                                                <p>National income, money and banking, fiscal policy, and international trade.</p>
+                                            </div>
+                                        </li>
+                                        <li class="topic-item">
+                                            <i class="fas fa-briefcase topic-icon"></i>
+                                            <div class="topic-content">
+                                                <h5>Business and Commercial Knowledge</h5>
+                                                <p>Business environment, forms of business organization, and current business trends.</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-5">
+                        <a href="registration.html" class="btn prospectus-cta">Proceed to Registration</a>
+                    </div>
                 </div>
             </div>
         </div>
