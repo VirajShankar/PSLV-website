@@ -37,6 +37,7 @@
             padding: 10px 0;
             min-height: auto;
             height: auto;
+            background: white !important;
         }
         
         .navbar .container {
@@ -52,75 +53,93 @@
             }
         }
         
-        /* HERO SECTION STYLING - RED BACKGROUND */
+        /* HERO SECTION STYLING - CLEAN RED BACKGROUND */
         .hero-section {
-            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
-            color: white;
-            padding: 120px 0;
-            min-height: 70vh;
-            display: flex;
-            align-items: center;
-            margin-top: 0;
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%) !important;
+            color: white !important;
+            padding: 100px 0 !important;
+            min-height: 60vh !important;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: none !important;
+        }
+        
+        .hero-section .container {
+            position: relative;
+            z-index: 2;
         }
         
         .hero-section h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: 3.5rem !important;
+            font-weight: 700 !important;
+            margin-bottom: 1.5rem !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3) !important;
+            color: white !important;
         }
         
         .hero-section h2 {
-            font-size: 1.5rem;
-            font-weight: 400;
-            margin-bottom: 2rem;
-            opacity: 0.95;
+            font-size: 1.8rem !important;
+            font-weight: 400 !important;
+            margin-bottom: 2rem !important;
+            opacity: 0.95 !important;
+            color: white !important;
+            line-height: 1.4 !important;
         }
         
         .hero-section .btn {
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: 50px;
-            transition: all 0.3s ease;
+            padding: 15px 30px !important;
+            font-size: 1.2rem !important;
+            font-weight: 600 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+            border-radius: 50px !important;
+            transition: all 0.3s ease !important;
+            border: none !important;
+            background: #ffc107 !important;
+            color: #000 !important;
         }
         
         .hero-section .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3) !important;
+            background: #e0a800 !important;
         }
         
         @media (max-width: 768px) {
             .hero-section h1 {
-                font-size: 2.5rem;
+                font-size: 2.5rem !important;
             }
             .hero-section h2 {
-                font-size: 1.2rem;
+                font-size: 1.3rem !important;
             }
+        }
+        
+        /* Remove any conflicting styles */
+        .hero-section * {
+            box-sizing: border-box;
         }
         
         /* Animation classes */
         .fade-up {
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 1s ease forwards;
+            opacity: 1 !important;
+            transform: translateY(0) !important;
         }
         
         .delay-1 {
-            animation-delay: 0.3s;
+            animation-delay: 0s !important;
         }
         
         .delay-2 {
-            animation-delay: 0.6s;
-        }
-        
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            animation-delay: 0s !important;
         }
         
         /* Founder Section Styling */
@@ -201,9 +220,9 @@
     <!-- Hero Section -->
     <section class="hero-section text-center">
         <div class="container">
-            <h1 class="fade-up">Welcome to PS Learning Ventures</h1>
-            <h2 class="fade-up delay-1">Your Partner in propelling your future</h2>
-            <a href="registration.html" class="btn btn-warning mt-4 fade-up delay-2">Register Now</a>
+            <h1>Welcome to PS Learning Ventures</h1>
+            <h2>Your Partner in propelling your future</h2>
+            <a href="registration.html" class="btn btn-warning mt-4">REGISTER NOW</a>
         </div>
     </section>
 
