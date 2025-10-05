@@ -733,6 +733,16 @@ html {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
+.accordion-body p {
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 0;
+}
+
+.accordion-body p:last-child {
+    border-bottom: none;
+}
+
 .topic-list {
     list-style: none;
     padding: 0;
