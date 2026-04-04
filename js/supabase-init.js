@@ -1,8 +1,8 @@
 // Simplified Supabase initialization with proper error handling
 
 // Your Supabase project details
-const SUPABASE_URL = 'https://berfykdzrhhayqzjpyua.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJlcmZ5a2R6cmhoYXlxempweXVhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI5NzAzOTgsImV4cCI6MjA1ODU0NjM5OH0.DIjkvmjKsZ3G45M4vR_V_pqsOwHBz7s70IAlmE7aDZ4';
+const SUPABASE_URL = 'https://kvvhgkvkxlfocmjsshkx.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt2dmhna3ZreGxmb2NtanNzaGt4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUzMTU0NzQsImV4cCI6MjA5MDg5MTQ3NH0.WlEUmV3N_W8InrbG73ay4y5o4TuG4U-ALopfZuSpzHk';
 
 // Course data for enrollment - FIXED: Ensure ca-foundation is properly mapped
 window.courseData = {
