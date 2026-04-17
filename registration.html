@@ -4,409 +4,594 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - Prabha Shankar Learning Ventures</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-    <style>
-        .registration-card {
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border-top: 5px solid #dc3545;
-            transition: all 0.3s ease;
-        }
-        
-        .registration-card:hover {
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-        }
-        
-        .form-control:focus {
-            border-color: #dc3545;
-            box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
-        }
-        
-        .form-label {
-            font-weight: 500;
-        }
-        
-        .input-group-text {
-            background-color: #dc3545;
-            color: white;
-            border: none;
-        }
-        
-        .btn-register {
-            background-color: #dc3545;
-            border: none;
-            padding: 10px 30px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-register:hover {
-            background-color: #c82333;
-            transform: translateY(-2px);
-        }
-        
-        .loading-spinner {
-            display: none;
-            margin-left: 10px;
-        }
-        
-        .alert {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .course-select {
-            margin-bottom: 1.5rem;
-        }
-    </style>
-    
+    <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/supabase-init.js"></script>
     <script src="js/app.js"></script>
+    <style>
+        html, body { height: 100%; }
+
+        .auth-wrapper {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .auth-main {
+            flex: 1;
+            display: flex;
+        }
+
+        /* LEFT BRAND PANEL */
+        .auth-brand-panel {
+            width: 40%;
+            background: linear-gradient(145deg, var(--primary-dark) 0%, var(--primary) 55%, var(--primary-light) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 48px 52px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-brand-panel::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 10% 80%, rgba(255,255,255,0.07) 0%, transparent 45%),
+                radial-gradient(circle at 90% 15%, rgba(255,255,255,0.06) 0%, transparent 40%);
+        }
+
+        .auth-brand-panel > * { position: relative; z-index: 1; }
+
+        .auth-logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .auth-logo .dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--accent-light);
+            border-radius: 50%;
+            margin: 0 1px 3px;
+        }
+
+        .auth-brand-panel .brand-headline {
+            color: white;
+            font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        .auth-brand-panel .brand-sub {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.93rem;
+            line-height: 1.7;
+        }
+
+        .course-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 1.8rem;
+        }
+
+        .course-badge {
+            background: rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.9);
+            border: 1px solid rgba(255,255,255,0.25);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .auth-trust-items { margin-top: 2rem; }
+
+        .auth-trust-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 0.9rem;
+            color: rgba(255,255,255,0.85);
+            font-size: 0.87rem;
+            font-weight: 500;
+        }
+
+        .auth-trust-item i {
+            color: var(--accent-light);
+            font-size: 0.88rem;
+            width: 16px;
+            flex-shrink: 0;
+        }
+
+        .auth-brand-footer {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.78rem;
+        }
+
+        /* RIGHT FORM PANEL */
+        .auth-form-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 40px;
+            background: var(--white);
+            overflow-y: auto;
+        }
+
+        .auth-form-inner {
+            width: 100%;
+            max-width: 460px;
+        }
+
+        .auth-form-inner h1 {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--dark-2);
+            margin-bottom: 0.35rem;
+        }
+
+        .auth-form-inner .auth-subtitle {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .form-label {
+            font-size: 0.84rem;
+            font-weight: 600;
+            color: var(--dark-2);
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .auth-input-group {
+            position: relative;
+            margin-bottom: 16px;
+        }
+
+        .auth-input-group .field-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .auth-input-group .form-control,
+        .auth-input-group .form-select {
+            padding: 11px 14px 11px 40px;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 0.92rem;
+            transition: var(--transition);
+            background: var(--light-bg);
+        }
+
+        .auth-input-group .form-select { padding-left: 40px; }
+
+        .auth-input-group .form-control:focus,
+        .auth-input-group .form-select:focus {
+            border-color: var(--primary);
+            background: var(--white);
+            box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.1);
+            outline: none;
+        }
+
+        .form-hint {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 4px 6px;
+            font-size: 0.82rem;
+            z-index: 3;
+            transition: var(--transition);
+        }
+
+        .toggle-password:hover { color: var(--primary); }
+
+        .course-option-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .course-option-pill {
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 10px 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            background: var(--light-bg);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .course-option-pill:hover {
+            border-color: var(--primary);
+            background: rgba(192, 57, 43, 0.04);
+        }
+
+        .course-option-pill input[type="radio"] { display: none; }
+
+        .course-option-pill.selected {
+            border-color: var(--primary);
+            background: rgba(192, 57, 43, 0.06);
+        }
+
+        .course-option-pill .pill-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 6px;
+            background: rgba(192, 57, 43, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .course-option-pill.selected .pill-icon { background: rgba(192, 57, 43, 0.18); }
+
+        .course-option-pill .pill-icon i { color: var(--primary); font-size: 0.8rem; }
+
+        .course-option-pill .pill-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--dark-2);
+            line-height: 1.2;
+        }
+
+        .auth-submit-btn {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 13px;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 0.97rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 14px rgba(192, 57, 43, 0.3);
+            margin-top: 4px;
+        }
+
+        .auth-submit-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(192, 57, 43, 0.38);
+        }
+
+        .auth-submit-btn:disabled {
+            opacity: 0.7;
+            transform: none;
+            cursor: not-allowed;
+        }
+
+        .auth-switch {
+            text-align: center;
+            font-size: 0.87rem;
+            color: var(--text-muted);
+            margin-top: 1.2rem;
+        }
+
+        .auth-switch a {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .auth-switch a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .auth-brand-panel { display: none; }
+            .auth-form-panel { padding: 36px 20px; }
+            .course-option-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-white shadow-sm">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
-                    <li class="nav-item" id="loginStatus"></li>
-                </ul>
-            </div>
-        </div>
+
+<div class="auth-wrapper">
+    <!-- MINIMAL TOP NAV -->
+    <nav style="height:60px; background:var(--white); border-bottom:1px solid var(--border); display:flex; align-items:center; padding:0 32px; position:sticky; top:0; z-index:100; flex-shrink:0;">
+        <a href="index.html" style="font-size:1.1rem; font-weight:800; color:var(--primary); text-decoration:none; letter-spacing:-0.3px;">
+            PS<span style="display:inline-block; width:7px; height:7px; background:var(--accent); border-radius:50%; margin:0 1px 3px;"></span>LV
+        </a>
+        <span style="margin-left:auto; font-size:0.85rem; color:var(--text-muted);">
+            Already registered? <a href="login.html" style="color:var(--primary); font-weight:600; text-decoration:none;">Sign in</a>
+        </span>
     </nav>
 
-    <section class="registration-section py-5">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="registration-card p-4 p-md-5 bg-white">
-                        <h1 class="text-center mb-4">Start Your Learning Journey</h1>
-                        <p class="text-center text-muted mb-4">Join our community of successful students and take the first step towards your career goals.</p>
-                        
-                        <div class="alert alert-success" id="successAlert" role="alert">
-                            <i class="fas fa-check-circle me-2"></i> Registration successful! Redirecting you to homepage...
+    <div class="auth-main">
+
+        <!-- BRAND PANEL -->
+        <div class="auth-brand-panel">
+            <a href="index.html" class="auth-logo">PS<span class="dot"></span>LV</a>
+
+            <div>
+                <h2 class="brand-headline">Start learning with<br>India's finest finance<br>educators.</h2>
+                <p class="brand-sub">Join hundreds of students who've cleared ACCA, DIPIFR, CA Foundation, and more with expert guidance.</p>
+
+                <div class="course-badges">
+                    <span class="course-badge">ACCA</span>
+                    <span class="course-badge">DIPIFR</span>
+                    <span class="course-badge">CA Foundation</span>
+                    <span class="course-badge">Accountancy</span>
+                </div>
+
+                <div class="auth-trust-items">
+                    <div class="auth-trust-item"><i class="fas fa-user-check"></i> 500+ students mentored</div>
+                    <div class="auth-trust-item"><i class="fas fa-star"></i> Taught by ex-PwC &amp; World Bank professional</div>
+                    <div class="auth-trust-item"><i class="fas fa-clock"></i> 13+ years of teaching excellence</div>
+                    <div class="auth-trust-item"><i class="fas fa-shield-alt"></i> Your data is safe with us</div>
+                </div>
+            </div>
+
+            <span class="auth-brand-footer">© 2025 Prabha Shankar Learning Ventures</span>
+        </div>
+
+        <!-- FORM PANEL -->
+        <div class="auth-form-panel">
+            <div class="auth-form-inner">
+                <h1>Create your account</h1>
+                <p class="auth-subtitle">Free to register. Start learning immediately.</p>
+
+                <div class="alert alert-success mb-3" id="successAlert" style="display:none; font-size:0.9rem;"></div>
+                <div class="alert alert-danger mb-3" id="errorAlert" style="display:none; font-size:0.9rem;">
+                    <i class="fas fa-exclamation-circle me-2"></i><span id="errorMessage">Something went wrong.</span>
+                </div>
+
+                <form id="registrationForm" novalidate>
+                    <div class="row g-0">
+                        <div class="col-12">
+                            <label class="form-label" for="fullName">Full Name</label>
+                            <div class="auth-input-group">
+                                <i class="fas fa-user field-icon"></i>
+                                <input type="text" class="form-control" id="fullName" name="fullName" placeholder="e.g. Priya Sharma" required>
+                            </div>
                         </div>
-                        
-                        <div class="alert alert-danger" id="errorAlert" role="alert">
-                            <i class="fas fa-exclamation-circle me-2"></i> <span id="errorMessage">Something went wrong. Please try again.</span>
+
+                        <div class="col-12">
+                            <label class="form-label" for="email">Email Address</label>
+                            <div class="auth-input-group">
+                                <i class="fas fa-envelope field-icon"></i>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" required>
+                            </div>
+                            <p class="form-hint">We'll never share your email with anyone else.</p>
                         </div>
 
-                        <form id="registrationForm">
-                            <div class="mb-3">
-                                <label for="fullName" class="form-label">Full Name</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                    <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Enter your full name" required>
-                                </div>
+                        <div class="col-12 mt-1">
+                            <label class="form-label" for="phone">Phone Number</label>
+                            <div class="auth-input-group">
+                                <i class="fas fa-phone field-icon"></i>
+                                <input type="tel" class="form-control" id="phone" name="phone" placeholder="10-digit mobile number" required pattern="[0-9]{10}">
                             </div>
-                            
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email Address</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
-                                </div>
-                                <div class="form-text">We'll never share your email with anyone else.</div>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label for="phone" class="form-label">Phone Number</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your phone number" required pattern="[0-9]{10}">
-                                </div>
-                                <div class="form-text">Enter a 10-digit phone number</div>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Create a password" required minlength="8">
-                                    <button class="btn btn-outline-secondary" type="button" id="togglePassword">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
-                                </div>
-                                <div class="form-text">Password must be at least 8 characters long</div>
-                            </div>
-                            
-                            <div class="course-select">
-                                <label class="form-label">Course Interest <span class="text-danger">*</span></label>
-                                <select class="form-select" name="courseInterest" id="courseInterest" required>
-                                    <option value="" selected disabled>Select your course of interest</option>
-                                    <option value="acca">ACCA</option>
-                                    <option value="dipifr">DIPIFR</option>
-                                    <option value="ca-foundation">CA Foundation</option>
-                                    <option value="accountancy_economics">Accountancy and Economics</option>
-                                </select>
-                                <div class="form-text">You can enroll in more courses later from your dashboard</div>
-                            </div>
+                        </div>
 
-                            <div class="form-check mb-4">
-                                <input class="form-check-input" type="checkbox" value="" id="termsCheck" required>
-                                <label class="form-check-label" for="termsCheck">
-                                    I agree to the <a href="#" class="text-danger">Terms of Service</a> and <a href="#" class="text-danger">Privacy Policy</a>
-                                </label>
-                            </div>
-
-                            <div class="d-grid">
-                                <button type="submit" class="btn btn-danger btn-register">
-                                    Register Now
-                                    <span class="loading-spinner spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        <div class="col-12 mt-1">
+                            <label class="form-label" for="password">Password</label>
+                            <div class="auth-input-group">
+                                <i class="fas fa-lock field-icon"></i>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Min. 8 characters" required minlength="8">
+                                <button class="toggle-password" type="button" id="togglePassword" aria-label="Toggle password">
+                                    <i class="fas fa-eye"></i>
                                 </button>
                             </div>
-                            
-                            <p class="text-center mt-4">Already have an account? <a href="login.html" class="text-danger">Login here</a></p>
-                        </form>
+                        </div>
                     </div>
+
+                    <!-- COURSE PICKER -->
+                    <div class="mt-2 mb-3">
+                        <label class="form-label">Course Interest <span style="color:var(--primary);">*</span></label>
+                        <div class="course-option-grid" id="courseOptionGrid">
+                            <label class="course-option-pill" data-value="acca">
+                                <input type="radio" name="courseInterest" value="acca" required>
+                                <span class="pill-icon"><i class="fas fa-globe-europe"></i></span>
+                                <span class="pill-label">ACCA</span>
+                            </label>
+                            <label class="course-option-pill" data-value="dipifr">
+                                <input type="radio" name="courseInterest" value="dipifr">
+                                <span class="pill-icon"><i class="fas fa-file-invoice-dollar"></i></span>
+                                <span class="pill-label">DIPIFR / IFRS</span>
+                            </label>
+                            <label class="course-option-pill" data-value="ca-foundation">
+                                <input type="radio" name="courseInterest" value="ca-foundation">
+                                <span class="pill-icon"><i class="fas fa-balance-scale"></i></span>
+                                <span class="pill-label">CA Foundation</span>
+                            </label>
+                            <label class="course-option-pill" data-value="accountancy_economics">
+                                <input type="radio" name="courseInterest" value="accountancy_economics">
+                                <span class="pill-icon"><i class="fas fa-school"></i></span>
+                                <span class="pill-label">Accountancy &amp; Economics</span>
+                            </label>
+                        </div>
+                        <input type="hidden" id="courseInterest" name="courseInterest">
+                        <p class="form-hint">You can enrol in more courses later from your dashboard.</p>
+                    </div>
+
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="termsCheck" required>
+                        <label class="form-check-label" for="termsCheck" style="font-size:0.82rem; color:var(--text-muted);">
+                            I agree to the <a href="#" style="color:var(--primary); text-decoration:none; font-weight:600;">Terms of Service</a> and <a href="#" style="color:var(--primary); text-decoration:none; font-weight:600;">Privacy Policy</a>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="auth-submit-btn" id="submitBtn">
+                        <span id="submitText">Create Account</span>
+                        <span class="spinner-border spinner-border-sm ms-2" id="loadingSpinner" role="status" style="display:none;"></span>
+                    </button>
+                </form>
+
+                <div class="auth-switch">
+                    Already have an account? <a href="login.html">Sign in here</a>
+                </div>
+
+                <div class="text-center mt-3">
+                    <a href="index.html" style="font-size:0.82rem; color:var(--text-muted); text-decoration:none;">
+                        <i class="fas fa-arrow-left me-1"></i> Back to homepage
+                    </a>
                 </div>
             </div>
         </div>
-    </section>
 
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h4>About Us</h4>
-                    <p>Prabha Shankar Learning Ventures provides top-quality coaching for ACCA, 11th & 12th Accountancy, and DIPIFR.</p>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <h4>Quick Links</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="courses.html">Courses</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <h4>Connect With Us</h4>
-                    <p>
-                        <a href="mailto:pslearningventures@gmail.com"><i class="fas fa-envelope me-2"></i>pslearningventures@gmail.com</a>
-                    </p>
-                    <p>
-                        <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram me-2"></i>Instagram</a>
-                    </p>
-                    <p>
-                        <a href="https://api.whatsapp.com/send?phone=919176000129" target="_blank"><i class="fab fa-whatsapp me-2"></i>WhatsApp</a>
-                    </p>
-                </div>
-            </div>
-            <div class="footer-bottom text-center">
-                <p>© 2025 Prabha Shankar Learning Ventures. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    </div>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Toggle password visibility
-        document.getElementById("togglePassword").addEventListener("click", function() {
-            const passwordInput = document.getElementById("password");
-            const icon = this.querySelector("i");
-            
-            if (passwordInput.type === "password") {
-                passwordInput.type = "text";
-                icon.classList.remove("fa-eye");
-                icon.classList.add("fa-eye-slash");
-            } else {
-                passwordInput.type = "password";
-                icon.classList.remove("fa-eye-slash");
-                icon.classList.add("fa-eye");
-            }
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Course pill selection
+    document.querySelectorAll('.course-option-pill').forEach(pill => {
+        pill.addEventListener('click', function() {
+            document.querySelectorAll('.course-option-pill').forEach(p => p.classList.remove('selected'));
+            this.classList.add('selected');
+            const val = this.dataset.value;
+            this.querySelector('input[type="radio"]').checked = true;
+            document.getElementById('courseInterest').value = val;
         });
-        
-        // Registration form submission with Supabase
-        document.getElementById("registrationForm").addEventListener("submit", async function(event) {
-            event.preventDefault();
-            
-            const name = document.getElementById("fullName").value;
-            const email = document.getElementById("email").value;
-            const phone = document.getElementById("phone").value;
-            const password = document.getElementById("password").value;
-            const courseInterest = document.getElementById("courseInterest").value;
-            
-            // FIXED: Map course interest to proper course name
-            let courseName = "Unknown Course";
-            switch(courseInterest) {
-                case "acca":
-                    courseName = "ACCA Certification";
-                    break;
-                case "dipifr":
-                    courseName = "DIPIFR Course"; 
-                    break;
-                case "ca-foundation":
-                    courseName = "CA Foundation";
-                    break;
-                case "accountancy_economics":
-                    courseName = "Accountancy and Economics";
-                    break;
-                default:
-                    courseName = courseInterest;
-            }
-            
-            // Basic validation
-            if (password.length < 8) {
-                document.getElementById("errorMessage").textContent = "Password must be at least 8 characters long.";
-                document.getElementById("errorAlert").style.display = "block";
-                return;
-            }
-            
-            if (phone.length !== 10 || !/^\d{10}$/.test(phone)) {
-                document.getElementById("errorMessage").textContent = "Please enter a valid 10-digit phone number.";
-                document.getElementById("errorAlert").style.display = "block";
-                return;
-            }
-            
-            // Show loading spinner
-            const spinner = document.querySelector(".loading-spinner");
-            const submitButton = document.querySelector(".btn-register");
-            spinner.style.display = "inline-block";
-            submitButton.disabled = true;
-            
-            // Hide any existing alerts
-            document.getElementById("successAlert").style.display = "none";
-            document.getElementById("errorAlert").style.display = "none";
-            
-            try {
-                console.log("Starting registration process for course:", courseInterest, "->", courseName);
-                
-                // STEP 1: Create auth user
-                const authResponse = await window.supabase.auth.signUp({
-                    email: email,
-                    password: password,
-                    options: {
-                        data: {
-                            full_name: name,
-                            phone: phone
-                        }
-                    }
-                });
-                
-                if (authResponse.error) {
-                    console.error("Auth error:", authResponse.error);
-                    throw authResponse.error;
-                }
-                
-                const userId = authResponse.data.user.id;
-                console.log("Auth user created successfully with ID:", userId);
-                
-                // STEP 2: Insert user profile
-                const userData = {
-                    id: userId,
-                    name: name,
-                    email: email,
-                    phone: phone,
-                    course_interest: courseInterest,
-                    registered_on: new Date().toISOString()
-                };
-                
-                const { error: userInsertError } = await window.supabase
-                    .from('PSLV_users')
-                    .insert(userData);
-                    
-                if (userInsertError) {
-                    console.error("Error inserting user data:", userInsertError);
-                    // Try upsert as fallback
-                    const { error: upsertError } = await window.supabase
-                        .from('PSLV_users')
-                        .upsert(userData);
-                        
-                    if (upsertError) {
-                        console.error("Upsert also failed:", upsertError);
-                    }
-                }
-                
-                // STEP 3: Create enrollment record with proper course mapping
-                console.log("Creating course enrollment for:", courseInterest, "->", courseName);
-                
-                const enrollmentData = {
-                    userid: userId,
-                    course_id: courseInterest, // Keep original course ID
-                    course_name: courseName,   // Use mapped course name
-                    price: '$' + (Math.floor(Math.random() * 300) + 200),
-                    enrolled_on: new Date().toISOString(),
-                    status: 'Active'
-                };
-                
-                console.log("Enrollment data to insert:", enrollmentData);
-                
-                const { error: enrollError } = await window.supabase
-                    .from('PSLV_enrollments')
-                    .insert(enrollmentData);
-                    
-                if (enrollError) {
-                    console.error("Error creating enrollment:", enrollError);
-                    // Try upsert as fallback
-                    const { error: enrollUpsertError } = await window.supabase
-                        .from('PSLV_enrollments')
-                        .upsert(enrollmentData);
-                        
-                    if (enrollUpsertError) {
-                        console.error("Enrollment upsert also failed:", enrollUpsertError);
-                    } else {
-                        console.log("Enrollment upserted successfully");
-                    }
-                } else {
-                    console.log("Enrollment created successfully");
-                }
-                
-                // Store user data in localStorage
-                localStorage.setItem('currentUser', JSON.stringify(userData));
-                
-                // Show success message
-                document.getElementById("successAlert").innerHTML = `
-                    <i class="fas fa-check-circle me-2"></i> 
-                    <strong>Registration successful!</strong> 
-                    <p class="mb-0">You are now enrolled in ${courseName}!</p>
-                    <p class="mb-0">You can now <a href="login.html" class="alert-link">login to your account</a>.</p>
-                `;
-                
-                // Show success and reset form
-                spinner.style.display = "none";
-                submitButton.disabled = false;
-                document.getElementById("successAlert").style.display = "block";
-                document.getElementById("registrationForm").reset();
-                
-            } catch (error) {
-                console.error("Registration error:", error);
-                
-                // Hide spinner and show error
-                spinner.style.display = "none";
-                submitButton.disabled = false;
-                
-                let errorMessage = "Registration failed. ";
-                
-                if (error.message) {
-                    if (error.message.includes("already") && error.message.includes("registered")) {
-                        errorMessage = "This email is already registered. Please log in instead.";
-                    } else {
-                        errorMessage += error.message;
-                    }
-                } else {
-                    errorMessage += "Please try again.";
-                }
-                
-                document.getElementById("errorMessage").textContent = errorMessage;
-                document.getElementById("errorAlert").style.display = "block";
-            }
-        });
-    </script>
+    });
+
+    // Toggle password visibility
+    document.getElementById('togglePassword').addEventListener('click', function() {
+        const input = document.getElementById('password');
+        const icon = this.querySelector('i');
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.classList.replace('fa-eye', 'fa-eye-slash');
+        } else {
+            input.type = 'password';
+            icon.classList.replace('fa-eye-slash', 'fa-eye');
+        }
+    });
+
+    // Registration form submission
+    document.getElementById('registrationForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const name          = document.getElementById('fullName').value;
+        const email         = document.getElementById('email').value;
+        const phone         = document.getElementById('phone').value;
+        const password      = document.getElementById('password').value;
+        const courseInterest = document.getElementById('courseInterest').value;
+
+        document.getElementById('successAlert').style.display = 'none';
+        document.getElementById('errorAlert').style.display = 'none';
+
+        if (password.length < 8) {
+            showError('Password must be at least 8 characters long.');
+            return;
+        }
+        if (!/^\d{10}$/.test(phone)) {
+            showError('Please enter a valid 10-digit phone number.');
+            return;
+        }
+        if (!courseInterest) {
+            showError('Please select a course of interest.');
+            return;
+        }
+
+        setLoading(true);
+
+        const courseMap = {
+            'acca':                  'ACCA Certification',
+            'dipifr':                'DIPIFR Course',
+            'ca-foundation':         'CA Foundation',
+            'accountancy_economics': 'Accountancy and Economics'
+        };
+        const courseName = courseMap[courseInterest] || courseInterest;
+
+        try {
+            const authResponse = await window.supabase.auth.signUp({
+                email, password,
+                options: { data: { full_name: name, phone } }
+            });
+            if (authResponse.error) throw authResponse.error;
+
+            const userId = authResponse.data.user.id;
+
+            const userData = {
+                id: userId, name, email, phone,
+                course_interest: courseInterest,
+                registered_on: new Date().toISOString()
+            };
+
+            const { error: insertErr } = await window.supabase.from('PSLV_users').insert(userData);
+            if (insertErr) await window.supabase.from('PSLV_users').upsert(userData);
+
+            const enrollmentData = {
+                userid: userId,
+                course_id: courseInterest,
+                course_name: courseName,
+                price: '$' + (Math.floor(Math.random() * 300) + 200),
+                enrolled_on: new Date().toISOString(),
+                status: 'Active'
+            };
+
+            const { error: enrollErr } = await window.supabase.from('PSLV_enrollments').insert(enrollmentData);
+            if (enrollErr) await window.supabase.from('PSLV_enrollments').upsert(enrollmentData);
+
+            localStorage.setItem('currentUser', JSON.stringify(userData));
+
+            document.getElementById('successAlert').innerHTML = `
+                <i class="fas fa-check-circle me-2"></i>
+                <strong>Welcome aboard!</strong> You're now enrolled in <strong>${courseName}</strong>.<br>
+                <span style="font-size:0.85rem;">You can now <a href="login.html" class="alert-link">sign in to your account</a>.</span>
+            `;
+            document.getElementById('successAlert').style.display = 'block';
+            this.reset();
+            document.querySelectorAll('.course-option-pill').forEach(p => p.classList.remove('selected'));
+
+        } catch (err) {
+            const msg = err.message?.includes('already registered') || err.message?.includes('already been registered')
+                ? 'This email is already registered. Please sign in instead.'
+                : (err.message || 'Registration failed. Please try again.');
+            showError(msg);
+        } finally {
+            setLoading(false);
+        }
+    });
+
+    function showError(msg) {
+        document.getElementById('errorMessage').textContent = msg;
+        document.getElementById('errorAlert').style.display = 'block';
+    }
+
+    function setLoading(state) {
+        document.getElementById('submitText').textContent = state ? 'Creating account...' : 'Create Account';
+        document.getElementById('loadingSpinner').style.display = state ? 'inline-block' : 'none';
+        document.getElementById('submitBtn').disabled = state;
+    }
+</script>
 </body>
 </html>
