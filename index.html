@@ -4,417 +4,361 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prabha Shankar Learning Ventures - Expert Coaching for ACCA, Accountancy & IFRS</title>
-    <meta name="description" content="Expert coaching for ACCA, 11th & 12th Accountancy, and IFRS with a proven track record of student success.">
-    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Expert coaching for ACCA, 11th & 12th Accountancy, CA Foundation and IFRS with a proven track record of student success.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/supabase-init.js"></script>
     <script src="js/auth-handler.js"></script>
-    <script>
-        // Initialize Supabase client when the script loads
-        window.supabase = window.initSupabaseClient();
-    </script>
+    <script>window.supabase = window.initSupabaseClient();</script>
     <script src="js/app.js"></script>
-    <style>
-        /* UNIFIED HERO SECTION - NO NESTED BOXES */
-        .hero-section {
-            background: #dc3545 !important;
-            padding: 100px 0 !important;
-            margin: 0 !important;
-            position: relative !important;
-            min-height: 60vh !important;
-            width: 100% !important;
-            box-sizing: border-box !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            border: none !important;
-            box-shadow: none !important;
-        }
-
-        /* FORCE REMOVE ANY NESTED BACKGROUNDS OR OVERLAYS */
-        .hero-section,
-        .hero-section *,
-        .hero-section .container,
-        .hero-section .hero-content {
-            background-color: transparent !important;
-            background-image: none !important;
-            background: none !important;
-            border: none !important;
-            box-shadow: none !important;
-            border-radius: 0 !important;
-        }
-
-        /* FORCE HERO SECTION TO HAVE SOLID RED BACKGROUND ONLY */
-        .hero-section {
-            background-color: #dc3545 !important;
-            background-image: none !important;
-        }
-
-        /* Remove any pseudo-elements */
-        .hero-section::before,
-        .hero-section::after {
-            display: none !important;
-            content: none !important;
-        }
-
-        .hero-content {
-            position: relative;
-            text-align: center;
-            padding: 0 15px;
-            max-width: 1200px;
-            margin: 0 auto;
-            z-index: 1;
-        }
-
-        .hero-section h1 {
-            color: white !important;
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .hero-section h2 {
-            color: rgba(255, 255, 255, 0.95) !important;
-            font-size: 1.6rem;
-            font-weight: 400;
-            margin-bottom: 2.5rem;
-            line-height: 1.4;
-        }
-
-        .hero-section .btn-register {
-            display: inline-block;
-            background: white;
-            color: #dc3545;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 14px 32px;
-            border-radius: 6px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            border: none;
-        }
-
-        .hero-section .btn-register:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-            background: #f8f9fa;
-            color: #dc3545;
-        }
-        
-        @media (max-width: 768px) {
-            .hero-section {
-                padding: 80px 0 !important;
-                min-height: 50vh;
-            }
-            .hero-section h1 {
-                font-size: 2.5rem;
-            }
-            .hero-section h2 {
-                font-size: 1.3rem;
-            }
-        }
-        
-        /* Founder Section Styling */
-        .founder-section {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 80px 0;
-            margin: 0;
-        }
-        
-        .founder-section h2 {
-            color: #dc3545;
-            font-weight: 700;
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .founder-section p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #6c757d;
-            margin-bottom: 1rem;
-        }
-        
-        /* Footer styling */
-        footer {
-            background: linear-gradient(135deg, #343a40 0%, #495057 100%);
-            color: white;
-            padding: 60px 0 20px 0;
-            margin-top: 0;
-        }
-        
-        footer h4 {
-            color: #dc3545;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-        }
-        
-        footer a {
-            color: #adb5bd;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        footer a:hover {
-            color: #dc3545;
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid #495057;
-            padding-top: 20px;
-            margin-top: 40px;
-            color: #adb5bd;
-        }
-
-        /* Yellow button styling */
-        .btn-yellow {
-            background-color: #ffc107;
-            color: #212529;
-            border: none;
-            padding: 14px 32px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: 6px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            transition: all 0.3s ease;
-            display: inline-block;
-            text-decoration: none;
-            text-align: center;
-        }
-
-        .btn-yellow:hover {
-            background-color: #e0a800;
-            color: #212529;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-        }
-    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <a class="navbar-brand" href="index.html">
+                PS<span class="brand-dot"></span>LV
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
                     <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                     <li class="nav-item" id="loginStatus"></li>
+                    <li class="nav-item cta-item">
+                        <a class="nav-link" href="registration.html" id="heroRegisterNav">Register Free</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
+    <!-- HERO -->
     <section class="hero-section">
-        <div class="hero-content">
-            <h1>Welcome to PS Learning Ventures</h1>
-            <h2>Your Partner in propelling your future</h2>
-            <a href="registration.html" class="btn btn-register btn-yellow">Register Now</a>
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-tagline">Trusted Since 2012</span>
+                <h1>Master Finance with<br><span>Expert Guidance</span></h1>
+                <p class="hero-sub">ACCA · DIPIFR · CA Foundation · Accountancy<br>Learn from industry veterans with a proven pass record.</p>
+                <div class="hero-actions">
+                    <a href="registration.html" class="btn-primary-custom" id="heroRegisterBtn">Get Started Free</a>
+                    <a href="courses.html" class="btn-outline-white">Explore Courses</a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="py-5 bg-white">
+    <!-- STATS BAR -->
+    <section class="stats-bar">
         <div class="container">
-            <div class="row text-center">
-                <div class="col-md-4 mb-4">
-                    <div class="p-4 rounded shadow-sm h-100">
-                        <i class="fas fa-chalkboard-teacher fa-3x mb-3 text-danger"></i>
-                        <h3 class="h4">Expert Instructors</h3>
-                        <p class="text-muted">Learn from industry professionals with years of teaching experience</p>
+            <div class="row justify-content-center align-items-center g-0">
+                <div class="col-6 col-md-3">
+                    <div class="stat-item-bar">
+                        <span class="stat-number">13+</span>
+                        <span class="stat-label">Years Teaching</span>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <div class="p-4 rounded shadow-sm h-100">
-                        <i class="fas fa-book-open fa-3x mb-3 text-danger"></i>
-                        <h3 class="h4">Comprehensive Curriculum</h3>
-                        <p class="text-muted">Complete coverage of all topics with focused exam preparation</p>
+                <div class="col-md-auto d-none d-md-block">
+                    <div class="stat-divider"></div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-item-bar">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Students Mentored</span>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <div class="p-4 rounded shadow-sm h-100">
-                        <i class="fas fa-chart-line fa-3x mb-3 text-danger"></i>
-                        <h3 class="h4">Proven Results</h3>
-                        <p class="text-muted">Exceptional success rate with numerous students achieving top scores</p>
+                <div class="col-md-auto d-none d-md-block">
+                    <div class="stat-divider"></div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-item-bar">
+                        <span class="stat-number">4</span>
+                        <span class="stat-label">Professional Courses</span>
+                    </div>
+                </div>
+                <div class="col-md-auto d-none d-md-block">
+                    <div class="stat-divider"></div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-item-bar">
+                        <span class="stat-number">22+</span>
+                        <span class="stat-label">Yrs Industry Exp.</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="founder-section">
+    <!-- WHY CHOOSE US -->
+    <section class="features-section">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <h2>Our Mission</h2>
-                    <p>Our mission is to provide you with the tools to achieve your goals and propel your future.</p>
-                    <p>With a deep understanding of students requirements we have been transforming students lives through quality education.</p>
-                    <a href="about.html" class="btn btn-outline-danger mt-3">Learn More About Us</a>
+            <div class="text-center mb-5">
+                <span class="section-tag">Why Choose Us</span>
+                <h2 class="section-title">Learning Built Around <span>Your Success</span></h2>
+                <p class="section-desc">Every aspect of our teaching is designed to help you pass, not just participate.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card fade-up">
+                        <div class="feature-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h3>Industry-Expert Instructors</h3>
+                        <p>Learn from professionals with real-world experience at PwC, World Bank, and top institutions — not just academics.</p>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="mission-image-wrapper text-center">
-                        <i class="fas fa-graduation-cap fa-5x text-danger mb-4"></i>
-                        <h4 class="text-center">Excellence in Education</h4>
+                <div class="col-md-4">
+                    <div class="feature-card fade-up delay-1">
+                        <div class="feature-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h3>Exam-Focused Curriculum</h3>
+                        <p>Complete coverage of every topic, structured to mirror actual exam formats with targeted practice sessions.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card fade-up delay-2">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Proven Pass Rates</h3>
+                        <p>Exceptional student success across ACCA, DIPIFR, CA Foundation and school-level accountancy and economics.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card fade-up delay-1">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Small Cohorts, Big Impact</h3>
+                        <p>Personalised attention in every session ensures no student is left behind — we know your name, not your roll number.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card fade-up delay-2">
+                        <div class="feature-icon">
+                            <i class="fas fa-laptop-house"></i>
+                        </div>
+                        <h3>Flexible Learning</h3>
+                        <p>Online and offline options tailored to your schedule, whether you're a working professional or a school student.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card fade-up delay-3">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3>Ongoing Support</h3>
+                        <p>Doubt-clearing sessions, revision aids, and mentoring that extends well beyond the classroom.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-5 bg-light">
+    <!-- MISSION -->
+    <section class="mission-section" id="mission">
         <div class="container">
-            <h2 class="text-center mb-5">Courses Offered</h2>
-            <div class="row">
-                <div class="col-md-3 mb-4">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-body text-center">
-                            <h3 class="h4 card-title">ACCA</h3>
-                            <p class="card-text">Expert coaching to excel in all ACCA qualification papers with proven results</p>
-                            <a href="acca-courses.html" class="btn btn-outline-danger">View Details</a>
-                        </div>
-                    </div>
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <span class="section-tag">Our Mission</span>
+                    <h2 class="section-title">Transforming Learners<br>Into Achievers</h2>
+                    <p>Our mission is to provide every student with the tools, guidance, and confidence to achieve their career goals and propel their future.</p>
+                    <p>With a deep understanding of student needs, we have been transforming lives through quality, personalised education since 2012 — from Dubai to Bengaluru and beyond.</p>
+                    <a href="about.html" class="btn-outline-red mt-3">Our Full Story</a>
                 </div>
-                <div class="col-md-3 mb-4">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-body text-center">
-                            <h3 class="h4 card-title">DIPIFR</h3>
-                            <p class="card-text">Specialized training for Diploma in International Financial Reporting certification</p>
-                            <a href="ifrs-courses.html" class="btn btn-outline-danger">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-body text-center">
-                            <h3 class="h4 card-title">CA Foundation</h3>
-                            <p class="card-text">Comprehensive preparation for Chartered Accountant Foundation examinations</p>
-                            <a href="ca-foundation-courses.html" class="btn btn-outline-danger">View Details</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-body text-center">
-                            <h3 class="h4 card-title">Accountancy and Economics</h3>
-                            <p class="card-text">Comprehensive guidance for 11th & 12th standard students to build strong foundations</p>
-                            <a href="accountancy-courses.html" class="btn btn-outline-danger">View Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center mt-4">
-                <a href="courses.html" class="btn btn-danger">View All Courses</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-5 bg-white">
-        <div class="container">
-            <h2 class="text-center mb-5">What Our Students Say</h2>
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-center mb-3">
-                                <i class="fas fa-quote-left fa-2x text-danger opacity-50"></i>
-                            </div>
-                            <p class="card-text text-center">"I am really thankful for the guidance provided during the Audit and Assurance sessions by Prabha Shankar maam. The value addition during those sessions were unparalleled."</p>
-                            <div class="text-center mt-3">
-                                <h5 class="mb-0">Ceerat Khanijau</h5>
-                                <small class="text-muted">ACCA Student, IIS Jaipur</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-center mb-3">
-                                <i class="fas fa-quote-left fa-2x text-danger opacity-50"></i>
-                            </div>
-                            <p class="card-text text-center">"I recently attended the Pan-India Audit and Assurance revision session conducted by Prabha Shankar maam. Attending those sessions helped tremendously and pushed me to clear through which otherwise would have been challenging."</p>
-                            <div class="text-center mt-3">
-                                <h5 class="mb-0">Chahat Khanijau</h5>
-                                <small class="text-muted">ACCA Student</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-center mb-3">
-                                <i class="fas fa-quote-left fa-2x text-danger opacity-50"></i>
-                            </div>
-                            <p class="card-text text-center">"Prabha ma'am guided me through highschool accountancy. She really helped me score well and become more confident in my calculations and skills. She taught me patiently and made me thorough in the concepts related to accounts."</p>
-                            <div class="text-center mt-3">
-                                <h5 class="mb-0">Anushree Bhattacharyya</h5>
-                                <small class="text-muted">High School Student</small>
-                            </div>
-                        </div>
+                <div class="col-lg-6">
+                    <div class="mission-visual">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>Excellence in Education</h3>
+                        <p>Formally registered as an academy in 2025, building on 13 years of teaching excellence.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-5 bg-light" id="testimonial-form">
+    <!-- COURSES -->
+    <section class="courses-section">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6 mb-4 mb-md-0">
-                    <h2>Share Your Experience</h2>
-                    <p class="lead">We love hearing from our students! Let us know about your learning journey with us.</p>
-                    <p>Your testimonial may be featured on our website to inspire future students.</p>
+            <div class="text-center mb-5">
+                <span class="section-tag">Courses Offered</span>
+                <h2 class="section-title">Find Your <span>Path to Success</span></h2>
+                <p class="section-desc">Specialist programmes for professional qualifications and school-level excellence.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-xl-3">
+                    <div class="course-card">
+                        <div class="course-card-header">
+                            <i class="fas fa-globe-europe"></i>
+                        </div>
+                        <div class="course-card-body">
+                            <h3>ACCA</h3>
+                            <p>Expert coaching to excel in all ACCA qualification papers, from Applied Knowledge to Strategic Professional.</p>
+                            <a href="acca-courses.html" class="btn-outline-red">View Details</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="card shadow-sm">
-                        <div class="card-body p-4">
-                            <form id="testimonialForm">
-                                <div class="mb-3">
-                                    <label for="testimonialName" class="form-label">Your Name</label>
-                                    <input type="text" class="form-control" id="testimonialName" required>
+                <div class="col-md-6 col-xl-3">
+                    <div class="course-card">
+                        <div class="course-card-header">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                            <span class="new-badge">Popular</span>
+                        </div>
+                        <div class="course-card-body">
+                            <h3>DIPIFR</h3>
+                            <p>Specialized training for the Diploma in International Financial Reporting — globally recognised certification.</p>
+                            <a href="ifrs-courses.html" class="btn-outline-red">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-3">
+                    <div class="course-card">
+                        <div class="course-card-header">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <div class="course-card-body">
+                            <h3>CA Foundation</h3>
+                            <p>Comprehensive preparation for the Chartered Accountant Foundation examinations with rigorous practice.</p>
+                            <a href="ca-foundation-courses.html" class="btn-outline-red">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-3">
+                    <div class="course-card">
+                        <div class="course-card-header">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <div class="course-card-body">
+                            <h3>Accountancy &amp; Economics</h3>
+                            <p>Personalised guidance for 11th &amp; 12th standard students to build strong conceptual foundations.</p>
+                            <a href="accountancy-courses.html" class="btn-outline-red">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="courses.html" class="btn-red">View All Courses &nbsp;<i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="section-tag">Student Reviews</span>
+                <h2 class="section-title">What Our <span>Students Say</span></h2>
+                <p class="section-desc">Real feedback from real students who achieved their goals with us.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="star-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <i class="fas fa-quote-left quote-icon"></i>
+                        <p>"I am really thankful for the guidance during the Audit and Assurance sessions by Prabha Shankar maam. The value addition was unparalleled."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">CK</div>
+                            <div class="author-info">
+                                <h5>Ceerat Khanijau</h5>
+                                <span>ACCA Student, IIS Jaipur</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="star-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <i class="fas fa-quote-left quote-icon"></i>
+                        <p>"The Pan-India Audit and Assurance revision session helped tremendously and pushed me to clear what would otherwise have been very challenging."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">CK</div>
+                            <div class="author-info">
+                                <h5>Chahat Khanijau</h5>
+                                <span>ACCA Student</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="star-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <i class="fas fa-quote-left quote-icon"></i>
+                        <p>"Prabha ma'am guided me through high school accountancy, helping me score well and become confident in my calculations. Patient and thorough!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">AB</div>
+                            <div class="author-info">
+                                <h5>Anushree Bhattacharyya</h5>
+                                <span>High School Student</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SHARE EXPERIENCE -->
+    <section class="share-section" id="testimonial-form">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5">
+                    <span class="section-tag">Share Your Story</span>
+                    <h2 class="section-title">Inspire the Next<br><span>Generation</span></h2>
+                    <p style="color: var(--text-muted);">We love hearing from our students. Tell us about your learning journey — your testimonial may inspire future students to take the leap.</p>
+                </div>
+                <div class="col-lg-7">
+                    <div class="contact-form-card">
+                        <form id="testimonialForm">
+                            <div class="mb-3">
+                                <label for="testimonialName" class="form-label">Your Name</label>
+                                <input type="text" class="form-control" id="testimonialName" placeholder="e.g. Priya Sharma" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="testimonialCourse" class="form-label">Course Taken</label>
+                                <select class="form-select" id="testimonialCourse" required>
+                                    <option value="" selected disabled>Select a course</option>
+                                    <option value="ACCA">ACCA</option>
+                                    <option value="DIPIFR">DIPIFR</option>
+                                    <option value="CA Foundation">CA Foundation</option>
+                                    <option value="Accountancy and Economics">Accountancy and Economics</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="testimonialText" class="form-label">Your Experience</label>
+                                <textarea class="form-control" id="testimonialText" rows="4" placeholder="Tell us how the programme helped you..." required></textarea>
+                            </div>
+                            <div class="mb-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="testimonialConsent" required>
+                                    <label class="form-check-label" for="testimonialConsent" style="font-size:0.88rem; color: var(--text-muted);">
+                                        I agree to have my testimonial published on the website.
+                                    </label>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="testimonialCourse" class="form-label">Course Taken</label>
-                                    <select class="form-select" id="testimonialCourse" required>
-                                        <option value="" selected disabled>Select a course</option>
-                                        <option value="ACCA">ACCA</option>
-                                        <option value="DIPIFR">DIPIFR</option>
-                                        <option value="CA Foundation">CA Foundation</option>
-                                        <option value="Accountancy and Economics">Accountancy and Economics</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="testimonialText" class="form-label">Your Experience</label>
-                                    <textarea class="form-control" id="testimonialText" rows="4" required></textarea>
-                                </div>
-                                <div class="mb-3">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="testimonialConsent" required>
-                                        <label class="form-check-label" for="testimonialConsent">
-                                            I agree to have my testimonial published on the website
-                                        </label>
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn btn-danger">Submit Testimonial</button>
-                            </form>
-                            <div id="testimonialSuccess" class="alert alert-success mt-3 d-none">
-                                <i class="fas fa-check-circle me-2"></i> Your testimonial has been submitted successfully!
                             </div>
-                            <div id="testimonialError" class="alert alert-danger mt-3 d-none">
-                                <i class="fas fa-exclamation-circle me-2"></i> Failed to submit your testimonial. Please try again later.
-                            </div>
+                            <button type="submit" class="btn-red">Submit Testimonial</button>
+                        </form>
+                        <div id="testimonialSuccess" class="alert alert-success mt-3 d-none">
+                            <i class="fas fa-check-circle me-2"></i> Thank you! Your testimonial has been submitted.
+                        </div>
+                        <div id="testimonialError" class="alert alert-danger mt-3 d-none">
+                            <i class="fas fa-exclamation-circle me-2"></i> Submission failed. Please try again later.
                         </div>
                     </div>
                 </div>
@@ -422,135 +366,108 @@
         </div>
     </section>
 
-    <section class="py-5 bg-light">
-        <div class="container text-center">
-            <h2>Ready to Begin Your Learning Journey?</h2>
-            <p class="lead mb-4">Take the first step towards achieving your career goals today!</p>
-            <a href="registration.html" class="btn btn-danger btn-lg">Register Now</a>
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container text-center position-relative" style="z-index:1">
+            <h2 class="mb-3">Ready to Begin Your Learning Journey?</h2>
+            <p class="mb-4">Take the first step towards achieving your career goals today.</p>
+            <a href="registration.html" class="btn-primary-custom" id="ctaRegisterBtn">Register Now — It's Free</a>
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer>
         <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h4>About Us</h4>
-                    <p>Prabha Shankar Learning Ventures provides top-quality coaching for ACCA, 11th & 12th Accountancy, CA Foundation and DIPIFR.</p>
+            <div class="row g-5">
+                <div class="col-lg-4 col-md-6">
+                    <span class="footer-brand">PS<span style="color:var(--accent);">•</span>LV</span>
+                    <p>Prabha Shankar Learning Ventures — expert coaching for ACCA, DIPIFR, CA Foundation and school-level Accountancy &amp; Economics.</p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/pslv592/" target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://api.whatsapp.com/send?phone=919176000129" target="_blank" rel="noopener" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="mailto:adiandved@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <h4>Quick Links</h4>
-                    <ul class="list-unstyled">
+                <div class="col-lg-2 col-md-6">
+                    <h5>Quick Links</h5>
+                    <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="courses.html">Courses</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="registration.html">Register</a></li>
                     </ul>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <h4>Connect With Us</h4>
-                    <p>
-                        <a href="mailto:adiandved@gmail.com"><i class="fas fa-envelope me-2"></i>adiandved@gmail.com</a>
-                    </p>
-                    <p>
-                        <a href="https://www.instagram.com/pslv592/?utm_source=qr&igsh=NjFkaHZ4a3AydXJ4#" target="_blank"><i class="fab fa-instagram me-2"></i>Instagram</a>
-                    </p>
-                    <p>
-                        <a href="https://api.whatsapp.com/send?phone=919176000129" target="_blank"><i class="fab fa-whatsapp me-2"></i>+91 9176000129</a>
-                    </p>
-                    <p>
-                        <strong>Our Locations</strong><br>
-                        <i class="fas fa-map-marker-alt me-2"></i>Prestige Shantiniketan, Whitefield, Bengaluru, 560048<br>
-                        <i class="fas fa-map-marker-alt me-2"></i>Chitrakoot Mahal, 13th cross, kaveri layout, GM Palya, 560075
-                    </p>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Courses</h5>
+                    <ul>
+                        <li><a href="acca-courses.html">ACCA</a></li>
+                        <li><a href="ifrs-courses.html">DIPIFR / IFRS</a></li>
+                        <li><a href="ca-foundation-courses.html">CA Foundation</a></li>
+                        <li><a href="accountancy-courses.html">Accountancy &amp; Economics</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Contact</h5>
+                    <ul>
+                        <li><a href="mailto:adiandved@gmail.com"><i class="fas fa-envelope me-2" style="opacity:.6"></i>adiandved@gmail.com</a></li>
+                        <li><a href="https://api.whatsapp.com/send?phone=919176000129" target="_blank"><i class="fab fa-whatsapp me-2" style="opacity:.6"></i>+91 9176000129</a></li>
+                        <li style="color:rgba(255,255,255,0.6); font-size:0.88rem;"><i class="fas fa-map-marker-alt me-2" style="opacity:.6"></i>Prestige Shantiniketan, Whitefield, Bengaluru 560048</li>
+                        <li style="color:rgba(255,255,255,0.6); font-size:0.88rem; margin-top:8px;"><i class="fas fa-map-marker-alt me-2" style="opacity:.6"></i>Chitrakoot Mahal, 13th Cross, GM Palya, Bengaluru 560075</li>
+                    </ul>
                 </div>
             </div>
-            <div class="footer-bottom text-center">
-                <p>© 2025 Prabha Shankar Learning Ventures. All rights reserved.</p>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="mb-0">© 2025 Prabha Shankar Learning Ventures. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Intersection Observer for scroll animations
+        // Scroll-reveal for mission section
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('visible');
             });
-        }, {
-            threshold: 0.1
-        });
+        }, { threshold: 0.1 });
 
-        // Observe the founder section
         document.addEventListener('DOMContentLoaded', () => {
-            const founderSection = document.querySelector('.founder-section');
-            if (founderSection) {
-                observer.observe(founderSection);
-            }
-        });
+            const mission = document.querySelector('.mission-section');
+            if (mission) observer.observe(mission);
 
-        // Update dashboard link if user is logged in
-        document.addEventListener("DOMContentLoaded", function() {
             const currentUser = Backend.users.getCurrentUser();
             if (currentUser) {
-                // If user is logged in, change register button to dashboard
-                const registerButtons = document.querySelectorAll('a[href="registration.html"]');
-                registerButtons.forEach(button => {
-                    button.textContent = "My Dashboard";
-                    button.href = "dashboard.html";
+                document.querySelectorAll('#heroRegisterBtn, #heroRegisterNav, #ctaRegisterBtn').forEach(btn => {
+                    btn.textContent = 'My Dashboard';
+                    btn.href = 'dashboard.html';
                 });
             }
-        });
 
-        // Handle testimonial submission
-        document.getElementById("testimonialForm").addEventListener("submit", async function(event) {
-            event.preventDefault();
-
-            const name = document.getElementById("testimonialName").value;
-            const course = document.getElementById("testimonialCourse").value;
-            const text = document.getElementById("testimonialText").value;
-
-            try {
-                // Insert testimonial into Supabase
-                const { error } = await window.supabase
-                    .from('PSLV_testimonials')
-                    .insert([{
-                        name: name,
-                        course: course,
-                        text: text,
-                        submitted_on: new Date().toISOString()
-                    }]);
-
-                if (error) {
-                    console.error("Error submitting testimonial:", error);
-                    document.getElementById("testimonialError").classList.remove("d-none");
-                    return;
-                }
-
-                // Show success message
-                document.getElementById("testimonialSuccess").classList.remove("d-none");
-                document.getElementById("testimonialForm").reset();
-
-                // Hide success message after 5 seconds
-                setTimeout(() => {
-                    document.getElementById("testimonialSuccess").classList.add("d-none");
-                }, 5000);
-            } catch (err) {
-                console.error("Unexpected error:", err);
-                document.getElementById("testimonialError").classList.remove("d-none");
+            if (window.location.hash === '#testimonial-form') {
+                document.getElementById('testimonial-form')?.scrollIntoView({ behavior: 'smooth' });
             }
         });
 
-        document.addEventListener("DOMContentLoaded", function () {
-            // Check if the URL contains the #testimonial-form hash
-            if (window.location.hash === "#testimonial-form") {
-                const testimonialForm = document.getElementById("testimonial-form");
-                if (testimonialForm) {
-                    // Scroll to the testimonial form
-                    testimonialForm.scrollIntoView({ behavior: "smooth" });
-                }
+        document.getElementById('testimonialForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            try {
+                const { error } = await window.supabase.from('PSLV_testimonials').insert([{
+                    name: document.getElementById('testimonialName').value,
+                    course: document.getElementById('testimonialCourse').value,
+                    text: document.getElementById('testimonialText').value,
+                    submitted_on: new Date().toISOString()
+                }]);
+
+                if (error) throw error;
+
+                document.getElementById('testimonialSuccess').classList.remove('d-none');
+                this.reset();
+                setTimeout(() => document.getElementById('testimonialSuccess').classList.add('d-none'), 5000);
+            } catch {
+                document.getElementById('testimonialError').classList.remove('d-none');
             }
         });
     </script>

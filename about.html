@@ -5,98 +5,119 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Prabha Shankar Learning Ventures</title>
     <meta name="description" content="Learn about Prabha Shankar Learning Ventures and our commitment to quality education in ACCA, Accountancy & IFRS.">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/supabase-init.js"></script>
-    <style>
-        /* REMOVED NAVBAR STYLES */
-    </style>
-    <script>
-        // Initialize Supabase client when the script loads
-        window.supabase = window.initSupabaseClient();
-    </script>
+    <script>window.supabase = window.initSupabaseClient();</script>
     <script src="js/app.js"></script>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <a class="navbar-brand" href="index.html">PS<span class="brand-dot"></span>LV</a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link active" href="about.html">About Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="courses.html">Courses</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                     <li class="nav-item" id="loginStatus"></li>
+                    <li class="nav-item cta-item"><a class="nav-link" href="registration.html">Register Free</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content Area - Updated with only Our Journey section -->
-    <section class="py-5 bg-white">
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="container position-relative" style="z-index:2;">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb breadcrumb-custom">
+                    <li class="breadcrumb-item"><a href="index.html" style="color:rgba(255,255,255,0.7); text-decoration:none;">Home</a></li>
+                    <li class="breadcrumb-item active">About Us</li>
+                </ol>
+            </nav>
+            <h1 class="mt-3 mb-3">About PS Learning Ventures</h1>
+            <p class="mb-0" style="max-width:540px;">A trusted name in financial education since 2012 — from Dubai to Bengaluru, guiding students towards excellence.</p>
+        </div>
+    </section>
+
+    <!-- OUR JOURNEY -->
+    <section class="py-5" style="padding: 80px 0 !important; background: var(--white);">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2 class="mb-4">Our Journey</h2>
-                    <p>Our journey started with tutoring Grade 11 and 12 students in accounting and economics in Dubai in 2012. Thereafter we started training professionals in DIPIFR in Chennai and Bengaluru.</p>
-                    <p>Since 2017 we have been coaching students in ACCA and CIMA.</p>
-                    <p>We formally registered as an academy in 2025.</p>
+            <div class="row g-5 align-items-start">
+                <div class="col-lg-5">
+                    <span class="section-tag">Our Story</span>
+                    <h2 class="section-title" style="text-align:left;">A Journey of<br><span>13+ Years</span></h2>
+                    <p style="color:var(--text-muted); font-size:1.05rem; line-height:1.8;">What started as tutoring a handful of students in Dubai has grown into a formally registered academy serving hundreds across India and beyond.</p>
+                    <a href="courses.html" class="btn-red mt-2">Explore Our Courses</a>
+                </div>
+                <div class="col-lg-7">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">2012</div>
+                            <p>Started tutoring Grade 11 &amp; 12 students in Accounting and Economics in Dubai.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2014–2016</div>
+                            <p>Expanded to training finance professionals in DIPIFR across Chennai and Bengaluru.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2017</div>
+                            <p>Began coaching students for ACCA and CIMA qualifications, partnering with leading colleges and institutions.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2020–2024</div>
+                            <p>Partnered with ISDC, IMS Proschool, VIFHE, Christ University, Jain University, and Mount Carmel College.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2025</div>
+                            <p>Formally registered as Prabha Shankar Learning Ventures — expanding our reach and offerings.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-5 bg-light">
+    <!-- OUR FOUNDER -->
+    <section style="padding: 80px 0; background: var(--light-bg);">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-12">
-                    <h2 class="mb-4">Our Founder</h2>
-                    <p>Our Founder, Prabha Shankar is a professional with over 22 years of experience across industry and education. She has expertise in audit and assurance, Trust Fund accounting, pension administration, and treasury operations. Formerly an Audit Manager at PricewaterhouseCoopers, she has extensive experience auditing listed companies and leading due diligence and internal audit assignments.</p>
-                    <p>At the World Bank Group, Prabha held key roles in Trust Fund and Treasury Accounting, collaborating with donor countries and managing teams in the Treasury Department. She was also instrumental in migrating processes to the IBRD's India office.</p>
-                    <p>For the past 13 years, Prabha has been a dedicated educator, mentoring students in accounting and economics and professional courses such as ACCA, CA, and CMA courses. She has worked with leading educators such as ISDC, IMS Proschool, VIFHE as well as top colleges such as Christ University, Jain University, Mount Carmel College.</p>
-                </div>
+            <div class="text-center mb-5">
+                <span class="section-tag">Leadership</span>
+                <h2 class="section-title">Meet Our <span>Founder</span></h2>
             </div>
-        </div>
-    </section>
-
-    <section class="py-5 bg-white">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2 class="mb-4">Our Team</h2>
-                    <p>Our Team of expert and professionally qualified tutors bring rich experience of 15+ years of tutoring and mentoring students and are dedicated to student success.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section - Added new testimonial -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2 class="mb-4 text-center">What Our Students Say</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 mb-4">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-center mb-3">
-                                <i class="fas fa-quote-left fa-2x text-danger opacity-50"></i>
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <div class="founder-card">
+                        <div class="row g-4 align-items-start">
+                            <div class="col-md-3 text-center">
+                                <div class="founder-avatar mx-auto">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <h4 style="font-size:1.1rem; margin-bottom:4px;">Prabha Shankar</h4>
+                                <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1rem;">Founder &amp; Lead Educator</p>
+                                <div>
+                                    <span class="credential-badge"><i class="fas fa-certificate"></i> ACCA Tutor</span>
+                                    <span class="credential-badge"><i class="fas fa-briefcase"></i> Ex-PwC</span>
+                                    <span class="credential-badge"><i class="fas fa-globe"></i> World Bank</span>
+                                </div>
                             </div>
-                            <p class="card-text text-center">
-                                "Prabha ma'am guided me through highschool accountancy. She really helped me score well and become more confident in my calculations and skills. She taught me patiently and made me thorough in the concepts related to accounts."
-                            </p>
-                            <div class="text-center mt-3">
-                                <h5 class="mb-0">Anushree Bhattacharyya</h5>
-                                <small class="text-muted">High School Student</small>
+                            <div class="col-md-9">
+                                <p style="font-size:1rem; line-height:1.8; color:var(--text);">Prabha Shankar is a finance professional with <strong>over 22 years of experience</strong> spanning industry and education. Her expertise covers audit and assurance, Trust Fund accounting, pension administration, and treasury operations.</p>
+                                <p style="font-size:1rem; line-height:1.8; color:var(--text);">Formerly an <strong>Audit Manager at PricewaterhouseCoopers</strong>, she has extensive experience auditing listed companies and leading due diligence and internal audit assignments across multiple sectors.</p>
+                                <p style="font-size:1rem; line-height:1.8; color:var(--text);">At the <strong>World Bank Group</strong>, Prabha held key roles in Trust Fund and Treasury Accounting, collaborating with donor countries and managing teams in the Treasury Department. She was also instrumental in migrating processes to the IBRD's India office.</p>
+                                <p style="font-size:1rem; line-height:1.8; color:var(--text); margin-bottom:0;">For the past <strong>13 years</strong>, she has been a dedicated educator — mentoring students across ACCA, CA, and CMA, working with top institutions including Christ University, Jain University, and Mount Carmel College.</p>
                             </div>
                         </div>
                     </div>
@@ -105,58 +126,155 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- OUR TEAM + VALUES -->
+    <section style="padding: 80px 0; background: var(--white);">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="section-tag">Our Team &amp; Values</span>
+                <h2 class="section-title">What Makes <span>Us Different</span></h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fas fa-users"></i></div>
+                        <h4>Expert Team</h4>
+                        <p>Professionally qualified tutors with 15+ years of teaching and mentoring experience dedicated to your success.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fas fa-heart"></i></div>
+                        <h4>Student-First</h4>
+                        <p>Every decision we make is guided by what's best for the student — from curriculum design to class sizes.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fas fa-trophy"></i></div>
+                        <h4>Results-Driven</h4>
+                        <p>We track outcomes rigorously and continuously refine our teaching to deliver exceptional pass rates.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="info-card">
+                        <div class="info-icon"><i class="fas fa-handshake"></i></div>
+                        <h4>Integrity</h4>
+                        <p>Honest, transparent guidance — we tell you what you need to hear to succeed, not just what you want to hear.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="section-tag">Student Reviews</span>
+                <h2 class="section-title">What Our <span>Students Say</span></h2>
+            </div>
+            <div class="row justify-content-center g-4">
+                <div class="col-md-6 col-lg-5">
+                    <div class="testimonial-card">
+                        <div class="star-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <i class="fas fa-quote-left quote-icon"></i>
+                        <p>"Prabha ma'am guided me through high school accountancy. She helped me score well and become confident in my calculations. Patient, thorough, and genuinely invested in my success."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">AB</div>
+                            <div class="author-info">
+                                <h5>Anushree Bhattacharyya</h5>
+                                <span>High School Student</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-5">
+                    <div class="testimonial-card">
+                        <div class="star-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <i class="fas fa-quote-left quote-icon"></i>
+                        <p>"The Audit and Assurance revision sessions were exceptional. Prabha maam's real-world insights from PwC made concepts click in ways textbooks simply can't."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">CK</div>
+                            <div class="author-info">
+                                <h5>Ceerat Khanijau</h5>
+                                <span>ACCA Student, IIS Jaipur</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container text-center position-relative" style="z-index:1;">
+            <h2 class="mb-3">Ready to Learn with the Best?</h2>
+            <p class="mb-4">Join hundreds of students who've transformed their careers with PS Learning Ventures.</p>
+            <a href="registration.html" class="btn-primary-custom">Register Now — It's Free</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
         <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h4>About Us</h4>
-                    <p>Prabha Shankar Learning Ventures provides top-quality coaching for ACCA, 11th & 12th Accountancy, CA Foundation and DIPIFR.</p>
+            <div class="row g-5">
+                <div class="col-lg-4 col-md-6">
+                    <span class="footer-brand">PS<span style="color:var(--accent);">•</span>LV</span>
+                    <p>Prabha Shankar Learning Ventures — expert coaching for ACCA, DIPIFR, CA Foundation and school-level Accountancy &amp; Economics.</p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/pslv592/" target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://api.whatsapp.com/send?phone=919176000129" target="_blank" rel="noopener" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="mailto:adiandved@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <h4>Quick Links</h4>
-                    <ul class="list-unstyled">
+                <div class="col-lg-2 col-md-6">
+                    <h5>Quick Links</h5>
+                    <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="courses.html">Courses</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <h4>Connect With Us</h4>
-                    <p>
-                        <a href="mailto:adiandved@gmail.com"><i class="fas fa-envelope me-2"></i>adiandved@gmail.com</a>
-                    </p>
-                    <p>
-                        <a href="https://www.instagram.com/pslv592/?utm_source=qr&igsh=NjFkaHZ4a3AydXJ4#" target="_blank"><i class="fab fa-instagram me-2"></i>Instagram</a>
-                    </p>
-                    <p>
-                        <a href="https://api.whatsapp.com/send?phone=919176000129" target="_blank"><i class="fab fa-whatsapp me-2"></i>+91 9176000129</a>
-                    </p>
-                    <p>
-                        <strong>Our Locations</strong><br>
-                        <i class="fas fa-map-marker-alt me-2"></i>Prestige Shantiniketan, Whitefield, Bengaluru, 560048<br>
-                        <i class="fas fa-map-marker-alt me-2"></i>Chitrakoot Mahal, 13th cross, kaveri layout, GM Palya, 560075
-                    </p>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Courses</h5>
+                    <ul>
+                        <li><a href="acca-courses.html">ACCA</a></li>
+                        <li><a href="ifrs-courses.html">DIPIFR / IFRS</a></li>
+                        <li><a href="ca-foundation-courses.html">CA Foundation</a></li>
+                        <li><a href="accountancy-courses.html">Accountancy &amp; Economics</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Contact</h5>
+                    <ul>
+                        <li><a href="mailto:adiandved@gmail.com"><i class="fas fa-envelope me-2" style="opacity:.6"></i>adiandved@gmail.com</a></li>
+                        <li><a href="https://api.whatsapp.com/send?phone=919176000129" target="_blank"><i class="fab fa-whatsapp me-2" style="opacity:.6"></i>+91 9176000129</a></li>
+                        <li style="color:rgba(255,255,255,0.6); font-size:0.88rem;"><i class="fas fa-map-marker-alt me-2" style="opacity:.6"></i>Prestige Shantiniketan, Whitefield, Bengaluru 560048</li>
+                    </ul>
                 </div>
             </div>
-            <div class="footer-bottom text-center">
-                <p>© 2025 Prabha Shankar Learning Ventures. All rights reserved.</p>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="mb-0">© 2025 Prabha Shankar Learning Ventures. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Update dashboard link if user is logged in
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener('DOMContentLoaded', function() {
             const currentUser = Backend.users.getCurrentUser();
             if (currentUser) {
-                // If user is logged in, change register button to dashboard
-                const registerButtons = document.querySelectorAll('a[href="registration.html"]');
-                registerButtons.forEach(button => {
-                    button.textContent = "My Dashboard";
-                    button.href = "dashboard.html";
+                document.querySelectorAll('a[href="registration.html"]').forEach(btn => {
+                    btn.textContent = 'My Dashboard';
+                    btn.href = 'dashboard.html';
                 });
             }
         });
