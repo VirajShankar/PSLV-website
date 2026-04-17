@@ -1456,6 +1456,11 @@ footer ul li { margin-bottom: 10px; }
     transform: none;
 }
 
+/* Safety net: if JS never fires, don't leave content permanently invisible */
+@media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+}
+
 .rv-d1 { transition-delay: 0.09s !important; }
 .rv-d2 { transition-delay: 0.18s !important; }
 .rv-d3 { transition-delay: 0.27s !important; }
