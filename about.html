@@ -40,47 +40,92 @@
 
     <!-- PAGE HERO -->
     <section class="page-hero">
+        <!-- Floating orbs -->
+        <div class="orb hero-orb-1"></div>
+        <div class="orb hero-orb-2"></div>
+        <div class="orb hero-orb-3"></div>
         <div class="container position-relative" style="z-index:2;">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-custom">
-                    <li class="breadcrumb-item"><a href="index.html" style="color:rgba(255,255,255,0.7); text-decoration:none;">Home</a></li>
+                    <li class="breadcrumb-item"><a href="index.html" style="color:rgba(255,255,255,0.7);text-decoration:none;">Home</a></li>
                     <li class="breadcrumb-item active">About Us</li>
                 </ol>
             </nav>
-            <h1 class="mt-3 mb-3">About PS Learning Ventures</h1>
-            <p class="mb-0" style="max-width:540px;">A trusted name in financial education since 2012 — from Dubai to Bengaluru, guiding students towards excellence.</p>
+            <h1 class="mt-3 mb-3 reveal">About PS Learning Ventures</h1>
+            <p class="mb-0 reveal rv-d1" style="max-width:540px;">A trusted name in financial education since 2012 — from Dubai to Bengaluru, guiding students towards excellence.</p>
+        </div>
+    </section>
+
+    <!-- STATS STRIP -->
+    <section class="stat-strip">
+        <div class="container">
+            <div class="row justify-content-center align-items-center g-0">
+                <div class="col-6 col-md-3">
+                    <div class="stat-strip-item">
+                        <span class="s-num" data-target="13" data-suffix="+">13+</span>
+                        <span class="s-label">Years Teaching</span>
+                    </div>
+                </div>
+                <div class="col-md-auto d-none d-md-block">
+                    <div class="stat-strip-divider"></div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-strip-item">
+                        <span class="s-num" data-target="500" data-suffix="+">500+</span>
+                        <span class="s-label">Students Mentored</span>
+                    </div>
+                </div>
+                <div class="col-md-auto d-none d-md-block">
+                    <div class="stat-strip-divider"></div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-strip-item">
+                        <span class="s-num" data-target="22" data-suffix="+">22+</span>
+                        <span class="s-label">Yrs Industry Exp.</span>
+                    </div>
+                </div>
+                <div class="col-md-auto d-none d-md-block">
+                    <div class="stat-strip-divider"></div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-strip-item">
+                        <span class="s-num" data-target="4" data-suffix="">4</span>
+                        <span class="s-label">Courses Offered</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- OUR JOURNEY -->
-    <section class="py-5" style="padding: 80px 0 !important; background: var(--white);">
+    <section style="padding:90px 0; background:var(--white);">
         <div class="container">
             <div class="row g-5 align-items-start">
                 <div class="col-lg-5">
-                    <span class="section-tag">Our Story</span>
-                    <h2 class="section-title" style="text-align:left;">A Journey of<br><span>13+ Years</span></h2>
-                    <p style="color:var(--text-muted); font-size:1.05rem; line-height:1.8;">What started as tutoring a handful of students in Dubai has grown into a formally registered academy serving hundreds across India and beyond.</p>
-                    <a href="courses.html" class="btn-red mt-2">Explore Our Courses</a>
+                    <span class="section-tag reveal">Our Story</span>
+                    <h2 class="section-title reveal rv-d1" style="text-align:left;">A Journey of<br><span>13+ Years</span></h2>
+                    <p class="reveal rv-d2" style="color:var(--text-muted);font-size:1.05rem;line-height:1.8;">What started as tutoring a handful of students in Dubai has grown into a formally registered academy serving hundreds across India and beyond.</p>
+                    <a href="courses.html" class="btn-red mt-2 reveal rv-d3">Explore Our Courses</a>
                 </div>
                 <div class="col-lg-7">
                     <div class="timeline">
-                        <div class="timeline-item">
+                        <div class="timeline-item" data-tl="0">
                             <div class="timeline-year">2012</div>
                             <p>Started tutoring Grade 11 &amp; 12 students in Accounting and Economics in Dubai.</p>
                         </div>
-                        <div class="timeline-item">
+                        <div class="timeline-item" data-tl="1">
                             <div class="timeline-year">2014–2016</div>
                             <p>Expanded to training finance professionals in DIPIFR across Chennai and Bengaluru.</p>
                         </div>
-                        <div class="timeline-item">
+                        <div class="timeline-item" data-tl="2">
                             <div class="timeline-year">2017</div>
                             <p>Began coaching students for ACCA and CIMA qualifications, partnering with leading colleges and institutions.</p>
                         </div>
-                        <div class="timeline-item">
+                        <div class="timeline-item" data-tl="3">
                             <div class="timeline-year">2020–2024</div>
                             <p>Partnered with ISDC, IMS Proschool, VIFHE, Christ University, Jain University, and Mount Carmel College.</p>
                         </div>
-                        <div class="timeline-item">
+                        <div class="timeline-item" data-tl="4">
                             <div class="timeline-year">2025</div>
                             <p>Formally registered as Prabha Shankar Learning Ventures — expanding our reach and offerings.</p>
                         </div>
@@ -91,22 +136,22 @@
     </section>
 
     <!-- OUR FOUNDER -->
-    <section style="padding: 80px 0; background: var(--light-bg);">
+    <section style="padding:90px 0; background:var(--light-bg);">
         <div class="container">
             <div class="text-center mb-5">
-                <span class="section-tag">Leadership</span>
-                <h2 class="section-title">Meet Our <span>Founder</span></h2>
+                <span class="section-tag reveal">Leadership</span>
+                <h2 class="section-title reveal rv-d1">Meet Our <span>Founder</span></h2>
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-9">
-                    <div class="founder-card">
+                    <div class="founder-card reveal scale-in">
                         <div class="row g-4 align-items-start">
                             <div class="col-md-3 text-center">
                                 <div class="founder-avatar mx-auto">
                                     <i class="fas fa-user"></i>
                                 </div>
-                                <h4 style="font-size:1.1rem; margin-bottom:4px;">Prabha Shankar</h4>
-                                <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1rem;">Founder &amp; Lead Educator</p>
+                                <h4 style="font-size:1.1rem;margin-bottom:4px;">Prabha Shankar</h4>
+                                <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1rem;">Founder &amp; Lead Educator</p>
                                 <div>
                                     <span class="credential-badge"><i class="fas fa-certificate"></i> ACCA Tutor</span>
                                     <span class="credential-badge"><i class="fas fa-briefcase"></i> Ex-PwC</span>
@@ -114,10 +159,10 @@
                                 </div>
                             </div>
                             <div class="col-md-9">
-                                <p style="font-size:1rem; line-height:1.8; color:var(--text);">Prabha Shankar is a finance professional with <strong>over 22 years of experience</strong> spanning industry and education. Her expertise covers audit and assurance, Trust Fund accounting, pension administration, and treasury operations.</p>
-                                <p style="font-size:1rem; line-height:1.8; color:var(--text);">Formerly an <strong>Audit Manager at PricewaterhouseCoopers</strong>, she has extensive experience auditing listed companies and leading due diligence and internal audit assignments across multiple sectors.</p>
-                                <p style="font-size:1rem; line-height:1.8; color:var(--text);">At the <strong>World Bank Group</strong>, Prabha held key roles in Trust Fund and Treasury Accounting, collaborating with donor countries and managing teams in the Treasury Department. She was also instrumental in migrating processes to the IBRD's India office.</p>
-                                <p style="font-size:1rem; line-height:1.8; color:var(--text); margin-bottom:0;">For the past <strong>13 years</strong>, she has been a dedicated educator — mentoring students across ACCA, CA, and CMA, working with top institutions including Christ University, Jain University, and Mount Carmel College.</p>
+                                <p style="font-size:1rem;line-height:1.85;color:var(--text);">Prabha Shankar is a finance professional with <strong>over 22 years of experience</strong> spanning industry and education. Her expertise covers audit and assurance, Trust Fund accounting, pension administration, and treasury operations.</p>
+                                <p style="font-size:1rem;line-height:1.85;color:var(--text);">Formerly an <strong>Audit Manager at PricewaterhouseCoopers</strong>, she has extensive experience auditing listed companies and leading due diligence and internal audit assignments across multiple sectors.</p>
+                                <p style="font-size:1rem;line-height:1.85;color:var(--text);">At the <strong>World Bank Group</strong>, Prabha held key roles in Trust Fund and Treasury Accounting, collaborating with donor countries and managing teams in the Treasury Department.</p>
+                                <p style="font-size:1rem;line-height:1.85;color:var(--text);margin-bottom:0;">For the past <strong>13 years</strong>, she has been a dedicated educator — mentoring students across ACCA, CA, and CMA at top institutions including Christ University, Jain University, and Mount Carmel College.</p>
                             </div>
                         </div>
                     </div>
@@ -126,37 +171,37 @@
         </div>
     </section>
 
-    <!-- OUR TEAM + VALUES -->
-    <section style="padding: 80px 0; background: var(--white);">
+    <!-- TEAM & VALUES -->
+    <section style="padding:90px 0; background:var(--white);">
         <div class="container">
             <div class="text-center mb-5">
-                <span class="section-tag">Our Team &amp; Values</span>
-                <h2 class="section-title">What Makes <span>Us Different</span></h2>
+                <span class="section-tag reveal">Our Team &amp; Values</span>
+                <h2 class="section-title reveal rv-d1">What Makes <span>Us Different</span></h2>
             </div>
             <div class="row g-4">
                 <div class="col-md-6 col-lg-3">
-                    <div class="info-card">
+                    <div class="info-card reveal rv-d1">
                         <div class="info-icon"><i class="fas fa-users"></i></div>
                         <h4>Expert Team</h4>
                         <p>Professionally qualified tutors with 15+ years of teaching and mentoring experience dedicated to your success.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
-                    <div class="info-card">
+                    <div class="info-card reveal rv-d2">
                         <div class="info-icon"><i class="fas fa-heart"></i></div>
                         <h4>Student-First</h4>
                         <p>Every decision we make is guided by what's best for the student — from curriculum design to class sizes.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
-                    <div class="info-card">
+                    <div class="info-card reveal rv-d3">
                         <div class="info-icon"><i class="fas fa-trophy"></i></div>
                         <h4>Results-Driven</h4>
                         <p>We track outcomes rigorously and continuously refine our teaching to deliver exceptional pass rates.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
-                    <div class="info-card">
+                    <div class="info-card reveal rv-d4">
                         <div class="info-icon"><i class="fas fa-handshake"></i></div>
                         <h4>Integrity</h4>
                         <p>Honest, transparent guidance — we tell you what you need to hear to succeed, not just what you want to hear.</p>
@@ -170,12 +215,12 @@
     <section class="testimonials-section">
         <div class="container">
             <div class="text-center mb-5">
-                <span class="section-tag">Student Reviews</span>
-                <h2 class="section-title">What Our <span>Students Say</span></h2>
+                <span class="section-tag reveal">Student Reviews</span>
+                <h2 class="section-title reveal rv-d1">What Our <span>Students Say</span></h2>
             </div>
             <div class="row justify-content-center g-4">
                 <div class="col-md-6 col-lg-5">
-                    <div class="testimonial-card">
+                    <div class="testimonial-card reveal from-left">
                         <div class="star-rating">
                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
@@ -191,7 +236,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-5">
-                    <div class="testimonial-card">
+                    <div class="testimonial-card reveal from-right rv-d2">
                         <div class="star-rating">
                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
@@ -213,9 +258,9 @@
     <!-- CTA -->
     <section class="cta-section">
         <div class="container text-center position-relative" style="z-index:1;">
-            <h2 class="mb-3">Ready to Learn with the Best?</h2>
-            <p class="mb-4">Join hundreds of students who've transformed their careers with PS Learning Ventures.</p>
-            <a href="registration.html" class="btn-primary-custom">Register Now — It's Free</a>
+            <h2 class="mb-3 reveal">Ready to Learn with the Best?</h2>
+            <p class="mb-4 reveal rv-d1">Join hundreds of students who've transformed their careers with PS Learning Ventures.</p>
+            <a href="registration.html" class="btn-primary-custom reveal rv-d2">Register Now — It's Free</a>
         </div>
     </section>
 
@@ -255,7 +300,7 @@
                     <ul>
                         <li><a href="mailto:adiandved@gmail.com"><i class="fas fa-envelope me-2" style="opacity:.6"></i>adiandved@gmail.com</a></li>
                         <li><a href="https://api.whatsapp.com/send?phone=919176000129" target="_blank"><i class="fab fa-whatsapp me-2" style="opacity:.6"></i>+91 9176000129</a></li>
-                        <li style="color:rgba(255,255,255,0.6); font-size:0.88rem;"><i class="fas fa-map-marker-alt me-2" style="opacity:.6"></i>Prestige Shantiniketan, Whitefield, Bengaluru 560048</li>
+                        <li style="color:rgba(255,255,255,0.6);font-size:0.88rem;"><i class="fas fa-map-marker-alt me-2" style="opacity:.6"></i>Prestige Shantiniketan, Whitefield, Bengaluru 560048</li>
                     </ul>
                 </div>
             </div>
@@ -269,12 +314,63 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Unified scroll-reveal observer
+        const ro = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    ro.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+        // Timeline items: staggered reveal
+        const tlo = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    const delay = parseInt(e.target.dataset.tl || 0) * 130;
+                    setTimeout(() => e.target.classList.add('visible'), delay);
+                    tlo.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.timeline-item').forEach(el => tlo.observe(el));
+
+        // Stat counter animation
+        function countUp(el) {
+            const target = parseInt(el.dataset.target);
+            const suffix = el.dataset.suffix || '';
+            const duration = 1400;
+            const start = performance.now();
+            const tick = (now) => {
+                const p = Math.min((now - start) / duration, 1);
+                const ease = 1 - Math.pow(1 - p, 3);
+                el.textContent = Math.floor(ease * target) + suffix;
+                if (p < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+        }
+
+        const co = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    countUp(e.target);
+                    co.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.s-num[data-target]').forEach(el => co.observe(el));
+
+        // Auth redirect
         document.addEventListener('DOMContentLoaded', function() {
-            const currentUser = Backend.users.getCurrentUser();
-            if (currentUser) {
-                document.querySelectorAll('a[href="registration.html"]').forEach(btn => {
-                    btn.textContent = 'My Dashboard';
-                    btn.href = 'dashboard.html';
+            const user = Backend.users.getCurrentUser();
+            if (user) {
+                document.querySelectorAll('a[href="registration.html"]').forEach(a => {
+                    a.textContent = 'My Dashboard'; a.href = 'dashboard.html';
                 });
             }
         });

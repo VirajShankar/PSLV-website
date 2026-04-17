@@ -13,327 +13,87 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/supabase-init.js"></script>
     <script src="js/app.js"></script>
-    <style>
-        html, body { height: 100%; }
-
-        .auth-wrapper {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .auth-main {
-            flex: 1;
-            display: flex;
-        }
-
-        /* LEFT BRAND PANEL */
-        .auth-brand-panel {
-            width: 44%;
-            background: linear-gradient(145deg, var(--primary-dark) 0%, var(--primary) 55%, var(--primary-light) 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 48px 52px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .auth-brand-panel::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image:
-                radial-gradient(circle at 10% 80%, rgba(255,255,255,0.07) 0%, transparent 45%),
-                radial-gradient(circle at 90% 15%, rgba(255,255,255,0.06) 0%, transparent 40%);
-        }
-
-        .auth-brand-panel > * { position: relative; z-index: 1; }
-
-        .auth-logo {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: white;
-            text-decoration: none;
-            letter-spacing: -0.5px;
-        }
-
-        .auth-logo .dot {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background: var(--accent-light);
-            border-radius: 50%;
-            margin: 0 1px 3px;
-        }
-
-        .auth-brand-panel .brand-headline {
-            color: white;
-            font-size: clamp(1.5rem, 2.5vw, 2rem);
-            font-weight: 800;
-            line-height: 1.25;
-            margin-bottom: 1rem;
-        }
-
-        .auth-brand-panel .brand-sub {
-            color: rgba(255,255,255,0.8);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        .auth-trust-items { margin-top: 2.5rem; }
-
-        .auth-trust-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 1rem;
-            color: rgba(255,255,255,0.85);
-            font-size: 0.88rem;
-            font-weight: 500;
-        }
-
-        .auth-trust-item i {
-            color: var(--accent-light);
-            font-size: 0.9rem;
-            width: 16px;
-            flex-shrink: 0;
-        }
-
-        .auth-brand-footer {
-            color: rgba(255,255,255,0.45);
-            font-size: 0.78rem;
-        }
-
-        /* RIGHT FORM PANEL */
-        .auth-form-panel {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 48px 40px;
-            background: var(--white);
-            overflow-y: auto;
-        }
-
-        .auth-form-inner {
-            width: 100%;
-            max-width: 420px;
-        }
-
-        .auth-form-inner h1 {
-            font-size: 1.75rem;
-            font-weight: 800;
-            color: var(--dark-2);
-            margin-bottom: 0.4rem;
-        }
-
-        .auth-form-inner .auth-subtitle {
-            color: var(--text-muted);
-            font-size: 0.92rem;
-            margin-bottom: 2rem;
-        }
-
-        .auth-form-inner .form-label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--dark-2);
-            margin-bottom: 6px;
-        }
-
-        .auth-input-group {
-            position: relative;
-            margin-bottom: 18px;
-        }
-
-        .auth-input-group .field-icon {
-            position: absolute;
-            left: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            pointer-events: none;
-            z-index: 3;
-        }
-
-        .auth-input-group .form-control {
-            padding: 12px 44px 12px 40px;
-            border: 1.5px solid var(--border);
-            border-radius: var(--radius-sm);
-            font-size: 0.93rem;
-            transition: var(--transition);
-            background: var(--light-bg);
-        }
-
-        .auth-input-group .form-control:focus {
-            border-color: var(--primary);
-            background: var(--white);
-            box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.1);
-            outline: none;
-        }
-
-        .toggle-password {
-            position: absolute;
-            right: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            cursor: pointer;
-            padding: 4px 6px;
-            font-size: 0.85rem;
-            z-index: 3;
-            transition: var(--transition);
-        }
-
-        .toggle-password:hover { color: var(--primary); }
-
-        .auth-submit-btn {
-            width: 100%;
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 13px;
-            border-radius: var(--radius-sm);
-            font-weight: 700;
-            font-size: 0.97rem;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: 0 4px 14px rgba(192, 57, 43, 0.3);
-            margin-top: 8px;
-        }
-
-        .auth-submit-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-1px);
-            box-shadow: 0 6px 18px rgba(192, 57, 43, 0.38);
-        }
-
-        .auth-submit-btn:disabled {
-            opacity: 0.7;
-            transform: none;
-            cursor: not-allowed;
-        }
-
-        .auth-divider {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin: 22px 0;
-            color: var(--text-muted);
-            font-size: 0.82rem;
-        }
-
-        .auth-divider::before,
-        .auth-divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--border);
-        }
-
-        .auth-switch {
-            text-align: center;
-            font-size: 0.88rem;
-            color: var(--text-muted);
-        }
-
-        .auth-switch a {
-            color: var(--primary);
-            font-weight: 600;
-            text-decoration: none;
-        }
-
-        .auth-switch a:hover { text-decoration: underline; }
-
-        @media (max-width: 768px) {
-            .auth-brand-panel { display: none; }
-            .auth-form-panel { padding: 40px 24px; }
-        }
-    </style>
 </head>
 <body>
 
-<div class="auth-wrapper">
-    <!-- MINIMAL TOP NAV -->
-    <nav style="height:60px; background:var(--white); border-bottom:1px solid var(--border); display:flex; align-items:center; padding:0 32px; position:sticky; top:0; z-index:100;">
-        <a href="index.html" style="font-size:1.1rem; font-weight:800; color:var(--primary); text-decoration:none; letter-spacing:-0.3px;">
-            PS<span style="display:inline-block; width:7px; height:7px; background:var(--accent); border-radius:50%; margin:0 1px 3px;"></span>LV
-        </a>
-        <span style="margin-left:auto; font-size:0.85rem; color:var(--text-muted);">
-            Don't have an account? <a href="registration.html" style="color:var(--primary); font-weight:600; text-decoration:none;">Register Free</a>
-        </span>
+<div class="auth-page-wrapper">
+
+    <!-- TOP NAV -->
+    <nav class="auth-top-nav">
+        <a href="index.html" class="nav-logo">PS<span class="dot"></span>LV</a>
+        <span class="nav-hint">No account? <a href="registration.html">Register free</a></span>
     </nav>
 
-    <div class="auth-main">
+    <div class="auth-content">
 
         <!-- BRAND PANEL -->
-        <div class="auth-brand-panel">
-            <a href="index.html" class="auth-logo">PS<span class="dot"></span>LV</a>
+        <aside class="auth-brand">
+            <!-- Floating orbs -->
+            <div class="orb auth-orb-1"></div>
+            <div class="orb auth-orb-2"></div>
+            <div class="orb auth-orb-3"></div>
+            <div class="orb auth-orb-4"></div>
+
+            <a href="index.html" class="auth-brand-logo">PS<span class="dot"></span>LV</a>
 
             <div>
-                <h2 class="brand-headline">Welcome back.<br>Continue your journey.</h2>
-                <p class="brand-sub">Sign in to access your courses, track your progress, and stay connected with your instructor.</p>
+                <h2>Welcome back.<br>Continue your journey.</h2>
+                <p class="brand-desc">Sign in to access your courses, track your progress, and connect with your instructor.</p>
 
-                <div class="auth-trust-items">
-                    <div class="auth-trust-item"><i class="fas fa-check-circle"></i> Access all enrolled course materials</div>
-                    <div class="auth-trust-item"><i class="fas fa-check-circle"></i> Track your exam progress</div>
-                    <div class="auth-trust-item"><i class="fas fa-check-circle"></i> Connect with your instructor</div>
-                    <div class="auth-trust-item"><i class="fas fa-check-circle"></i> 500+ students already learning</div>
+                <div class="auth-trust">
+                    <div class="auth-trust-row"><i class="fas fa-check-circle"></i> Access all your enrolled course materials</div>
+                    <div class="auth-trust-row"><i class="fas fa-check-circle"></i> Track your exam preparation progress</div>
+                    <div class="auth-trust-row"><i class="fas fa-check-circle"></i> Message your instructor directly</div>
+                    <div class="auth-trust-row"><i class="fas fa-check-circle"></i> 500+ students already learning with us</div>
                 </div>
             </div>
 
             <span class="auth-brand-footer">© 2025 Prabha Shankar Learning Ventures</span>
-        </div>
+        </aside>
 
         <!-- FORM PANEL -->
-        <div class="auth-form-panel">
-            <div class="auth-form-inner">
-                <h1>Sign in</h1>
-                <p class="auth-subtitle">Enter your credentials to access your dashboard.</p>
+        <div class="auth-form-side">
+            <div class="auth-form-box">
 
-                <div class="alert alert-success mb-3" id="successAlert" style="display:none; font-size:0.9rem;">
-                    <i class="fas fa-check-circle me-2"></i> Login successful! Redirecting to dashboard...
+                <h1>Sign in</h1>
+                <p class="auth-sub">Enter your credentials to access your dashboard.</p>
+
+                <div class="alert alert-success mb-3" id="successAlert" style="display:none;font-size:0.9rem;">
+                    <i class="fas fa-check-circle me-2"></i> Login successful! Redirecting to dashboard…
                 </div>
-                <div class="alert alert-danger mb-3" id="errorAlert" style="display:none; font-size:0.9rem;">
+                <div class="alert alert-danger mb-3" id="errorAlert" style="display:none;font-size:0.9rem;">
                     <i class="fas fa-exclamation-circle me-2"></i> <span id="errorMessage">Invalid email or password.</span>
                 </div>
 
                 <form id="loginForm" novalidate>
-                    <div>
-                        <label class="form-label" for="email">Email Address</label>
-                        <div class="auth-input-group">
-                            <i class="fas fa-envelope field-icon"></i>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" required>
-                        </div>
+
+                    <!-- Email -->
+                    <div class="fl-group">
+                        <i class="fas fa-envelope fi"></i>
+                        <input type="email" id="email" name="email" placeholder=" " required autocomplete="email">
+                        <label for="email">Email Address</label>
                     </div>
 
-                    <div>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <label class="form-label mb-0" for="password">Password</label>
-                        </div>
-                        <div class="auth-input-group mt-1">
-                            <i class="fas fa-lock field-icon"></i>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Your password" required>
-                            <button class="toggle-password" type="button" id="togglePassword" aria-label="Toggle password visibility">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                        </div>
+                    <!-- Password -->
+                    <div class="fl-group">
+                        <i class="fas fa-lock fi"></i>
+                        <input type="password" id="password" name="password" placeholder=" " required autocomplete="current-password">
+                        <label for="password">Password</label>
+                        <button class="fl-toggle" type="button" id="togglePw" aria-label="Show/hide password">
+                            <i class="fas fa-eye"></i>
+                        </button>
                     </div>
 
                     <div class="d-flex align-items-center justify-content-between mb-3">
                         <div class="form-check mb-0">
                             <input class="form-check-input" type="checkbox" id="rememberMe">
-                            <label class="form-check-label" for="rememberMe" style="font-size:0.85rem; color:var(--text-muted);">Remember me</label>
+                            <label class="form-check-label" for="rememberMe" style="font-size:0.84rem;color:var(--text-muted);">Remember me</label>
                         </div>
                     </div>
 
-                    <button type="submit" class="auth-submit-btn" id="submitBtn">
+                    <button type="submit" class="auth-submit" id="submitBtn">
                         <span id="submitText">Sign In</span>
-                        <span id="loginSpinner" class="spinner-border spinner-border-sm ms-2" role="status" style="display:none;"></span>
+                        <span id="loginSpinner" class="spinner-border spinner-border-sm ms-2" style="display:none;" role="status"></span>
                     </button>
                 </form>
 
@@ -344,10 +104,11 @@
                 </div>
 
                 <div class="text-center mt-4">
-                    <a href="index.html" style="font-size:0.82rem; color:var(--text-muted); text-decoration:none;">
+                    <a href="index.html" style="font-size:0.82rem;color:var(--text-muted);text-decoration:none;">
                         <i class="fas fa-arrow-left me-1"></i> Back to homepage
                     </a>
                 </div>
+
             </div>
         </div>
 
@@ -356,29 +117,24 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    document.getElementById('togglePassword').addEventListener('click', function() {
-        const input = document.getElementById('password');
-        const icon = this.querySelector('i');
-        if (input.type === 'password') {
-            input.type = 'text';
-            icon.classList.replace('fa-eye', 'fa-eye-slash');
-        } else {
-            input.type = 'password';
-            icon.classList.replace('fa-eye-slash', 'fa-eye');
-        }
+    // Toggle password
+    document.getElementById('togglePw').addEventListener('click', function() {
+        const inp = document.getElementById('password');
+        const ico = this.querySelector('i');
+        inp.type = inp.type === 'password' ? 'text' : 'password';
+        ico.classList.toggle('fa-eye');
+        ico.classList.toggle('fa-eye-slash');
     });
 
+    // Login submission
     document.getElementById('loginForm').addEventListener('submit', async function(e) {
         e.preventDefault();
-
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
 
         document.getElementById('successAlert').style.display = 'none';
         document.getElementById('errorAlert').style.display = 'none';
-        document.getElementById('submitText').textContent = 'Signing in...';
-        document.getElementById('loginSpinner').style.display = 'inline-block';
-        document.getElementById('submitBtn').disabled = true;
+        setLoading(true);
 
         try {
             const { data, error } = await window.supabase.auth.signInWithPassword({ email, password });
@@ -394,11 +150,15 @@
         } catch (err) {
             document.getElementById('errorMessage').textContent = err.message || 'Login failed. Please try again.';
             document.getElementById('errorAlert').style.display = 'block';
-            document.getElementById('submitText').textContent = 'Sign In';
-            document.getElementById('loginSpinner').style.display = 'none';
-            document.getElementById('submitBtn').disabled = false;
+            setLoading(false);
         }
     });
+
+    function setLoading(on) {
+        document.getElementById('submitText').textContent = on ? 'Signing in…' : 'Sign In';
+        document.getElementById('loginSpinner').style.display = on ? 'inline-block' : 'none';
+        document.getElementById('submitBtn').disabled = on;
+    }
 </script>
 </body>
 </html>
