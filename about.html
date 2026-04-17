@@ -325,6 +325,9 @@
         }, { threshold: 0.12 });
 
         document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+        setTimeout(() => {
+            document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible'));
+        }, 800);
 
         // Timeline items: staggered reveal
         const tlo = new IntersectionObserver((entries) => {

@@ -232,6 +232,9 @@
             entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
         }, { threshold: 0.12 });
         document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+        setTimeout(() => {
+            document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible'));
+        }, 800);
 
         // Contact form
         const SUPABASE_URL = 'https://kvvhgkvkxlfocmjsshkx.supabase.co';
