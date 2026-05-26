@@ -247,14 +247,31 @@
 
             localStorage.setItem('currentUser', JSON.stringify(userData));
 
+            // Auto-login after successful signup
+            try {
+                const loginRes = await window.supabase.auth.signInWithPassword({ email, password });
+                if (loginRes.error) {
+                    console.warn('Auto-login after signup failed:', loginRes.error.message);
+                    // If auto-login fails (e.g., email confirmation required), redirect to login with helpful message
+                    sessionStorage.setItem('signupMessage', 'Your account has been created! Please sign in.');
+                    setTimeout(() => window.location.href = 'login.html', 2000);
+                    return;
+                }
+            } catch (loginErr) {
+                console.warn('Auto-login error:', loginErr);
+            }
+
             document.getElementById('successAlert').innerHTML = `
                 <i class="fas fa-check-circle me-2"></i>
                 <strong>Welcome aboard!</strong> You're enrolled in <strong>${courseName}</strong>.<br>
-                <span style="font-size:0.85rem;">You can now <a href="login.html" class="alert-link">sign in to your account</a>.</span>`;
+                <span style="font-size:0.85rem;">Redirecting to your dashboard...</span>`;
             document.getElementById('successAlert').style.display = 'block';
             this.reset();
             document.querySelectorAll('.course-pill').forEach(p => p.classList.remove('active'));
             document.getElementById('courseInterest').value = '';
+
+            // Redirect to dashboard after successful login
+            setTimeout(() => window.location.href = 'dashboard.html', 2000);
 
         } catch (err) {
             const msg = err.message?.toLowerCase().includes('already')

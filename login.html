@@ -138,7 +138,13 @@
 
         try {
             const { data, error } = await window.supabase.auth.signInWithPassword({ email, password });
-            if (error) throw error;
+            if (error) {
+                // Check if the error is due to unconfirmed email
+                if (error.message && (error.message.includes('Email not confirmed') || error.message.includes('not been confirmed'))) {
+                    throw new Error('Please confirm your email before signing in. Check your email inbox for a confirmation link.');
+                }
+                throw error;
+            }
             if (!data.user) throw new Error('Login failed — no user returned');
 
             const { data: userData } = await window.supabase
@@ -148,7 +154,8 @@
             document.getElementById('successAlert').style.display = 'block';
             setTimeout(() => { window.location.href = 'dashboard.html'; }, 1500);
         } catch (err) {
-            document.getElementById('errorMessage').textContent = err.message || 'Login failed. Please try again.';
+            const errorMsg = err.message || 'Login failed. Please try again.';
+            document.getElementById('errorMessage').textContent = errorMsg;
             document.getElementById('errorAlert').style.display = 'block';
             setLoading(false);
         }
